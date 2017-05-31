@@ -2,5 +2,6 @@
 
 - hosts: all
   roles:
+    - eclipse-java
     - git
     - vscode

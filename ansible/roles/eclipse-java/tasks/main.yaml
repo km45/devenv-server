@@ -1,0 +1,10 @@
+---
+
+- name: ensure eclipse-java installed
+  stat:
+    path: ~/.local/share/umake/ide/eclipse
+  register: install_dir
+
+- name: install eclipse-java
+  shell: umake ide eclipse ~/.local/share/umake/ide/eclipse
+  when: not install_dir.stat.exists
