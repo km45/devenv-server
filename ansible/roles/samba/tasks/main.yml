@@ -1,0 +1,41 @@
+---
+
+# - name: install packages
+#   become: yes
+#   apt:
+#     name: samba
+#     state: present
+#     update_cache: yes
+
+- name: add config file
+  become: yes
+  copy:
+    src: smb.conf
+    dest: /etc/samba/
+    mode: 0644
+
+- name: remove CR code in config file
+  become: yes
+  replace:
+    dest: /etc/samba/smb.conf
+    regexp: '\r'
+    replace: ''
+
+- name: add samba user
+  become: yes
+  shell: "{ echo {{ password }}; echo {{ password }}; } | smbpasswd -as {{ password }}"
+
+- name: restart services
+  become: yes
+  service:
+    name: samba
+    state: restarted
+
+# - name: restart services
+#   become: yes
+#   service:
+#     name: "{{ item }}"
+#     state: restarted
+#   with_items:
+#     - smbd
+#     - nmbd
