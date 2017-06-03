@@ -31,11 +31,8 @@
     name: samba
     state: restarted
 
-# - name: restart services
-#   become: yes
-#   service:
-#     name: "{{ item }}"
-#     state: restarted
-#   with_items:
-#     - smbd
-#     - nmbd
+- name: restart services
+  become: yes
+  service:
+    name: samba
+    state: restarted
