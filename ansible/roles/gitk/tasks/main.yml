@@ -1,0 +1,8 @@
+---
+
+- name: install gitk
+  become: yes
+  apt:
+    name: gitk
+    state: present
+    update_cache: yes
