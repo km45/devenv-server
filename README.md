@@ -23,7 +23,7 @@ so run them in guest environment.
 [CAUSION] Run them in guest environment, not in ssh connection.
 
 ```console
-$ ansible-playbook -c local guest.yml
+$ ansible-playbook guest.yml
 ```
 
 ## For developers
