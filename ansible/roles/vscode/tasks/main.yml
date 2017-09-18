@@ -19,3 +19,7 @@
     name: code
     state: latest
     update_cache: yes
+
+- name: install plugins
+  shell: code --install-extension "{{ item }}"
+  with_items: "{{ vscode_plugins }}"
