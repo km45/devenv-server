@@ -10,7 +10,9 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   # C++
   # ----------------------------------------------------------------------------
+  - ajshort.include-autocomplete
   - mitaki28.vscode-clang
+  - twxs.cmake
   - xaver.clang-format
   # MEMO: Need gnu-global installation to use this.
   # - austin.code-gnu-global
