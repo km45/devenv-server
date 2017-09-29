@@ -1,0 +1,22 @@
+---
+
+- name: install packages
+  become: yes
+  apt:
+    name: i3
+    state: present
+    update_cache: yes
+
+- name: add config file
+  become: yes
+  copy:
+    src: config
+    dest: /home/vagrant/.i3/
+    mode: 0664
+
+- name: remove CR code in config file
+  become: yes
+  replace:
+    dest: /home/vagrant/.i3/config
+    regexp: '\r'
+    replace: ''
