@@ -20,3 +20,9 @@
     dest: /home/vagrant/.i3/config
     regexp: '\r'
     replace: ''
+
+- name: add i3status confing file
+  copy:
+    src: i3status.conf
+    dest: /home/vagrant/.i3status.conf
+    mode: 0664
