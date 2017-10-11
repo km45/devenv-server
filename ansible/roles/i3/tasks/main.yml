@@ -24,3 +24,9 @@
     src: i3status.conf
     dest: /home/vagrant/.i3status.conf
     mode: 0664
+
+- name: remove CR code in i3status config file
+  replace:
+    dest: /home/vagrant/.i3status.conf
+    regexp: '\r'
+    replace: ''
