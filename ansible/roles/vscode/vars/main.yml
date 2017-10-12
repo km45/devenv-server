@@ -11,15 +11,13 @@ vscode_plugins:
   # C++
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
-  - mitaki28.vscode-clang
   - twxs.cmake
-  - xaver.clang-format
-  # MEMO: Need gnu-global installation to use this.
-  # - austin.code-gnu-global
   #
-  # MEMO: Some problems exists.
-  #         * navagation include path (Need to edit c_cpp_properties.json)
-  # - ms-vscode.cpptools
+  # maybe ms-vscode.cpptools works well, otherwise use following plugins
+  # - mitaki28.vscode-clang
+  # - xaver.clang-format
+  # - austin.code-gnu-global // MEMO: Need gnu-global installation to use this.
+  - ms-vscode.cpptools
   #
   #
   # ----------------------------------------------------------------------------
