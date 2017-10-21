@@ -1,4 +1,4 @@
-# ansible for ubuntu
+# ansible
 
 ## How to use
 
