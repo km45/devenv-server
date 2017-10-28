@@ -5,6 +5,7 @@
     - eclipse-java
     - ghex
     - git
+    - git-flow
     - gitk
     - i3
     - samba
