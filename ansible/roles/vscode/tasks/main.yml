@@ -17,7 +17,6 @@
   become: yes
   apt:
     name: code
-    state: latest
     update_cache: yes
 
 - name: install plugins

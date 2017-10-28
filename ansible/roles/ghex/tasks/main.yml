@@ -1,8 +1,6 @@
 ---
 
-- name: install ghex
+- name: install packages
   become: yes
   apt:
     name: ghex
-    state: present
-    update_cache: yes

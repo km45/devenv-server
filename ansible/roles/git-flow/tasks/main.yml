@@ -4,4 +4,3 @@
   become: yes
   apt:
     name: git-flow
-    state: present

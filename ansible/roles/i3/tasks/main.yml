@@ -4,8 +4,6 @@
   become: yes
   apt:
     name: i3
-    state: present
-    update_cache: yes
 
 - name: add config file
   copy:

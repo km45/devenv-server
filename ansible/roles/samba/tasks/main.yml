@@ -4,8 +4,6 @@
   become: yes
   apt:
     name: samba
-    state: present
-    update_cache: yes
 
 - name: add config file
   become: yes
