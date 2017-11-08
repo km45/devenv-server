@@ -17,7 +17,7 @@
     regexp: '\r'
     replace: ''
 
-- name: add i3status confing file
+- name: add i3status config file
   copy:
     src: i3status.conf
     dest: /home/vagrant/.i3status.conf
