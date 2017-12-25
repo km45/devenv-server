@@ -1,5 +1,14 @@
 ---
 
+- name: ensure visual-studio-code installed by umake
+  stat:
+    path: ~/.local/share/umake/ide/visual-studio-code
+  register: install_dir
+
+- name: uninstall visual-studio-code if installed by umake
+  shell: umake ide visual-studio-code --remove
+  when: install_dir.stat.exists
+
 - name: add apt key
   become: yes
   apt_key:
