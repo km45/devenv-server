@@ -11,7 +11,9 @@ Add below settings to `Vagrantfile` and run vagrant provisioning.
 
 ```ruby
 config.vm.provision "km45-ansible", type: "ansible_local" do |ansible|
-  ansible.playbook = "ansible/host.yml"
+  ansible.playbook = "km45-ansible/host.yml"
+  ansible.compatibility_mode = "2.0"
+  # ansible.verbose = "vvv"
 end
 ```
 
@@ -24,12 +26,4 @@ so run them in guest environment.
 
 ```console
 $ ansible-playbook guest.yml
-```
-
-## For developers
-
-I recommend adding below settings.
-
-```ruby
-ansible.verbose = "vvv"
 ```
