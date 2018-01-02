@@ -1,0 +1,43 @@
+---
+
+- name: checkout git repository
+  become: yes
+  git:
+    repo: https://github.com/Andersbakken/rtags.git
+    dest: /usr/local/src/rtags-{{ rtags_version }}
+    version: v{{ rtags_version }}
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/rtags-{{ rtags_version }}
+  with_items:
+    - cmake -DRTAGS_NO_ELISP_FILES=1 .
+    - make
+    - make install
+
+# How to use
+#
+# 1. run daemon
+#   ```
+#   $ rdm
+#   ```
+#   TODO: start deamon by init-script
+#
+# 2. generate compile_commands.json
+#   ```
+#   $ cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 .
+#   ```
+#
+# 3. run indexer (using compile_commands.json)
+#   ```
+#   $ rc -J
+#   ```
+#   MEMO: rdm is daemon, and rc is its client
+#
+# 4. query (using index)
+#   ```
+#   $ rc --references src/sum.cc:21:5
+#   ```
+#   TIPS: refer `rc --help` or `man rc`
