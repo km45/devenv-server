@@ -20,6 +20,9 @@ vscode_plugins:
   # - austin.code-gnu-global // MEMO: Need gnu-global installation to use this.
   - ms-vscode.cpptools
   #
+  # TODO: install cpplint and set path
+  # - mine.cpplint
+  #
   #
   # ----------------------------------------------------------------------------
   # Docker
