@@ -43,10 +43,7 @@
 # How to use
 #
 # 1. run daemon
-#   ```
-#   $ rdm
-#   ```
-#   TODO: start deamon by init-script
+#   provision by this file, run daemon as a upstart job
 #
 # 2. generate compile_commands.json
 #   ```
