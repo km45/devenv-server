@@ -62,6 +62,8 @@
 # 4. query (using index)
 #   ```
 #   $ rc --references src/sum.cc:21:5
+#   $ rc --all-references --definition-only --references src/sum.cc:21:5
+#   $ rc --all-references --declaration-only --references src/sum.cc:21:5
 #   ```
 #   TIPS: refer `rc --help` or `man rc`
 #
