@@ -17,6 +17,29 @@
     - make
     - make install
 
+- name: add upstart file
+  become: yes
+  copy:
+    src: rtags-rdm.conf
+    dest: /etc/init
+    mode: 0664
+
+- name: remove CR code in upstart file
+  become: yes
+  replace:
+    dest: /etc/init/rtags-rdm.conf
+    regexp: '\r'
+    replace: ''
+
+- name: enable and restart upstart job
+  become: yes
+  shell: "{{ item }}"
+  with_items:
+    - initctl reload-configuration
+    - initctl stop rtags-rdm || true
+    - initctl start rtags-rdm
+
+
 # How to use
 #
 # 1. run daemon
@@ -41,3 +64,8 @@
 #   $ rc --references src/sum.cc:21:5
 #   ```
 #   TIPS: refer `rc --help` or `man rc`
+#
+# 5. check log if you need
+#   ```
+#   $ rc --rdm-log
+#   ```
