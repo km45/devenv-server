@@ -1,4 +1,4 @@
-# ansible
+# ansible-playbook
 
 ## How to use
 
