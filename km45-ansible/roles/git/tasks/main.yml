@@ -1,13 +1,13 @@
 ---
 
 - name: add apt repository
-  become: yes
+  become: true
   apt_repository:
     repo: ppa:git-core/ppa
 
 - name: install packages
-  become: yes
+  become: true
   apt:
     name: git
     state: latest
-    update_cache: yes
+    update_cache: yes  # yamllint disable-line rule:truthy

@@ -1,30 +1,30 @@
 ---
 
 - name: install packages
-  become: yes
+  become: true
   apt:
     name: samba
 
 - name: add config file
-  become: yes
+  become: true
   copy:
     src: smb.conf
     dest: /etc/samba/
     mode: 0644
 
 - name: remove CR code in config file
-  become: yes
+  become: true
   replace:
     dest: /etc/samba/smb.conf
     regexp: '\r'
     replace: ''
 
 - name: add samba user
-  become: yes
+  become: true
   shell: "{ echo {{ password }}; echo {{ password }}; } | smbpasswd -as {{ password }}"
 
 - name: restart services
-  become: yes
+  become: true
   service:
     name: samba
     state: restarted

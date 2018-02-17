@@ -1,14 +1,14 @@
 ---
 
 - name: checkout git repository
-  become: yes
+  become: true
   git:
     repo: https://github.com/Andersbakken/rtags.git
     dest: /usr/local/src/rtags-{{ rtags_version }}
     version: v{{ rtags_version }}
 
 - name: compile and install
-  become: yes
+  become: true
   shell: "{{ item }}"
   args:
     chdir: /usr/local/src/rtags-{{ rtags_version }}
@@ -18,21 +18,21 @@
     - make install
 
 - name: add upstart file
-  become: yes
+  become: true
   copy:
     src: rtags-rdm.conf
     dest: /etc/init
     mode: 0664
 
 - name: remove CR code in upstart file
-  become: yes
+  become: true
   replace:
     dest: /etc/init/rtags-rdm.conf
     regexp: '\r'
     replace: ''
 
 - name: enable and restart upstart job
-  become: yes
+  become: true
   shell: "{{ item }}"
   with_items:
     - initctl reload-configuration
