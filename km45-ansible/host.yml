@@ -9,6 +9,7 @@
     - gitk
     - i3
     - moreutils
+    - pandoc
     - rtags
     - samba
     - sysstat
