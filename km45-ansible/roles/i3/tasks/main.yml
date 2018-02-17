@@ -33,12 +33,12 @@
 - name: add config file
   copy:
     src: config
-    dest: /home/vagrant/.i3/
+    dest: /home/vagrant/.config/i3/config
     mode: 0664
 
 - name: remove CR code in config file
   replace:
-    dest: /home/vagrant/.i3/config
+    dest: /home/vagrant/.config/i3/config
     regexp: '\r'
     replace: ''
 
