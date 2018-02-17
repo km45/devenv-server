@@ -11,6 +11,7 @@
     - moreutils
     - rtags
     - samba
+    - sysstat
     - thunar
     - vscode
     - yamllint
