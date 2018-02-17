@@ -36,23 +36,11 @@
     dest: /home/vagrant/.config/i3/config
     mode: 0664
 
-- name: remove CR code in config file
-  replace:
-    dest: /home/vagrant/.config/i3/config
-    regexp: '\r'
-    replace: ''
-
 - name: add i3status config file
   copy:
     src: i3status.conf
     dest: /home/vagrant/.i3status.conf
     mode: 0664
-
-- name: remove CR code in i3status config file
-  replace:
-    dest: /home/vagrant/.i3status.conf
-    regexp: '\r'
-    replace: ''
 
 - name: add i3blocks config file
   copy:
@@ -60,8 +48,12 @@
     dest: /home/vagrant/.config/i3blocks/config
     mode: 0664
 
-- name: remove CR code in i3blocks config file
+- name: remove CR code in config files
   replace:
-    dest: /home/vagrant/.config/i3blocks/config
+    dest: "{{ item }}"
     regexp: '\r'
     replace: ''
+  with_items:
+    - /home/vagrant/.config/i3/config
+    - /home/vagrant/.i3status.conf
+    - /home/vagrant/.config/i3blocks/config
