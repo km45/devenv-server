@@ -21,7 +21,9 @@
 
 - name: add samba user
   become: true
-  shell: "{ echo {{ password }}; echo {{ password }}; } | smbpasswd -as {{ password }}"
+  shell: |-
+    echo '{{ password }}\n{{ password }}\n' \
+    | smbpasswd -as "{{ password }}"
 
 - name: restart services
   become: true
