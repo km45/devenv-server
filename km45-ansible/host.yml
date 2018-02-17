@@ -8,6 +8,7 @@
     - git-flow
     - gitk
     - i3
+    - moreutils
     - rtags
     - samba
     - thunar
