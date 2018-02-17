@@ -31,3 +31,36 @@
 - name: install plugins
   shell: code --install-extension "{{ item }}"
   with_items: "{{ vscode_plugins }}"
+
+- name: create temporary working directory
+  tempfile:
+    state: directory
+  register: tmpdir
+
+- name: show temporary working directory path
+  debug:
+    msg: "{{ tmpdir.path }}"
+
+- name: copy customized settings file to temporary working directory
+  copy:
+    src: customized_settings.json
+    dest: "{{ tmpdir.path }}/customized_settings.json"
+    mode: 0664
+
+- name: remove CR code in customized settings file
+  replace:
+    dest: "{{ tmpdir.path }}/customized_settings.json"
+    regexp: '\r'
+    replace: ''
+
+- name: merge customized settings into common settings
+  shell: |-
+    jq --slurp --indent 4 '.[0] * .[1]' \
+      "{{ vscode_common_settings_file_path }}" \
+      "{{ tmpdir.path }}/customized_settings.json" \
+    | sponge "{{ vscode_common_settings_file_path }}"
+
+- name: remove temporary working directory
+  file:
+    path: "{{ tmpdir.path }}"
+    state: absent
