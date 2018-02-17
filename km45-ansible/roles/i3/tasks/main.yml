@@ -1,9 +1,34 @@
 ---
 
-- name: install packages
+- name: install i3-wm
   become: true
   apt:
     name: i3
+
+- name: checkout i3blocks git repository
+  become: true
+  git:
+    repo: https://github.com/vivien/i3blocks.git
+    dest: /usr/local/src/i3blocks-{{ i3blocks_commit }}
+    version: "{{ i3blocks_commit }}"
+
+- name: compile and install i3blocks
+  become: true
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/i3blocks-{{ i3blocks_commit }}
+  with_items:
+    - make clean all
+    - make install
+    - make install-man
+
+- name: create directories to put config file
+  file:
+    path: "{{ item }}"
+    state: directory
+  with_items:
+    - /home/vagrant/.config/i3
+    - /home/vagrant/.config/i3blocks
 
 - name: add config file
   copy:
@@ -26,5 +51,17 @@
 - name: remove CR code in i3status config file
   replace:
     dest: /home/vagrant/.i3status.conf
+    regexp: '\r'
+    replace: ''
+
+- name: add i3blocks config file
+  copy:
+    src: i3blocks.conf
+    dest: /home/vagrant/.config/i3blocks/config
+    mode: 0664
+
+- name: remove CR code in i3blocks config file
+  replace:
+    dest: /home/vagrant/.config/i3blocks/config
     regexp: '\r'
     replace: ''
