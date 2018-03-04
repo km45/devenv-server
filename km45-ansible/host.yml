@@ -2,7 +2,6 @@
 
 - hosts: all
   roles:
-    - eclipse-java
     - ghex
     - git
     - git-flow
