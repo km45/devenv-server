@@ -25,5 +25,6 @@ so run them in guest environment.
 [CAUSION] Run them in guest environment, not in ssh connection.
 
 ```console
-$ ansible-playbook guest.yml
+$ cd ${PATH_TO_km45-playbooks}/guest
+$ ansible-playbook site.yml
 ```
