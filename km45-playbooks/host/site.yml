@@ -3,7 +3,6 @@
 - hosts: all
   roles:
     - ghex
-    - git
     - git-flow
     - gitk
     - i3
