@@ -13,9 +13,15 @@
   args:
     chdir: /usr/local/src/rtags-{{ rtags_version }}
   with_items:
-    - cmake -DRTAGS_NO_ELISP_FILES=1 .
+    - ./configure --prefix /usr/local/stow/rtags-{{ rtags_version }} --no-elisp-files-install
     - make
     - make install
+
+- name: stow
+  become: yes
+  shell: stow -R rtags-{{ rtags_version }}
+  args:
+    chdir: /usr/local/stow
 
 - name: add upstart file
   become: true
