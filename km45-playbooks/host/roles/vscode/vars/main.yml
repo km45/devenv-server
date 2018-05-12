@@ -6,6 +6,7 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   # Common
   # ----------------------------------------------------------------------------
+  - MS-CEINTL.vscode-language-pack-ja
   - streetsidesoftware.code-spell-checker
   - wraith13.wandbox-vscode
   #
