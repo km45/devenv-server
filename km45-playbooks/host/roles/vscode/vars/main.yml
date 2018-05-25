@@ -15,6 +15,7 @@ vscode_plugins:
   # C++
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
+  - cquery-project.cquery
   - twxs.cmake
   #
   # maybe ms-vscode.cpptools works well, otherwise use following plugins
