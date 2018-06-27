@@ -21,13 +21,12 @@ vscode_plugins:
   # C++
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
+  - cquery-project.cquery
   - twxs.cmake
+  - xaver.clang-format
   #
-  # maybe ms-vscode.cpptools works well, otherwise use following plugins
-  # - mitaki28.vscode-clang
-  # - xaver.clang-format
-  # - austin.code-gnu-global // MEMO: Need gnu-global installation to use this.
-  - ms-vscode.cpptools
+  # Currently cquery + clang-format is better than ms-vscode.cpptools.
+  # - ms-vscode.cpptools
   #
   # TODO: install cpplint and set path
   # - mine.cpplint
