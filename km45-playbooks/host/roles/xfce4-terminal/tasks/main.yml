@@ -1,0 +1,25 @@
+---
+
+- name: install packages
+  become: true
+  apt:
+    name: xfce4-terminal
+
+- name: create directory to put config file
+  file:
+    path: /home/vagrant/.config/xfce4/terminal
+    state: directory
+
+- name: add config file
+  become: true
+  copy:
+    src: terminalrc
+    dest: /home/vagrant/.config/xfce4/terminal
+    mode: 0664
+
+- name: remove CR code in config file
+  become: true
+  replace:
+    dest: /home/vagrant/.config/xfce4/terminal/terminalrc
+    regexp: '\r'
+    replace: ''
