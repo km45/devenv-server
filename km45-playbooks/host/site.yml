@@ -8,6 +8,7 @@
     - git-flow
     - gitk
     - i3
+    - lightdm-conf
     - moreutils
     - pandoc
     - rtags
