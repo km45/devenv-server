@@ -2,5 +2,6 @@
   "gitlens.blame.dateFormat": "YYYY/MM/DD(ddd)HH:mm:ss",
   "gitlens.blame.format": "${id} ${author} ${date}",
   "gitlens.codeLens.enabled": false,
-  "gitlens.currentLine.enabled": false
+  "gitlens.currentLine.enabled": false,
+  "workbench.colorTheme": "Default Dark+"
 }
