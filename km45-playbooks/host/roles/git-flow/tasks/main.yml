@@ -1,13 +1,6 @@
 ---
 
-- name: install
-  become: yes
-  shell: curl -s https://raw.githubusercontent.com/petervanderdoes/gitflow-avh/develop/contrib/gitflow-installer.sh | bash -s install stable
-  environment:
-    PREFIX: /usr/local/stow/git-flow-stable
-
-- name: stow
-  become: yes
-  shell: stow -R git-flow-stable
-  args:
-    chdir: /usr/local/stow
+- name: install packages
+  become: true
+  apt:
+    name: git-flow
