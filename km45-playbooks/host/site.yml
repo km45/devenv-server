@@ -4,7 +4,6 @@
   roles:
     - cquery
     - ghex
-    - git
     - git-flow
     - gitk
     - i3
