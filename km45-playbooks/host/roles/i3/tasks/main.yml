@@ -36,12 +36,6 @@
     dest: /home/vagrant/.config/i3/config
     mode: 0664
 
-- name: add i3status config file
-  copy:
-    src: i3status.conf
-    dest: /home/vagrant/.i3status.conf
-    mode: 0664
-
 - name: add i3blocks config file
   copy:
     src: i3blocks.conf
@@ -55,5 +49,4 @@
     replace: ''
   with_items:
     - /home/vagrant/.config/i3/config
-    - /home/vagrant/.i3status.conf
     - /home/vagrant/.config/i3blocks/config
