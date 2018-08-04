@@ -1,4 +1,5 @@
 {
+  "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
   "gitlens.blame.dateFormat": "YYYY/MM/DD(ddd)HH:mm:ss",
   "gitlens.blame.format": "${id} ${author} ${date}",
   "gitlens.codeLens.enabled": false,

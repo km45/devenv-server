@@ -22,14 +22,12 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
   - cquery-project.cquery
+  - mine.cpplint
   - twxs.cmake
   - xaver.clang-format
   #
   # Currently cquery + clang-format is better than ms-vscode.cpptools.
   # - ms-vscode.cpptools
-  #
-  # TODO: install cpplint and set path
-  # - mine.cpplint
   #
   #
   # ----------------------------------------------------------------------------
