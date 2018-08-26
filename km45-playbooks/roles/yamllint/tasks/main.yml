@@ -3,3 +3,4 @@
 - name: install packages
   pip:
     name: yamllint
+  executable: pip3
