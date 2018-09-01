@@ -30,8 +30,10 @@
     update_cache: yes  # yamllint disable-line rule:truthy
 
 - name: install plugins
-  shell: code --install-extension "{{ item }}"
+  include_tasks: inner/install_plugin.yml
   with_items: "{{ vscode_plugins }}"
+  loop_control:
+    loop_var: vscode_plugin
 
 - name: create temporary working directory
   tempfile:

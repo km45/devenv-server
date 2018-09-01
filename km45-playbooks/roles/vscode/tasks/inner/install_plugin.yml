@@ -1,0 +1,8 @@
+---
+
+- name: show plugin name to install
+  debug:
+    var: vscode_plugin
+
+- name: install plugin
+  shell: code --install-extension "{{ vscode_plugin }}"
