@@ -7,4 +7,4 @@ install:
   - pip install pipenv
   - pipenv install --dev
 script:
-  - pipenv run make lint
+  - pipenv run make yamllint
