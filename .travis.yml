@@ -14,7 +14,7 @@ matrix:
       node_js:
         - "node"
       install:
-        - yarn
+        - yarn install -d
       script:
         - make jsonlint
       cache:
