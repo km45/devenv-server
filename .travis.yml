@@ -10,3 +10,12 @@ matrix:
         - pipenv install --dev
       script:
         - make yamllint
+    - language: node_js
+      node_js:
+        - "7.4"
+      install:
+        - yarn
+      script:
+        - make jsonlint
+      cache:
+        yarn: true
