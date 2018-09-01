@@ -1,6 +1,6 @@
 .PHONY: jsonlint
 jsonlint:
-	find km45-playbooks/ -name '*.json' -type f | xargs npm run jsonlint -- -q
+	find km45-playbooks/ -name '*.json' -type f | xargs yarn run jsonlint -q
 
 .PHONY: yamllint
 yamllint:
