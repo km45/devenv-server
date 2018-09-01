@@ -1,13 +1,11 @@
 ---
 
-matrix:
-  include:
-    - services:
-        - docker
-      script:
-        - make up
-        - docker-compose exec node yarn install -d
-        - docker-compose exec node make jsonlint
-        - docker-compose exec python pipenv install --dev
-        - docker-compose exec python make yamllint
-        - make down
+services:
+  - docker
+script:
+  - make up
+  - docker-compose exec node yarn install -d
+  - docker-compose exec node make jsonlint
+  - docker-compose exec python pipenv install --dev
+  - docker-compose exec python make yamllint
+  - make down
