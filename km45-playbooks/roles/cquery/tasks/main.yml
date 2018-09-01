@@ -26,7 +26,7 @@
     - ./waf install
 
 - name: stow
-  become: yes
+  become: true
   shell: stow -R cquery-{{ cquery_commit }}
   args:
     chdir: /usr/local/stow

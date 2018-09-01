@@ -23,7 +23,7 @@
     - make install
 
 - name: stow
-  become: yes
+  become: true
   shell: stow -R rtags-{{ rtags_version }}
   args:
     chdir: /usr/local/stow
