@@ -10,15 +10,9 @@ matrix:
         - pipenv install --dev
       script:
         - make yamllint
-    - language: node_js
-      node_js:
-        - "node"
-      before_install:
-        - curl -o- -L https://yarnpkg.com/install.sh | bash -s -- --version 1.9.4
-        - export PATH="$HOME/.yarn/bin:$PATH"
-      install:
-        - yarn install -d
+    - services:
+        - docker
       script:
-        - make jsonlint
-      cache:
-        yarn: true
+        - make up
+        - docker-compose exec node make jsonlint
+        - make down
