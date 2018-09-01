@@ -18,12 +18,12 @@
   args:
     chdir: /usr/local/src/rtags-{{ rtags_version }}
   with_items:
-    - ./configure --prefix /usr/local/stow/rtags-{{ rtags_version }} --no-elisp-files-install
+    - ./configure --prefix /usr/local/stow/rtags-{{ rtags_version }} --no-elisp-files-install  # yamllint disable-line rule:line-length
     - make
     - make install
 
 - name: stow
-  become: yes
+  become: true
   shell: stow -R rtags-{{ rtags_version }}
   args:
     chdir: /usr/local/stow

@@ -21,12 +21,12 @@
     # Build on Ubuntu 14.04
     # https://github.com/cquery-project/cquery/wiki/Build-%28Waf%29#ubuntu-1404
     - ./waf configure  # Download llvm
-    - CXX="/usr/local/src/cquery-{{ cquery_commit }}/build/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang++" CXXFLAGS="-stdlib=libc++" LDFLAGS="-lc++" ./waf configure --llvm-config="/usr/local/src/cquery-{{ cquery_commit }}/build/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/llvm-config" --prefix="/usr/local/stow/cquery-{{ cquery_commit }}"
+    - CXX="/usr/local/src/cquery-{{ cquery_commit }}/build/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/clang++" CXXFLAGS="-stdlib=libc++" LDFLAGS="-lc++" ./waf configure --llvm-config="/usr/local/src/cquery-{{ cquery_commit }}/build/clang+llvm-6.0.0-x86_64-linux-gnu-ubuntu-14.04/bin/llvm-config" --prefix="/usr/local/stow/cquery-{{ cquery_commit }}"  # yamllint disable-line rule:line-length
     - ./waf build
     - ./waf install
 
 - name: stow
-  become: yes
+  become: true
   shell: stow -R cquery-{{ cquery_commit }}
   args:
     chdir: /usr/local/stow
