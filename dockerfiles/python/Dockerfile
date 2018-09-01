@@ -2,8 +2,7 @@ FROM python:3.6-alpine
 
 RUN apk update \
     && apk add \
-    #   bash \
-    #   curl \
+      bash \
       make \
     && rm -rf /var/cache/apk/*
 
