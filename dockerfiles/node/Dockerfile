@@ -7,7 +7,9 @@ RUN apk update \
       make \
     && rm -rf /var/cache/apk/*
 
+#
 # Upgrade yarn
+#
 RUN curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
 CMD ["tail", "-f", "/dev/null"]
