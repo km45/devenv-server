@@ -9,6 +9,7 @@ vscode_plugins:
   - MS-CEINTL.vscode-language-pack-ja
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
+  - tyriar.sort-lines
   - wraith13.wandbox-vscode
   #
   #
