@@ -10,12 +10,10 @@ matrix:
         - pipenv install --dev
       script:
         - make yamllint
-    - language: node_js
-      node_js:
-        - "node"
-      install:
-        - yarn
+    - services:
+        - docker
       script:
-        - make jsonlint
-      cache:
-        yarn: true
+        - make up
+        - docker-compose exec node yarn install -d
+        - docker-compose exec node make jsonlint
+        - make down
