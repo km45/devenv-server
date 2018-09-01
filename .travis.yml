@@ -14,5 +14,6 @@ matrix:
         - docker
       script:
         - make up
+        - docker-compose exec node yarn install -d
         - docker-compose exec node make jsonlint
         - make down
