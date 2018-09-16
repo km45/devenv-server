@@ -3,4 +3,4 @@
 - name: install packages
   pip:
     name: cpplint
-  executable: pip3
+    executable: pip3
