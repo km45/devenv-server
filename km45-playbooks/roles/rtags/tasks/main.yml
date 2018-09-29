@@ -12,13 +12,19 @@
     dest: /usr/local/src/rtags-{{ rtags_version }}
     version: v{{ rtags_version }}
 
+- name: create working directory to build
+  become: true
+  file:
+    path: /usr/local/src/rtags-{{ rtags_version }}/build
+    state: directory
+
 - name: compile and install
   become: true
   shell: "{{ item }}"
   args:
-    chdir: /usr/local/src/rtags-{{ rtags_version }}
+    chdir: /usr/local/src/rtags-{{ rtags_version }}/build
   with_items:
-    - ./configure --prefix /usr/local/stow/rtags-{{ rtags_version }} --no-elisp-files-install  # yamllint disable-line rule:line-length
+    - cmake .. -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_INSTALL_PREFIX=/usr/local/stow/rtags-{{ rtags_version }} -DRTAGS_NO_ELISP_FILES=1  # yamllint disable-line rule:line-length
     - make
     - make install
 
