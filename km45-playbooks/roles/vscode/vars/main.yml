@@ -10,6 +10,7 @@ vscode_plugins:
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
   - tyriar.sort-lines
+  - wmaurer.change-case
   - wraith13.wandbox-vscode
   #
   #
