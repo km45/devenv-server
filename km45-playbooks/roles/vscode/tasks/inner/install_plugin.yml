@@ -4,5 +4,11 @@
   debug:
     var: vscode_plugin
 
+- name: check whether already installed
+  shell: code --list-extensions | grep -x "{{ vscode_plugin }}"
+  register: checked_result
+  failed_when: checked_result.rc not in [0, 1]
+
 - name: install plugin
   shell: code --install-extension "{{ vscode_plugin }}"
+  when: checked_result.rc == 1  # not installed yet
