@@ -9,6 +9,7 @@
     - gitk
     - i3
     - lightdm-conf
+    - nsswitch
     - rtags
     - samba
     - thunar
