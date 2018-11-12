@@ -27,11 +27,9 @@ vscode_plugins:
   - ajshort.include-autocomplete
   - cquery-project.cquery
   - mine.cpplint
+  - ms-vscode.cpptools  # for debugger support
   - twxs.cmake
   - xaver.clang-format
-  #
-  # Currently cquery + clang-format is better than ms-vscode.cpptools.
-  # - ms-vscode.cpptools
   #
   #
   # ----------------------------------------------------------------------------
