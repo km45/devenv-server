@@ -1,4 +1,5 @@
 {
+  "clang-format.fallbackStyle": "Google",
   "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
   "files.exclude": {
     ".vscode/cquery_cached_index": true
