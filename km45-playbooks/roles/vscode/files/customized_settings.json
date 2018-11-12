@@ -1,11 +1,6 @@
 {
   "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
   "files.exclude": {
-    "**/.git": true,
-    "**/.svn": true,
-    "**/.hg": true,
-    "**/CVS": true,
-    "**/.DS_Store": true,
     ".vscode/cquery_cached_index": true
   },
   "gitlens.blame.dateFormat": "YYYY/MM/DD(ddd)HH:mm:ss",
