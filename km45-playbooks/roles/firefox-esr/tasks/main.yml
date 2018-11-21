@@ -1,0 +1,13 @@
+---
+
+- name: add apt repository
+  become: true
+  apt_repository:
+    repo: 'ppa:mozillateam/ppa'
+
+- name: install packages
+  become: true
+  apt:
+    name:
+      - firefox-esr
+      - firefox-esr-locale-ja
