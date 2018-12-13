@@ -7,6 +7,7 @@
     - firefox-esr
     - ghex
     - git-flow
+    - git-ignore
     - gitk
     - i3
     - lightdm-conf
