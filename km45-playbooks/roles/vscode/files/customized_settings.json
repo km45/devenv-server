@@ -6,6 +6,7 @@
   "clang-format.fallbackStyle": "Google",
   "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
   "cquery.cacheDirectory": "${workspaceFolder}/.vscode/cquery_cached_index/",
+  "cquery.formatting.enabled": false,
   "files.exclude": {
     ".vscode/cquery_cached_index": true
   },
