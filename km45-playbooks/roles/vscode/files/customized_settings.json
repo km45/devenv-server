@@ -13,5 +13,6 @@
   "gitlens.blame.format": "${id} ${author} ${date}",
   "gitlens.codeLens.enabled": false,
   "gitlens.currentLine.enabled": false,
+  "window.titleBarStyle": "native",
   "workbench.colorTheme": "Default Dark+"
 }
