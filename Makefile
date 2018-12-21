@@ -16,4 +16,4 @@ jsonlint:
 
 .PHONY: yamllint
 yamllint:
-	find km45-playbooks/ -name '*.yml' -type f | xargs pipenv run yamllint
+	docker-compose exec python sh -c "find km45-playbooks/ -name '*.yml' -type f | xargs yamllint"

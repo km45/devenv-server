@@ -5,6 +5,5 @@ services:
 script:
   - make up
   - make jsonlint
-  - docker-compose exec python pipenv install --dev
-  - docker-compose exec python make yamllint
+  - make yamllint
   - make down
