@@ -4,6 +4,5 @@ services:
   - docker
 script:
   - make up
-  - make jsonlint
-  - make yamllint
+  - make lint
   - make down
