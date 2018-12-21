@@ -7,6 +7,7 @@
   "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
   "cquery.cacheDirectory": "${workspaceFolder}/.vscode/cquery_cached_index/",
   "cquery.formatting.enabled": false,
+  "cquery.misc.indexerCount": 1,
   "files.exclude": {
     ".vscode/cquery_cached_index": true
   },
