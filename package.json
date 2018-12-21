@@ -1,8 +1,0 @@
-{
-  "devDependencies": {
-    "jsonlint": "*"
-  },
-  "scripts": {
-    "jsonlint": "jsonlint"
-  }
-}

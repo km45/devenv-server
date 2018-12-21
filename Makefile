@@ -12,7 +12,7 @@ shell:
 
 .PHONY: jsonlint
 jsonlint:
-	find km45-playbooks/ -name '*.json' -type f | xargs yarn run jsonlint -q
+	docker-compose exec node sh -c "find km45-playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
 
 .PHONY: yamllint
 yamllint:
