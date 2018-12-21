@@ -10,10 +10,13 @@ down:
 shell:
 	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
 
+.PHONY: lint
+lint: jsonlint yamllint
+
 .PHONY: jsonlint
 jsonlint:
-	find km45-playbooks/ -name '*.json' -type f | xargs yarn run jsonlint -q
+	docker-compose exec node bash -c "find km45-playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
 
 .PHONY: yamllint
 yamllint:
-	find km45-playbooks/ -name '*.yml' -type f | xargs pipenv run yamllint
+	docker-compose exec python bash -c "find km45-playbooks/ -name '*.yml' -type f | xargs yamllint"

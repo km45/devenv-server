@@ -4,10 +4,10 @@ services:
   node:
     build: dockerfiles/node
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app:ro
     working_dir: /usr/src/app
   python:
     build: dockerfiles/python
     volumes:
-      - .:/usr/src/app
+      - .:/usr/src/app:ro
     working_dir: /usr/src/app

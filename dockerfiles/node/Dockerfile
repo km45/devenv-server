@@ -1,15 +1,9 @@
 FROM node:10-alpine
 
 RUN apk update \
-    && apk add \
-      bash \
-      curl \
-      make \
+    && apk add bash \
     && rm -rf /var/cache/apk/*
 
-#
-# Upgrade yarn
-#
-RUN curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+RUN npm install -g jsonlint
 
 CMD ["tail", "-f", "/dev/null"]
