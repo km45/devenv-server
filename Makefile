@@ -12,8 +12,8 @@ shell:
 
 .PHONY: jsonlint
 jsonlint:
-	docker-compose exec node sh -c "find km45-playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
+	docker-compose exec node bash -c "find km45-playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
 
 .PHONY: yamllint
 yamllint:
-	docker-compose exec python sh -c "find km45-playbooks/ -name '*.yml' -type f | xargs yamllint"
+	docker-compose exec python bash -c "find km45-playbooks/ -name '*.yml' -type f | xargs yamllint"
