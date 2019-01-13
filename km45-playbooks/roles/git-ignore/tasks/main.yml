@@ -1,5 +1,10 @@
 ---
 
+- name: create directories to put config file
+  file:
+    path: /home/vagrant/.config/git
+    state: directory
+
 - name: add default gitignore file
   copy:
     src: ignore
