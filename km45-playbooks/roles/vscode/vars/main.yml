@@ -25,7 +25,7 @@ vscode_plugins:
   # C++
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
-  - cquery-project.cquery
+  # - cquery-project.cquery
   - mine.cpplint
   - ms-vscode.cpptools  # for debugger support
   - twxs.cmake
