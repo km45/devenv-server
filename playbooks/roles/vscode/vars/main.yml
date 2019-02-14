@@ -62,6 +62,7 @@ vscode_plugins:
   # Markdown
   # ----------------------------------------------------------------------------
   - DavidAnson.vscode-markdownlint
+  - goessner.mdmath
   - shuworks.vscode-table-formatter
   #
   #
