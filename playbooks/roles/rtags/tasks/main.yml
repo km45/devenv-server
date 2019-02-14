@@ -3,7 +3,9 @@
 - name: install dependencies
   become: true
   apt:
-    name: libclang-6.0-dev
+    name:
+      - libclang-6.0-dev
+      - libcppunit-dev
 
 - name: checkout git repository
   become: true
