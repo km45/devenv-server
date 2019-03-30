@@ -8,3 +8,8 @@
   when:
     - ansible_distribution == "Ubuntu"
     - ansible_distribution_version == "14.04"
+
+- import_playbook: ubuntu-bionic.yml
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution_version == "18.04"
