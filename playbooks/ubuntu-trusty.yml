@@ -1,0 +1,20 @@
+---
+
+- hosts: all
+  roles:
+    - bear
+    - cpplint
+    - cquery
+    - ghex
+    - git-flow
+    - git-ignore
+    - gitk
+    - i3
+    - lightdm-conf
+    - nsswitch
+    - rtags
+    - samba
+    - thunar
+    - vscode
+    - xfce4-terminal
+    - yamllint
