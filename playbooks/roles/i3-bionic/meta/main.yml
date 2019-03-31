@@ -1,0 +1,4 @@
+---
+
+dependencies:
+  - sysstat  # required by i3blocks-contrib blocklet cpu_usage

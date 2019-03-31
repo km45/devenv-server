@@ -2,5 +2,6 @@
 
 - hosts: all
   roles:
+    - i3-bionic
     - xdm
     - xfce4-terminal
