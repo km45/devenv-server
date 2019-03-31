@@ -1,0 +1,8 @@
+---
+
+- name: install packages
+  become: true
+  apt:
+    name:
+      - xdm
+      - xserver-xorg

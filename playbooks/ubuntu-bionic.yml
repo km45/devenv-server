@@ -2,4 +2,5 @@
 
 - hosts: all
   roles:
+    - xdm
     - xfce4-terminal
