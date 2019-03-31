@@ -1,6 +1,12 @@
 ---
 
-- hosts: all
+- name: setup
+  hosts: all
+  roles:
+    - apt
+
+- name: main
+  hosts: all
   roles:
     - i3-bionic
     - xdm
