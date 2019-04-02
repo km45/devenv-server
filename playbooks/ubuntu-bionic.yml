@@ -8,6 +8,7 @@
 - name: main
   hosts: all
   roles:
+    - docker-compose
     - i3-bionic
     - localization
     - xdm

@@ -1,0 +1,13 @@
+---
+
+- name: install packages
+  become: true
+  apt:
+    name: docker-compose
+
+- name: add vagrant user to docker group
+  become: true
+  user:
+    name: vagrant
+    groups: docker
+    append: yes
