@@ -11,7 +11,7 @@ shell:
 	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
 
 .PHONY: lint
-lint: jsonlint yamllint
+lint: jsonlint ansiblelint
 
 .PHONY: jsonlint
 jsonlint:
