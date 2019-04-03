@@ -1,9 +1,5 @@
-FROM python:3-alpine
+FROM python:3.7
 
-RUN apk update \
-    && apk add bash \
-    && rm -rf /var/cache/apk/*
-
-RUN pip install yamllint
+RUN pip install ansible-lint
 
 CMD [ "tail", "-f", "/dev/null" ]

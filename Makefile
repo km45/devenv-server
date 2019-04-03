@@ -17,6 +17,6 @@ lint: jsonlint yamllint
 jsonlint:
 	docker-compose exec node bash -c "find playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
 
-.PHONY: yamllint
-yamllint:
-	docker-compose exec python bash -c "find playbooks/ -name '*.yml' -type f | xargs yamllint"
+.PHONY: ansiblelint
+ansiblelint:
+	docker-compose exec python bash -c "ansible-lint -x 301,305,306,701 playbooks/site.yml"
