@@ -67,3 +67,9 @@
   file:
     path: "{{ tmpdir.path }}"
     state: absent
+
+- name: add locale.json
+  copy:
+    src: locale.json
+    dest: "/home/vagrant/.config/Code/User/locale.json"
+    mode: 0664
