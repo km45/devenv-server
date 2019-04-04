@@ -11,5 +11,6 @@
     - docker-compose
     - i3-bionic
     - localization
+    - vscode
     - xdm
     - xfce4-terminal
