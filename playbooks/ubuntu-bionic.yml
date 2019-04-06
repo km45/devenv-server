@@ -8,6 +8,7 @@
 - name: main
   hosts: all
   roles:
+    - bash-completion
     - docker-compose
     - firefox
     - i3-bionic
