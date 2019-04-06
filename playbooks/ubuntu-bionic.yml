@@ -11,6 +11,7 @@
     - bash-completion
     - docker-compose
     - firefox
+    - font
     - i3-bionic
     - localization
     - vscode
