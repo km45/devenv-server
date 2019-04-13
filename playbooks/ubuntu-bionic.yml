@@ -15,6 +15,7 @@
     - i3-bionic
     - localization
     - pipenv
+    - prompt
     - vscode
     - xdm
     - xfce4-terminal

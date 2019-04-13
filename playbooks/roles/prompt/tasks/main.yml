@@ -1,0 +1,19 @@
+---
+
+- name: create directory to put scripts
+  become: yes
+  file:
+    path: /home/vagrant/.local/share/prompt/
+    state: directory
+
+- name: download git-prompt.sh
+  become: yes
+  get_url:
+    url: https://raw.githubusercontent.com/git/git/v{{ git_version }}/contrib/completion/git-prompt.sh
+    dest: /home/vagrant/.local/share/prompt/git-prompt.sh
+
+- name: put bashrc file in ~/.bashrc.d
+  copy:
+    src: bashrc
+    dest: /home/vagrant/.bashrc.d/git-prompt.bashrc
+    mode: 0755
