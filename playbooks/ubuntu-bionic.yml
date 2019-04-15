@@ -14,6 +14,7 @@
     - font
     - i3-bionic
     - localization
+    - meld
     - nkf
     - pipenv
     - prompt
