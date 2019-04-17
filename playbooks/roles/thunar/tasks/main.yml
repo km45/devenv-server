@@ -3,7 +3,6 @@
 - name: install packages
   become: true
   apt:
-    name: "{{ item }}"
-  with_items:
-    - thunar
-    - gnome-icon-theme-full
+    name:
+      - thunar
+      - gnome-icon-theme-full
