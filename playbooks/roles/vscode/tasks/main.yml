@@ -56,6 +56,17 @@
     regexp: '\r'
     replace: ''
 
+- name: check whether already exist vaild common settings
+  shell: |-
+    test -s "{{ vscode_common_settings_file_path }}"
+  register: checked_result
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: initialize common settings
+  shell: |-
+    echo '{}' > "{{ vscode_common_settings_file_path }}"
+  when: checked_result.rc == 1
+
 - name: merge customized settings into common settings
   shell: |-
     jq --slurp --indent 4 '.[0] * .[1]' \
