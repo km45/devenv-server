@@ -1,0 +1,24 @@
+---
+
+- name: setup
+  hosts: all
+  roles:
+    - apt
+
+- name: main
+  hosts: all
+  roles:
+    - bash-completion
+    # - docker-compose
+    - firefox
+    - font
+    - i3-bionic
+    - initrc
+    - localization
+    - meld
+    - nkf
+    # - pipenv
+    - prompt
+    - vscode
+    - xdm
+    - xfce4-terminal
