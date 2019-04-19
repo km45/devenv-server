@@ -9,7 +9,7 @@
   hosts: all
   roles:
     - bash-completion
-    # - docker-compose
+    - docker-compose-xenial
     - firefox
     - font
     - i3-bionic
