@@ -17,6 +17,7 @@
     - initrc
     - localization
     - meld
+    - ninja-build
     - nkf
     # - pipenv
     - prompt
