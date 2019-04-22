@@ -4,3 +4,8 @@
   when:
     - ansible_distribution == "Ubuntu"
     - ansible_distribution_version == "18.04"
+
+- include_tasks: ubuntu-bionic.yml
+  when:
+    - ansible_distribution == "Ubuntu"
+    - ansible_distribution_version == "16.04"
