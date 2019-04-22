@@ -1,0 +1,30 @@
+---
+
+- name: checkout git repository
+  become: yes
+  git:
+    repo: https://github.com/cquery-project/cquery.git
+    dest: /usr/local/src/cquery-{{ cquery_version }}
+    version: "{{ cquery_version }}"
+
+- name: create build directory
+  become: yes
+  file:
+    path: /usr/local/src/cquery-{{ cquery_version }}/build
+    state: directory
+
+- name: compile and install
+  become: yes
+  shell: "{{ item }}"
+  args:
+    chdir: /usr/local/src/cquery-{{ cquery_version }}/build
+  with_items:
+    - cmake .. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="/usr/local/stow/cquery-{{ cquery_version }}" -DCMAKE_EXPORT_COMPILE_COMMANDS=YES
+    - cmake --build .
+    - cmake --build . --target install
+
+- name: stow
+  become: yes
+  shell: stow -R cquery-{{ cquery_version }}
+  args:
+    chdir: /usr/local/stow

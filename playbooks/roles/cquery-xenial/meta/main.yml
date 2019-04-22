@@ -1,0 +1,6 @@
+---
+
+dependencies:
+  - cmake
+  - g++
+  - stow
