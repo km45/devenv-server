@@ -1,0 +1,12 @@
+---
+
+# HACK: Remove "sudo" by ansible "command" module
+#
+# Error "pipenv: command not found" occurs if install pipenv by following:
+#   - pip install pipenv
+#   - sudo pip install pipenv
+#
+# Use "sudo -H" to solve the error.
+# https://stackoverflow.com/a/47898336
+- name: install
+  command: sudo -H pip install pipenv
