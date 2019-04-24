@@ -1,5 +1,7 @@
 ---
 
+- include_tasks: pyenv.yml
+
 - name: install requirements
   become: yes
   apt:

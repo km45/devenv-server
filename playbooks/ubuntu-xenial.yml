@@ -19,7 +19,7 @@
     - meld
     - ninja-build
     - nkf
-    - pipenv-xenial
+    - python
     - prompt
     - vscode
     - xdm
