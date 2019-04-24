@@ -1,0 +1,19 @@
+---
+
+- name: install requirements
+  become: yes
+  apt:
+    name:
+      - libbz2-dev
+      - libffi-dev
+      - libsqlite3-dev
+
+- name: install python 3.7.3
+  shell: |-
+    . ~/.bashrc.d/pyenv.bashrc
+    pyenv install -s 3.7.3
+
+- name: set global python version to 3.7.3
+  shell: |-
+    . ~/.bashrc.d/pyenv.bashrc
+    pyenv global 3.7.3

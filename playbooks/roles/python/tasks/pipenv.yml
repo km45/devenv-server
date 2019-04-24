@@ -1,0 +1,6 @@
+---
+
+- name: install pipenv
+  shell: |-
+    . ~/.bashrc.d/pyenv.bashrc
+    pip install pipenv
