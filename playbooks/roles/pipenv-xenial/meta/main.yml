@@ -1,5 +1,4 @@
 ---
 
 dependencies:
-  - pip-xenial
-  - pyenv
+ - pyenv
