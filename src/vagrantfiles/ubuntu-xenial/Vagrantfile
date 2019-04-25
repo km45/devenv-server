@@ -1,0 +1,27 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+Vagrant.configure("2") do |config|
+  # config.vbguest.auto_update = false
+
+  config.vm.box = "bento/ubuntu-16.04"
+
+  config.vm.network "private_network", type: "dhcp"
+
+  config.vm.provider "virtualbox" do |vb|
+    vb.gui = true
+
+    vb.cpus = 2
+    vb.memory = 4096
+
+    vb.customize ["modifyvm", :id, "--accelerate3d", "on"]
+    vb.customize ["modifyvm", :id, "--clipboard", "bidirectional"]
+    vb.customize ["modifyvm", :id, "--vram", "256"]
+    vb.customize ["modifyvm", :id, "--vrde", "off"]
+  end
+
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbooks/site.yml"
+    ansible.compatibility_mode = "2.0"
+  end
+end
