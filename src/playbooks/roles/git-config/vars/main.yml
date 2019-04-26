@@ -1,0 +1,5 @@
+---
+
+global_values:
+  - name: push.default
+    value: simple
