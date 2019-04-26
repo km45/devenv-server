@@ -1,5 +1,7 @@
 ---
 
 global_values:
+  - name: log.decorate
+    value: short
   - name: push.default
     value: simple
