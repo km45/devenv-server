@@ -9,6 +9,7 @@
   hosts: all
   roles:
     - bash-completion
+    - clang-format
     - cquery-xenial
     - docker-compose-xenial
     - firefox
