@@ -23,6 +23,7 @@
     - nkf
     - python
     - prompt
+    - samba-xenial
     - vscode
     - xdm
     - xfce4-terminal
