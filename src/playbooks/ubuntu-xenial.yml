@@ -15,6 +15,7 @@
     - firefox
     - font
     - git-config
+    - git-ignore
     - i3-bionic
     - initrc
     - localization
