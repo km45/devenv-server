@@ -14,6 +14,7 @@
     - docker-compose-xenial
     - firefox
     - font
+    - git
     - git-config
     - git-ignore
     - i3-bionic
