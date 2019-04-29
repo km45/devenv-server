@@ -21,8 +21,8 @@
     - meld
     - ninja-build
     - nkf
-    - python
     - prompt
+    - python
     - samba-xenial
     - vscode
     - xdm
