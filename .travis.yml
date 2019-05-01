@@ -6,3 +6,7 @@ script:
   - make up
   - make lint
   - make down
+
+notifications:
+  slack:
+    secure: "fHbzpoyCFK9qahGtRa2/9Rw5sWAlX0QaQb4W5CIsg8CQT6V0Z8CAJCacEkWoPbqzpY4LtjI/B/MUXLf6jNirbX//p3jHMbSqFVDnhmi6ie/HUjC9Hx+qeOzLl3pX4qyBPuv/J8A807YVeX1WirUTpel5lhJMRm0gqWh25BYjOx+wVO3sxN4LjJNYZzm6nQfzLe2U9+YdDz1ZlvyUB3Tc5jvDpTylXm4T59EWjwfsobqvVg/QfP5tkPsdkesrUnq/I6u6njRLhYWLJRm14Eeuw6q81wmOe5mcqhDyc2s/Z26h/PmuUovSJxQCgj0aXGHpQOjGIWddAEKdd1WqTz7G3fbhH7GqGIaawBBGJ9F54rduYRKXeL+x2DnMwRQoT6RfbrvIEs9/khLFrKrETRK7xBc0SA/S6SjHXIpPSE0XMmdFp7aavS+o5j3yXlSs/MAZ23JYKo5MDgcIpKEOpSvuy6bzhAbYz/CarLDYzWRkhn8b5qTgjRzwH0SUJ8ngrIpS+J1ezsquY5EadXFXn5qxZUNJjSwnYzyQOdrv+b2SRk88EJIQL5EW3NhNTMY/dazxXQqX6jTkHQFnyKXT/J375Msk23XNbBkw+JyE9DiBCxrNHK7kpL9ubM6X5HR9hVZm7Zt+lwVeXLASE/Tz31j73EmwEXkkTO3XES5afUn5ULk="
