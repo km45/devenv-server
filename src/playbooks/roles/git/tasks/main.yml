@@ -9,4 +9,4 @@
   become: true
   apt:
     name: git
-    state: latest
+    state: latest  # noqa 403
