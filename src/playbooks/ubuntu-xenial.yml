@@ -25,6 +25,7 @@
     - nkf
     - prompt
     - python
+    - rtags-xenial
     - samba-xenial
     - vscode
     - xdm
