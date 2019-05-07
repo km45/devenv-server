@@ -27,6 +27,7 @@
     - python
     - rtags-xenial
     - samba-xenial
+    - thunar
     - vscode
     - xdm
     - xfce4-terminal
