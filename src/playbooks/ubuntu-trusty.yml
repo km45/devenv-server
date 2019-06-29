@@ -4,7 +4,6 @@
   roles:
     - bear
     - cpplint
-    - cquery
     - ghex
     - git-flow
     - i3
