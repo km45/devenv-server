@@ -8,5 +8,4 @@
     - git-flow
     - lightdm-conf
     - nsswitch
-    - samba
     - yamllint
