@@ -6,7 +6,6 @@
     - cpplint
     - ghex
     - git-flow
-    - i3
     - lightdm-conf
     - nsswitch
     - rtags
