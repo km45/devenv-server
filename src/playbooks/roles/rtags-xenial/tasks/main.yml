@@ -8,7 +8,7 @@
       - libclang-dev
       - libcppunit-dev
 
-- name: checkout git repository
+- name: download and unarchive source code
   become: yes
   unarchive:
     src: "https://github.com/Andersbakken/rtags/releases/download/v{{ rtags_version }}/rtags-{{ rtags_version }}.tar.gz"
