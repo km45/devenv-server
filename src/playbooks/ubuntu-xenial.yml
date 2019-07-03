@@ -10,10 +10,10 @@
   roles:
     - bash-completion
     - clang-format
-    - cquery-xenial
     - docker-compose-xenial
     - firefox
     - font
+    - g++
     - gdb
     - git
     - git-config
