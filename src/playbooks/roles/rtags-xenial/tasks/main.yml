@@ -10,10 +10,10 @@
 
 - name: checkout git repository
   become: yes
-  git:
-    repo: https://github.com/Andersbakken/rtags.git
-    dest: "/usr/local/src/rtags-{{ rtags_version }}"
-    version: "{{ rtags_version }}"
+  unarchive:
+    src: "https://github.com/Andersbakken/rtags/releases/download/v{{ rtags_version }}/rtags-{{ rtags_version }}.tar.gz"
+    dest: "/usr/local/src"
+    remote_src: yes
 
 - name: create working directory to build
   become: yes
