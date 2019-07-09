@@ -8,6 +8,7 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   - alefragnani.Bookmarks
   - MS-CEINTL.vscode-language-pack-ja
+  - ms-vscode-remote.vscode-remote-extensionpack
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
   - tyriar.sort-lines
