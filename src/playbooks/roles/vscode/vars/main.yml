@@ -28,7 +28,7 @@ vscode_plugins:
   - ajshort.include-autocomplete
   - jomiller.rtags-client
   - mine.cpplint
-  - ms-vscode.cpptools  # for debugger support
+  - ms-vscode.cpptools
   - twxs.cmake
   - xaver.clang-format
   #
