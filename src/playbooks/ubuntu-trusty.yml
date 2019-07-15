@@ -5,7 +5,6 @@
     - bear
     - cpplint
     - ghex
-    - git-flow
     - lightdm-conf
     - nsswitch
     - yamllint
