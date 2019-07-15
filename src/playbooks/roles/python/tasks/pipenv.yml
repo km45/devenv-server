@@ -1,6 +1,6 @@
 ---
 
-- name: install pipenv
-  shell: |-
-    . ~/.bashrc.d/pyenv.bashrc
-    pip install pipenv
+- name: install packages
+  pip:
+    name: pipenv
+    executable: /home/vagrant/.pyenv/shims/pip
