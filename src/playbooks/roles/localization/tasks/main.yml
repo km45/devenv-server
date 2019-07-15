@@ -1,17 +1,17 @@
 ---
 
 - name: install packages
-  become: true
+  become: yes
   apt:
     name:
       - fcitx-mozc
       - language-pack-ja
 
 - name: set system locale
-  become: true
+  become: yes
   shell: localectl set-locale LANG=ja_JP.UTF-8
 
 - name: set timezone
-  become: true
+  become: yes
   timezone:
     name: Asia/Tokyo

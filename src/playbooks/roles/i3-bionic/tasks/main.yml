@@ -1,7 +1,7 @@
 ---
 
 - name: install packages
-  become: true
+  become: yes
   apt:
     name:
       - i3
@@ -28,7 +28,7 @@
     mode: 0664
 
 - name: checkout i3blocks-contrib git repository
-  become: true
+  become: yes
   git:
     repo: https://github.com/vivien/i3blocks-contrib.git
     dest: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}

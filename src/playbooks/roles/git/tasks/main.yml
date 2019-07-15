@@ -6,7 +6,7 @@
     repo: ppa:git-core/ppa
 
 - name: install packages
-  become: true
+  become: yes
   apt:
     name: git
     state: latest  # noqa 403
