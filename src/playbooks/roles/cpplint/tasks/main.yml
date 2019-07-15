@@ -1,6 +1,0 @@
----
-
-- name: install packages
-  pip:
-    name: cpplint
-    executable: pip3
