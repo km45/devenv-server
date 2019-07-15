@@ -8,6 +8,7 @@
   shell: code --list-extensions | grep -x "{{ vscode_plugin }}"
   register: checked_result
   failed_when: checked_result.rc not in [0, 1]
+  changed_when: False  # No effect on environment
 
 - name: install plugin
   shell: code --install-extension "{{ vscode_plugin }}"
