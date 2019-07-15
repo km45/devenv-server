@@ -1,7 +1,7 @@
 {
   "C_Cpp.formatting": "Disabled",
   "clang-format.fallbackStyle": "Google",
-  "cpplint.cpplintPath": "/home/vagrant/.anyenv/envs/pyenv/shims/cpplint",
+  "cpplint.cpplintPath": "/home/vagrant/.pyenv/shims/cpplint",
   "gitlens.blame.dateFormat": "YYYY/MM/DD(ddd)HH:mm:ss",
   "gitlens.blame.format": "${id} ${author} ${date}",
   "gitlens.codeLens.enabled": false,
