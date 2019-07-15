@@ -11,7 +11,7 @@ vscode_plugins:
   - ms-vscode-remote.vscode-remote-extensionpack
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
-  - tyriar.sort-lines
+  - Tyriar.sort-lines
   - wmaurer.change-case
   - wraith13.wandbox-vscode
   #
@@ -87,7 +87,7 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   # Vagrant
   # ----------------------------------------------------------------------------
-  - marcostazi.vs-code-vagrantfile
+  - marcostazi.VS-code-vagrantfile
   #
   #
   # ----------------------------------------------------------------------------
