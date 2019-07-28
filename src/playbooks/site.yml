@@ -4,11 +4,6 @@
   roles:
     - distribution
 
-- import_playbook: ubuntu-trusty.yml
-  when:
-    - ansible_distribution == "Ubuntu"
-    - ansible_distribution_version == "14.04"
-
 - import_playbook: ubuntu-xenial.yml
   when:
     - ansible_distribution == "Ubuntu"
