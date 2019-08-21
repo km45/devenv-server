@@ -3,6 +3,7 @@ set -eu
 
 function main() {
     local subcommand=$1
+    cd src/playbooks/roles/nkf && molecule ${subcommand}
     cd src/playbooks/roles/unzip && molecule ${subcommand}
 }
 
