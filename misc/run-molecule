@@ -3,8 +3,8 @@ set -eu
 
 function main() {
     local subcommand=$1
-    cd src/playbooks/roles/nkf && molecule ${subcommand}
-    cd src/playbooks/roles/unzip && molecule ${subcommand}
+    pushd src/playbooks/roles/nkf && molecule ${subcommand} && popd
+    pushd src/playbooks/roles/unzip && molecule ${subcommand} && popd
 }
 
 main "$@"
