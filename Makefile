@@ -20,3 +20,11 @@ jsonlint:
 .PHONY: ansiblelint
 ansiblelint:
 	docker-compose exec python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+
+.PHONY: sync
+sync:
+	pipenv sync
+
+.PHONY: test
+test:
+	pipenv run -- misc/run-molecule test

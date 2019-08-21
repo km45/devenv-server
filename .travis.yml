@@ -6,6 +6,8 @@ script:
   - make up
   - make lint
   - make down
+  - make sync
+  - make test
 
 notifications:
   slack:
