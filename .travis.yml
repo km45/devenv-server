@@ -1,5 +1,6 @@
 ---
 
+language: python
 services:
   - docker
 install:
