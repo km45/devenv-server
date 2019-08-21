@@ -2,6 +2,8 @@
 
 services:
   - docker
+install:
+  - pip install pipenv
 script:
   - make up
   - make lint
