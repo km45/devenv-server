@@ -4,7 +4,7 @@ set -eu
 function main() {
     local subcommand=$1
     pushd src/playbooks/roles/nkf && molecule ${subcommand} && popd
-    pushd src/playbooks/roles/unzip && molecule ${subcommand} && popd
+    pushd src/playbooks/roles/zip && molecule ${subcommand} && popd
 }
 
 main "$@"
