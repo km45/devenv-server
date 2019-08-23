@@ -9,4 +9,5 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_command_existence(host):
     assert host.exists("unzip")
+    assert host.exists("zip")
     assert host.exists("zipinfo")
