@@ -3,4 +3,6 @@
 - name: install packages
   become: yes
   apt:
-    name: unzip
+    name:
+      - unzip
+      - zip
