@@ -9,6 +9,8 @@ autopep8 = "*"
 [packages]
 molecule = "*"
 docker = "*"
+parse = "*"
+semver = "*"
 
 [requires]
 python_version = "3.7"
