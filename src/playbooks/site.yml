@@ -4,6 +4,13 @@
   roles:
     - distribution
 
+# common roles (tested by molecule)
+- hosts: all
+  roles:
+    - git
+    - nkf
+    - zip
+
 - import_playbook: ubuntu-xenial.yml
   when:
     - ansible_distribution == "Ubuntu"
@@ -13,9 +20,3 @@
   when:
     - ansible_distribution == "Ubuntu"
     - ansible_distribution_version == "18.04"
-
-# common roles (tested by molecule)
-- hosts: all
-  roles:
-    - nkf
-    - zip

@@ -17,7 +17,6 @@
     - g++
     - gdb
     - ghex
-    - git
     - git-config
     - git-ignore
     - gitk
