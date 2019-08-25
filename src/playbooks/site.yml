@@ -13,3 +13,9 @@
   when:
     - ansible_distribution == "Ubuntu"
     - ansible_distribution_version == "18.04"
+
+# common roles (tested by molecule)
+- hosts: all
+  roles:
+    - nkf
+    - zip

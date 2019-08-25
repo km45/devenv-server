@@ -16,7 +16,6 @@
     - initrc
     - localization
     - meld
-    - nkf
     - pipenv
     - prompt
     - vscode
