@@ -6,8 +6,10 @@ driver:
 lint:
   name: yamllint
 platforms:
-  - name: instance
+  - name: xenial
     image: ubuntu:16.04
+  - name: bionic
+    image: ubuntu:18.04
 provisioner:
   name: ansible
   lint:
