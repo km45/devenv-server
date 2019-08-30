@@ -18,7 +18,6 @@
     - gdb
     - ghex
     - git-config
-    - git-ignore
     - gitk
     - i3-bionic
     - initrc
