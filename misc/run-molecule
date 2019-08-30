@@ -3,10 +3,17 @@ set -eu
 
 function main() {
     local subcommand=$1
-    pushd src/playbooks/roles/firefox && molecule ${subcommand} && popd
-    pushd src/playbooks/roles/git && molecule ${subcommand} && popd
-    pushd src/playbooks/roles/nkf && molecule ${subcommand} && popd
-    pushd src/playbooks/roles/zip && molecule ${subcommand} && popd
+
+    local -r ROLES=(
+        'firefox'
+        'git'
+        'nkf'
+        'zip'
+    )
+
+    for role in ${ROLES[@]}; do
+        pushd src/playbooks/roles/${role} && molecule ${subcommand} && popd
+    done
 }
 
 main "$@"
