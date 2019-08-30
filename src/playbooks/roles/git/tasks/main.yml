@@ -10,3 +10,5 @@
   apt:
     name: git
     state: latest  # noqa 403
+
+- include_tasks: ignore.yml
