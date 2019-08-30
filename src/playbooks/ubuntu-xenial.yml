@@ -12,7 +12,6 @@
     - clang-format
     - cpplint-xenial
     - docker-compose-xenial
-    - firefox
     - font
     - g++
     - gdb
