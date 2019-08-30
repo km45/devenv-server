@@ -23,3 +23,31 @@ def test_git_version(host):
 
     assert semver.match(result['version'], ">=2.23.0")
     assert semver.match(result['version'], "<3.0.0")
+
+
+def test_git_ignore(host):
+    with host.sudo("vagrant"):
+        assert host.check_output("whoami") == "vagrant"
+
+        tmpdir = host.check_output("mktemp -d")
+
+        host.check_output(f"cd {tmpdir} && git init")
+
+        assert host.check_output(
+            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+
+        host.check_output(f"cd {tmpdir} && touch compile_commands.json")
+
+        assert host.check_output(
+            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+
+        host.check_output(f"cd {tmpdir} && mkdir .vscode")
+        host.check_output(f"cd {tmpdir}/.vscode && touch hoge")
+
+        assert host.check_output(
+            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+
+        host.check_output(f"cd {tmpdir} && touch README.md")
+
+        assert host.check_output(
+            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "1"
