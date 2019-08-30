@@ -34,20 +34,28 @@ def test_git_ignore(host):
         host.check_output(f"cd {tmpdir} && git init")
 
         assert host.check_output(
-            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+            (f"cd {tmpdir}"
+             " && HOME=/home/vagrant git ls-files --others --exclude-standard"
+             " | wc -l")) == "0"
 
         host.check_output(f"cd {tmpdir} && touch compile_commands.json")
 
         assert host.check_output(
-            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+            (f"cd {tmpdir}"
+             " && HOME=/home/vagrant git ls-files --others --exclude-standard"
+             " | wc -l")) == "0"
 
         host.check_output(f"cd {tmpdir} && mkdir .vscode")
         host.check_output(f"cd {tmpdir}/.vscode && touch hoge")
 
         assert host.check_output(
-            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "0"
+            (f"cd {tmpdir}"
+             " && HOME=/home/vagrant git ls-files --others --exclude-standard"
+             " | wc -l")) == "0"
 
         host.check_output(f"cd {tmpdir} && touch README.md")
 
         assert host.check_output(
-            f"cd {tmpdir} && HOME=/home/vagrant git ls-files --others --exclude-standard | wc -l") == "1"
+            (f"cd {tmpdir}"
+             " && HOME=/home/vagrant git ls-files --others --exclude-standard"
+             " | wc -l")) == "1"
