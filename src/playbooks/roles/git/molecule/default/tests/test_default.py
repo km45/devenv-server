@@ -15,8 +15,10 @@ def test_command_existence(host):
 
 
 def test_git_version(host):
-    result = parse.parse(
-        "git version {version}\n", host.check_output("git version"))
+    cmd = host.run("git version")
+    assert cmd.rc == 0
+
+    result = parse.parse("git version {version}\n", cmd.stdout)
     assert result is not None
 
     assert semver.match(result['version'], ">=2.23.0")
