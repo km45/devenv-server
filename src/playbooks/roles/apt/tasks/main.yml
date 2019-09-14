@@ -1,16 +1,16 @@
 ---
 
+- name: install aptitude for ansible module apt
+  become: yes
+  apt:
+    name: aptitude
+
 - name: change repository to jp mirror
   become: yes
   replace:
     path: /etc/apt/sources.list
     regexp: 'http://archive\.ubuntu\.com/ubuntu/'
     replace: 'http://jp.archive.ubuntu.com/ubuntu/'
-
-- name: install aptitude for ansible module apt
-  become: yes
-  apt:
-    name: aptitude
 
 - name: update cache if current one is older than an hour
   become: yes
