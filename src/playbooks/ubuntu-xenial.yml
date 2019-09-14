@@ -27,6 +27,7 @@
     - python
     - rtags-xenial
     - samba-xenial
+    - swap
     - thunar
     - vscode
     - xdm

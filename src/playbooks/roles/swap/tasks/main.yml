@@ -1,0 +1,19 @@
+---
+
+- name: check swap partition existence
+  shell: |-
+    cat /etc/fstab | grep '[^ ]* [^ ]* swap' | awk '{print $1}'
+  register: checked_result
+  changed_when: false
+
+- name: remove swap partition entries if exist
+  become: yes
+  with_items: "{{ checked_result.stdout_lines }}"
+  mount:
+    path: "none"
+    src: "{{ item }}"
+    state: "absent"
+
+- name: disable swap devices and files for current session
+  become: yes
+  command: "swapoff --all"
