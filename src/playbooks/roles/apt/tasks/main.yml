@@ -17,7 +17,7 @@
   become: yes
   apt:
     update_cache: yes
-  when: change_repository.changed
+  when: change_repository.changed  # noqa 503
 
 - name: update cache if current one is older than an hour
   become: yes
