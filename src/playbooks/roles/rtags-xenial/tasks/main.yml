@@ -31,11 +31,13 @@
     - make
     - make install
 
-- name: stow
+- name: stow package
   become: yes
-  shell: stow -R rtags-{{ rtags_version }}
   args:
     chdir: /usr/local/stow
+  shell: |-
+    ls | grep 'rtags-*' | xargs -n1 stow -D
+    stow -R rtags-{{ rtags_version }}
 
 - name: create directory to put systemd config files
   file:
