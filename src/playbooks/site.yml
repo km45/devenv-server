@@ -7,6 +7,7 @@
 # common roles (tested by molecule)
 - hosts: all
   roles:
+    - cplusplus
     - firefox
     - git
     - nkf

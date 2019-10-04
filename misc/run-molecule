@@ -5,6 +5,7 @@ function main() {
     local subcommand=$1
 
     local -r ROLES=(
+        'cplusplus'
         'firefox'
         'git'
         'nkf'
