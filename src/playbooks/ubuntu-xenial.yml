@@ -13,7 +13,6 @@
     - cpplint-xenial
     - docker-compose-xenial
     - font
-    - g++
     - gdb
     - ghex
     - git-config
