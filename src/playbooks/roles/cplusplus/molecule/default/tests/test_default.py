@@ -27,3 +27,7 @@ def test_gplusplus(host):
     expected = "Hello, world!"
     actual = host.check_output(f"cd {tmpdir} && ./a.out")
     assert expected == actual
+
+
+def test_gdb_existence(host):
+    assert host.exists("gdb")
