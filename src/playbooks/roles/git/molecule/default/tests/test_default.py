@@ -12,6 +12,7 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_command_existence(host):
     assert host.exists("git")
+    assert host.exists("gitk")
 
 
 def test_git_version(host):
