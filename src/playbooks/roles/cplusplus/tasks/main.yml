@@ -4,5 +4,6 @@
   become: yes
   apt:
     name:
+      - cmake
       - g++
       - gdb
