@@ -9,6 +9,8 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 
 def test_gplusplus(host):
+    assert host.exists("g++")
+
     tmpdir = host.check_output("mktemp -d")
 
     cpp_code = textwrap.dedent(r"""
@@ -93,6 +95,8 @@ def test_gdb(host):
 
 
 def test_cmake(host):
+    assert host.exists("cmake")
+
     tmpdir = host.check_output("mktemp -d")
 
     cpp_code = textwrap.dedent(r"""
