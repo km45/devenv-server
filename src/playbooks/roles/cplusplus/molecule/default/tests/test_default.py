@@ -29,8 +29,67 @@ def test_gplusplus(host):
     assert expected == actual
 
 
-def test_gdb_existence(host):
+def test_gdb(host):
     assert host.exists("gdb")
+
+    tmpdir = host.check_output("mktemp -d")
+
+    cpp_code = textwrap.dedent(r"""
+    #include <iostream>
+    #include <vector>
+    int main() {
+        std::vector<int> a = {2, 3, 1, 4, 5};
+        int max = a[0];
+        for (auto i = 1u; i < a.size(); ++i) {
+            if (a[i] > max) {
+                max = a[i];
+            }
+        }
+        std::cout << "max = " << max << std::endl;
+        return 0;
+    }
+    """)
+
+    host.check_output(
+        f"cd {tmpdir} && cat << EOS > source.cc\n {cpp_code}\nEOS")
+
+    gdb_command = textwrap.dedent(r"""
+    set pagination off
+    b main
+    r
+    b 7
+    b 9
+    c
+    p max
+    c
+    p max
+    n
+    p max
+    c
+    p max
+    n
+    p max
+    d 2
+    b 12
+    c
+    p max
+    q
+    """)
+
+    host.check_output(
+        f"cd {tmpdir} && cat << EOS > gdb.command\n {gdb_command}\nEOS")
+
+    host.check_output(f"cd {tmpdir} && g++ -std=c++11 -g source.cc")
+
+    expected = [
+        '$1 = 2', '$2 = 2', '$3 = 3', '$4 = 3', '$5 = 4', '$6 = 4'
+    ]
+    gdb_stdout = host.check_output(
+        f"cd {tmpdir} && gdb ./a.out --command=gdb.command")
+    actual = [
+        line for line in gdb_stdout.splitlines() if line.startswith('$')
+    ]
+    assert expected == actual
 
 
 def test_cmake(host):
