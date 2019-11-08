@@ -124,3 +124,34 @@ def test_cmake(host):
     expected = "Hello, world!"
     actual = host.check_output(f"cd {tmpdir} && ./test2")
     assert expected == actual
+
+def test_ninja_by_cmake(host):
+    assert host.exists("cmake")
+
+    tmpdir = host.check_output("mktemp -d")
+
+    cpp_code = textwrap.dedent(r"""
+    #include <iostream>
+    int main() {
+        std::cout << "Hello, world!" << std::endl;
+        return 0;
+    }
+    """)
+
+    host.check_output(
+        f"cd {tmpdir} && cat << EOS > source.cc\n {cpp_code}\nEOS")
+
+    cmake_lists = textwrap.dedent(r"""
+    cmake_minimum_required(VERSION 3.0)
+    project(test1)
+    add_executable(test2 source.cc)
+    """)
+
+    host.check_output(
+        f"cd {tmpdir} && cat << EOS > CMakeLists.txt\n {cmake_lists}\nEOS")
+
+    host.check_output(f"cd {tmpdir} && cmake -G Ninja . && cmake --build .")
+
+    expected = "Hello, world!"
+    actual = host.check_output(f"cd {tmpdir} && ./test2")
+    assert expected == actual
