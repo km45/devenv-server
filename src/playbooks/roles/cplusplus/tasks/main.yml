@@ -7,3 +7,4 @@
       - cmake
       - g++
       - gdb
+      - ninja-build

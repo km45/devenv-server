@@ -19,7 +19,6 @@
     - initrc
     - localization
     - meld
-    - ninja-build
     - prompt
     - python
     - rtags-xenial
