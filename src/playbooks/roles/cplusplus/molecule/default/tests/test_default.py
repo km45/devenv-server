@@ -125,6 +125,7 @@ def test_cmake(host):
     actual = host.check_output(f"cd {tmpdir} && ./test2")
     assert expected == actual
 
+
 def test_ninja_by_cmake(host):
     assert host.exists("cmake")
 
