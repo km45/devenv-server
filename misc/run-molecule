@@ -9,6 +9,7 @@ function main() {
         'firefox'
         'git'
         'nkf'
+        'shellcheck'
         'zip'
     )
 

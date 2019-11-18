@@ -11,6 +11,7 @@
     - firefox
     - git
     - nkf
+    - shellcheck
     - zip
 
 - import_playbook: ubuntu-xenial.yml
