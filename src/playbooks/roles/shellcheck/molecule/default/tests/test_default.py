@@ -18,10 +18,10 @@ def test_return_code(host):
     bad_script = textwrap.dedent(r"""
     #!/bin/bash
     echo $1
-    """)
+    """).lstrip()
 
     host.check_output(
-        f"cd {tmpdir} && cat << EOS > bad_script.sh\n {bad_script}\nEOS")
+        f"cd {tmpdir} && cat << 'EOS' > bad_script.sh\n{bad_script}\nEOS")
 
     result = host.run(f"cd {tmpdir} && shellcheck bad_script.sh")
     assert result.rc == 1
@@ -29,10 +29,10 @@ def test_return_code(host):
     good_script = textwrap.dedent(r"""
     #!/bin/bash
     echo "$1"
-    """)
+    """).lstrip()
 
     host.check_output(
-        f"cd {tmpdir} && cat << EOS > good_script.sh\n {good_script}\nEOS")
+        f"cd {tmpdir} && cat << 'EOS' > good_script.sh\n{good_script}\nEOS")
 
     result = host.run(f"cd {tmpdir} && shellcheck good_script.sh")
     assert result.rc == 0
