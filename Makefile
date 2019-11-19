@@ -1,3 +1,5 @@
+TTY := true
+
 .PHONY: up
 up:
 	docker-compose up --build -d
@@ -15,11 +17,19 @@ lint: jsonlint ansiblelint
 
 .PHONY: jsonlint
 jsonlint:
-	docker-compose exec node bash -c "find src/playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
+ifeq ($(TTY), false)
+	docker-compose exec -T node bash -c "find src/playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
+else
+	docker-compose exec    node bash -c "find src/playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
+endif
 
 .PHONY: ansiblelint
 ansiblelint:
-	docker-compose exec python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+ifeq ($(TTY), false)
+	docker-compose exec -T python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+else
+	docker-compose exec    python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+endif
 
 .PHONY: sync
 sync:

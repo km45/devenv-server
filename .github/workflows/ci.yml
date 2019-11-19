@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: make up
-    - run: make lint
+    - run: make lint TTY=false
     - run: make down
     - run: make sync
     - run: make test
