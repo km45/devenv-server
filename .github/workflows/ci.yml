@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-16.04
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: setup python
       uses: actions/setup-python@v1
     - name: setup poetry
