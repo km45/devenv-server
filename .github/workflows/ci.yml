@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: setup pipenv
+      run: pip install pipenv
     - run: make up
     - run: make lint TTY=false
     - run: make down
