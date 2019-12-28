@@ -9,6 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
+    - name: setup python
+      uses: actions/setup-python@v1
     - name: setup poetry
       uses: dschep/install-poetry-action@v1.2
     - run: make sync
