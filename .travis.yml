@@ -7,7 +7,7 @@ python:
 services:
   - docker
 install:
-  - pip install pipenv
+  - pip install poetry
 script:
   - make up
   - make lint
