@@ -23,8 +23,8 @@ ansiblelint:
 
 .PHONY: sync
 sync:
-	pipenv sync
+	poetry install
 
 .PHONY: test
 test:
-	pipenv run -- misc/run-molecule test
+	poetry run bash misc/run-molecule test
