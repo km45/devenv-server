@@ -12,6 +12,7 @@
     - git
     - nkf
     - shellcheck
+    - xmllint
     - zip
 
 - import_playbook: ubuntu-xenial.yml
