@@ -10,7 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: setup poetry
-      run: pip install poetry
+      uses: dschep/install-poetry-action@v1.2
     - run: make up
     - run: make lint TTY=false
     - run: make down
