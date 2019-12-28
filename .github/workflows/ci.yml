@@ -1,0 +1,20 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup python
+      uses: actions/setup-python@v1
+    - name: setup poetry
+      uses: dschep/install-poetry-action@v1
+    - run: make sync
+    - run: make test
+    - run: make up
+    - run: make lint TTY=false
+    - run: make down
