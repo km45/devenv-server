@@ -7,6 +7,8 @@
       - libbz2-dev
       - libffi-dev
       - libsqlite3-dev
+      - libssl-dev
+      - zlib1g-dev
 
 - name: install python 3.7.3  # noqa 301
   shell: |-
