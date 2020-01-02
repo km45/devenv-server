@@ -3,12 +3,12 @@
 - name: put pyenv.bashrc in ~/.bashrc.d
   copy:
     src: bashrc
-    dest: /home/vagrant/.bashrc.d/pyenv.bashrc
+    dest: ~/.bashrc.d/pyenv.bashrc
     mode: 0755
 
 - name: check whether already installed pyenv
   shell: |-
-    . /home/vagrant/.bashrc.d/pyenv.bashrc
+    . ~/.bashrc.d/pyenv.bashrc
     which pyenv
   register: checked_result
   changed_when: False
