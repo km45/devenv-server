@@ -4,9 +4,7 @@
   become: yes
   apt:
     name:
-      - libbz2-dev
       - libffi-dev
-      - libsqlite3-dev
       - libssl-dev
       - zlib1g-dev
 
