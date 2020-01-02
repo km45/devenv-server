@@ -21,8 +21,8 @@ def test_python_version(host):
     with host.sudo("vagrant"):
         assert host.check_output("whoami") == "vagrant"
 
-        result = parse.parse(
-            "Python {version}", host.check_output("python --version 2>&1"))
+        result = parse.parse("Python {version}", host.check_output(
+            "export HOME=/home/vagrant && . /home/vagrant/.bashrc.d/pyenv.bashrc && python --version 2>&1"))
         assert result is not None
 
         assert result['version'] == "3.7.3"
