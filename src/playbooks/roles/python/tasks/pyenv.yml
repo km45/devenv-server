@@ -17,6 +17,12 @@
 - name: install pyenv
   when: checked_result.rc == 1
   block:
+    - name: install requirements
+      become: yes
+      apt:
+        name:
+          - curl
+          - git
     - name: create temporary working directory
       tempfile:
         state: directory

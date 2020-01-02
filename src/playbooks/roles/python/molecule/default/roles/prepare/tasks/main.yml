@@ -5,14 +5,3 @@
     content: ""
     dest: /home/vagrant/.bashrc
     force: no
-
-- name: install requirements
-  become: yes
-  apt:
-    name:
-      # for pyenv-installer in pyenv role
-      - curl
-      - git
-      # for python installation in version role
-      - g++
-      - make
