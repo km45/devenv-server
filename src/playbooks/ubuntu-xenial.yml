@@ -20,7 +20,6 @@
     - localization
     - meld
     - prompt
-    - python-xenial
     - rtags-xenial
     - samba-xenial
     - swap
