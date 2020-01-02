@@ -8,12 +8,12 @@
       - libffi-dev
       - libsqlite3-dev
 
-- name: install python 3.7.3
+- name: install python 3.7.3  # noqa 301
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     pyenv install -s -k 3.7.3
 
-- name: set global python version to 3.7.3
+- name: set global python version to 3.7.3  # noqa 301
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     pyenv global 3.7.3
