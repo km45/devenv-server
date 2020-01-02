@@ -1,0 +1,14 @@
+---
+
+- name: create empty .bashrc
+  copy:
+    content: ""
+    dest: /home/vagrant/.bashrc
+    force: no
+
+- name: install requirements for pyenv-installer
+  become: yes
+  apt:
+    name:
+      - curl
+      - git

@@ -1,10 +1,5 @@
 ---
 
-# - name: uninstall pyenv if already installed
-#   file:
-#     path: /home/vagrant/.pyenv
-#     state: absent
-
 - name: put pyenv.bashrc in ~/.bashrc.d
   copy:
     src: bashrc
@@ -13,9 +8,10 @@
 
 - name: check whether already installed pyenv
   shell: |-
-    . ~/.bashrc.d/pyenv.bashrc
+    . /home/vagrant/.bashrc.d/pyenv.bashrc
     which pyenv
   register: checked_result
+  changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
 - name: install pyenv
@@ -31,6 +27,11 @@
         dest: "{{ tmpdir.path }}/pyenv-installer"
     - name: execute pyenv-installer
       command: "bash {{ tmpdir.path }}/pyenv-installer"
+      register: installer_result
+    - debug:
+        msg: "{{ installer_result.stdout }}"
+    - debug:
+        msg: "{{ installer_result.stderr }}"
     - name: remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
