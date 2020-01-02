@@ -12,6 +12,8 @@ parse = "^1.14.0"
 semver = "^2.9.0"
 
 [tool.poetry.dev-dependencies]
+autopep8 = "^1.4.4"
+pylint = "^2.4.4"
 
 [build-system]
 requires = ["poetry>=0.12"]
