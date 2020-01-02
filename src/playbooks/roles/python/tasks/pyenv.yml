@@ -28,10 +28,6 @@
     - name: execute pyenv-installer
       command: "bash {{ tmpdir.path }}/pyenv-installer"
       register: installer_result
-    - debug:
-        msg: "{{ installer_result.stdout }}"
-    - debug:
-        msg: "{{ installer_result.stderr }}"
     - name: remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
