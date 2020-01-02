@@ -1,4 +1,3 @@
 ---
 
-- include_tasks: python.yml
 - include_tasks: pipenv.yml
