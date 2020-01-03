@@ -1,0 +1,7 @@
+---
+
+- name: create empty .bashrc
+  copy:
+    content: ""
+    dest: /home/vagrant/.bashrc
+    force: no

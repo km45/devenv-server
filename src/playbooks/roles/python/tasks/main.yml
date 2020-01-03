@@ -1,5 +1,5 @@
 ---
 
 - include_tasks: pyenv.yml
-- include_tasks: python.yml
+- include_tasks: version.yml
 - include_tasks: pipenv.yml
