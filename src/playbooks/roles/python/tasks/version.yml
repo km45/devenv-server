@@ -1,21 +1,31 @@
 ---
 
-- name: install requirements
-  become: yes
-  apt:
-    name:
-      - g++
-      - libffi-dev
-      - libssl-dev
-      - make
-      - zlib1g-dev
-
-- name: install python 3.7.3 # noqa 301
+- name: check whether already installed python 3.7.3
   shell: |-
+    set -o pipefail
     . ~/.bashrc.d/pyenv.bashrc
-    pyenv install -s -k 3.7.3
+    pyenv versions | grep '^  system$' && pyenv versions | grep '^* 3.7.3 (set by /.*)$'
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
 
-- name: set global python version to 3.7.3 # noqa 301
-  shell: |-
-    . ~/.bashrc.d/pyenv.bashrc
-    pyenv global 3.7.3
+- name: install pyenv
+  when: checked_result.rc == 1
+  block:
+    - name: install requirements
+      become: yes
+      apt:
+        name:
+          - g++
+          - libffi-dev
+          - libssl-dev
+          - make
+          - zlib1g-dev
+    - name: install python 3.7.3
+      shell: |-
+        . ~/.bashrc.d/pyenv.bashrc
+        pyenv install -s -k 3.7.3
+    - name: set global python version to 3.7.3
+      shell: |-
+        . ~/.bashrc.d/pyenv.bashrc
+        pyenv global 3.7.3
