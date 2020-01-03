@@ -42,3 +42,14 @@ def test_pipenv_command_existence(host):
             ". /home/vagrant/.bashrc.d/pyenv.bashrc",
             "which pipenv"
         ]))
+
+
+def test_poetry_command_existence(host):
+    with host.sudo("vagrant"):
+        assert host.check_output("whoami") == "vagrant"
+
+        assert host.check_output(" && ".join([
+            "export HOME=/home/vagrant",
+            ". /home/vagrant/.bashrc.d/pyenv.bashrc",
+            "which poetry"
+        ]))

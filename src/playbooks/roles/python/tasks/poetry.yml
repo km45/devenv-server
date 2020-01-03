@@ -1,0 +1,6 @@
+---
+
+- name: install packages
+  pip:
+    name: poetry
+    executable: /home/vagrant/.pyenv/shims/pip
