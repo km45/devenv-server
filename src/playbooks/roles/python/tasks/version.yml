@@ -16,7 +16,10 @@
       apt:
         name:
           - g++
+          - libbz2-dev
           - libffi-dev
+          - libreadline-dev
+          - libsqlite3-dev
           - libssl-dev
           - make
           - zlib1g-dev
