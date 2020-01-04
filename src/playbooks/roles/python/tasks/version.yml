@@ -16,7 +16,10 @@
       apt:
         name:
           - g++
+          - libbz2-dev
           - libffi-dev
+          - libreadline-dev
+          - libsqlite3-dev
           - libssl-dev
           - make
           - zlib1g-dev
@@ -24,6 +27,11 @@
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
         pyenv install -s -k 3.7.3
+      register: install_result
+    - name: show stderr of python 3.7.3 installation and check whether WARNING exists
+      debug:
+        msg: "{{ install_result.stderr_lines }}"
+      failed_when: "{{ install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0 }}"
     - name: set global python version to 3.7.3
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
