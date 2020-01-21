@@ -1,5 +1,8 @@
 ---
 
+- name: install clang-format
+  include_tasks: clang-format-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml
+
 - name: install packages
   become: yes
   apt:
