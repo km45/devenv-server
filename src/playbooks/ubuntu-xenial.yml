@@ -9,7 +9,6 @@
   hosts: all
   roles:
     - bash-completion
-    - clang-format
     - cpplint-xenial
     - docker-compose-xenial
     - font
