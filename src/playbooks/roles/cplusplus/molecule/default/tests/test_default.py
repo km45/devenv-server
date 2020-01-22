@@ -165,7 +165,9 @@ def test_clang_format(host):
     assert host.exists("clang-format")
 
     result = parse.parse(
-        "clang-format version {version}", host.check_output("clang-format --version"))
+        "clang-format version {version}",
+        host.check_output("clang-format --version")
+    )
     assert result is not None
 
     version = result['version'].split('-')[0]
