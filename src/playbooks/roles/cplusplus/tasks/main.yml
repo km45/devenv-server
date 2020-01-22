@@ -1,12 +1,37 @@
 ---
 
-- name: install clang-format
-  include_tasks: clang-format-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml
+- name: install requirements
+  become: yes
+  apt:
+    name:
+      - lsb-release
+      - software-properties-common
+      - wget
+
+- name: create temporary working directory
+  tempfile:
+    state: directory
+  register: tmpdir
+
+- name: download clang automatic installation script
+  get_url:
+    url: https://apt.llvm.org/llvm.sh
+    dest: "{{ tmpdir.path }}/llvm.sh"
+
+- name: execute clang automatic installation script
+  become: yes
+  command: "bash {{ tmpdir.path }}/llvm.sh 10"
+
+- name: remove temporary working directory
+  file:
+    path: "{{ tmpdir.path }}"
+    state: absent
 
 - name: install packages
   become: yes
   apt:
     name:
+      - clang-format
       - cmake
       - g++
       - gdb
