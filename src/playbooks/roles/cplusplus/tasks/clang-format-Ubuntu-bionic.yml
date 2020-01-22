@@ -1,5 +1,10 @@
 ---
 
+- name: install requirements
+  become: yes
+  apt:
+    name: gpg
+
 - name: add apt key
   become: yes
   apt_key:
