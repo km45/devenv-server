@@ -20,7 +20,7 @@
 
 - name: execute clang automatic installation script
   become: yes
-  command: "bash {{ tmpdir.path }}/llvm.sh 10"
+  command: "bash {{ tmpdir.path }}/llvm.sh 10" # noqa 301
 
 - name: remove temporary working directory
   file:
