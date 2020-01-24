@@ -1,13 +1,13 @@
 ---
 
-- name: check whether already installed clang {{ clang_version }}
+- name: check whether already installed clang 9
   command: |-
-    which clang-{{ clang_version }}
+    which clang-9
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install clang {{ clang_version }}
+- name: install clang 9
   when: checked_result.rc == 1
   block:
     - name: install requirements
@@ -27,7 +27,7 @@
         dest: "{{ tmpdir.path }}/llvm.sh"
     - name: execute clang automatic installation script
       become: yes
-      command: "bash {{ tmpdir.path }}/llvm.sh {{ clang_version }}"
+      command: "bash {{ tmpdir.path }}/llvm.sh 9"
     - name: remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"

@@ -4,9 +4,9 @@
   become: yes
   apt:
     name:
-      - clang
-      - libclang-dev
-      - libcppunit-dev
+      # - libcppunit-dev
+      - libclang-9-dev
+      - pkgconf
 
 - name: download and unarchive source code
   become: yes
