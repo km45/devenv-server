@@ -171,4 +171,4 @@ def test_clang_format(host):
     assert result is not None
 
     version = result['version'].split('-')[0]
-    assert semver.match(version, ">=10.0.0")
+    assert semver.match(version, ">=9.0.0")
