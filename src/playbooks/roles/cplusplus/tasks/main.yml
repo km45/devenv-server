@@ -37,8 +37,15 @@
   become: yes
   apt:
     name:
-      - clang-format
+      - clang-format-9
       - cmake
       - g++
       - gdb
       - ninja-build
+
+- name: correct clang-format version to 9
+  become: yes
+  alternatives:
+    link: /usr/bin/clang-format
+    name: clang-format
+    path: /usr/bin/clang-format-9
