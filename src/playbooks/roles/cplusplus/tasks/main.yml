@@ -1,10 +1,51 @@
 ---
 
+- name: check whether already installed clang 9
+  command: |-
+    which clang-9
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: install clang 9
+  when: checked_result.rc == 1
+  block:
+    - name: install requirements
+      become: yes
+      apt:
+        name:
+          - lsb-release
+          - software-properties-common
+          - wget
+    - name: create temporary working directory
+      tempfile:
+        state: directory
+      register: tmpdir
+    - name: download clang automatic installation script
+      get_url:
+        url: https://apt.llvm.org/llvm.sh
+        dest: "{{ tmpdir.path }}/llvm.sh"
+    - name: execute clang automatic installation script
+      become: yes
+      command: "bash {{ tmpdir.path }}/llvm.sh 9"
+    - name: remove temporary working directory
+      file:
+        path: "{{ tmpdir.path }}"
+        state: absent
+
 - name: install packages
   become: yes
   apt:
     name:
+      - clang-format-9
       - cmake
       - g++
       - gdb
       - ninja-build
+
+- name: correct clang-format version to 9
+  become: yes
+  alternatives:
+    link: /usr/bin/clang-format
+    name: clang-format
+    path: /usr/bin/clang-format-9

@@ -1,6 +1,9 @@
 import os
 import textwrap
 
+import parse
+import semver
+
 import testinfra.utils.ansible_runner
 
 testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
@@ -156,3 +159,16 @@ def test_ninja_by_cmake(host):
     expected = "Hello, world!"
     actual = host.check_output(f"cd {tmpdir} && ./test2")
     assert expected == actual
+
+
+def test_clang_format(host):
+    assert host.exists("clang-format")
+
+    result = parse.parse(
+        "clang-format version {version}",
+        host.check_output("clang-format --version")
+    )
+    assert result is not None
+
+    version = result['version'].split('-')[0]
+    assert semver.match(version, ">=9.0.0")
