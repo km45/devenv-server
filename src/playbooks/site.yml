@@ -16,6 +16,11 @@
     - xmllint
     - zip
 
+# common roles (not-tested by molecule)
+- hosts: all
+  roles:
+    - inotify
+
 - import_playbook: ubuntu-xenial.yml
   when:
     - ansible_distribution == "Ubuntu"
