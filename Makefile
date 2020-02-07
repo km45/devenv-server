@@ -1,4 +1,5 @@
 TTY := true
+OUT := dest
 
 .PHONY: up
 up:
@@ -38,3 +39,13 @@ sync:
 .PHONY: test
 test:
 	poetry run bash misc/run-molecule test
+
+.PHONY: clean
+clean:
+	rm -rf $(OUT)
+
+.PHONY: package
+package: clean
+	mkdir -p $(OUT)
+	cp -p src/vagrantfiles/ubuntu-xenial/Vagrantfile $(OUT)
+	cp -pr src/playbooks $(OUT)
