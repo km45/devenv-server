@@ -9,3 +9,4 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_command_existence(host):
     assert host.exists("firefox")
+    assert host.exists("meld")
