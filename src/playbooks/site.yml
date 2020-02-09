@@ -8,8 +8,8 @@
 - hosts: all
   roles:
     - cplusplus
-    - firefox
     - git
+    - gui-applications
     - nkf
     - python
     - shellcheck
