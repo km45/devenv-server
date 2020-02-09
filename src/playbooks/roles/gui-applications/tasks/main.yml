@@ -6,3 +6,5 @@
     name:
       - firefox
       - firefox-locale-ja
+      - ghex
+      - meld

@@ -6,8 +6,8 @@ function main() {
 
     local -r ROLES=(
         'cplusplus'
-        'firefox'
         'git'
+        'gui-applications'
         'nkf'
         'python'
         'shellcheck'
