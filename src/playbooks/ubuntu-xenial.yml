@@ -12,7 +12,6 @@
     - cpplint-xenial
     - docker-compose-xenial
     - font
-    - ghex
     - git-config
     - i3-bionic
     - initrc
