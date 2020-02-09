@@ -9,13 +9,3 @@ testinfra_hosts = testinfra.utils.ansible_runner.AnsibleRunner(
 
 def test_command_existence(host):
     assert host.exists("firefox")
-
-
-def test_screenshot(host):
-    tmpdir = host.check_output("mktemp -d")
-
-    host.check_output(f"cd {tmpdir} && firefox --screenshot 'about:robots'")
-    screenshot = host.file(f"{tmpdir}/screenshot.png")
-    assert screenshot.exists
-    assert screenshot.is_file
-    assert screenshot.size > 0
