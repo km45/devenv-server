@@ -24,6 +24,7 @@
     - inotify
     - localization
     - xdm
+    - xfce4-terminal
 
 - import_playbook: ubuntu-xenial.yml
   when:
