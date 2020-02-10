@@ -23,6 +23,7 @@
     - font
     - inotify
     - localization
+    - xdm
 
 - import_playbook: ubuntu-xenial.yml
   when:
