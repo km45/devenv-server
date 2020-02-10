@@ -9,7 +9,6 @@
   hosts: all
   roles:
     - docker-compose
-    - font
     - i3-bionic
     - initrc
     - pipenv
