@@ -19,6 +19,7 @@
 # common roles (not-tested by molecule)
 - hosts: all
   roles:
+    - bash-completion
     - inotify
 
 - import_playbook: ubuntu-xenial.yml
