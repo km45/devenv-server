@@ -14,7 +14,6 @@
     - git-config
     - i3-bionic
     - initrc
-    - localization
     - prompt
     - rtags-xenial
     - samba-xenial

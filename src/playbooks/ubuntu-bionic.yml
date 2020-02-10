@@ -12,7 +12,6 @@
     - font
     - i3-bionic
     - initrc
-    - localization
     - pipenv
     - prompt
     - vscode

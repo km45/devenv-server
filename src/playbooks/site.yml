@@ -21,6 +21,7 @@
   roles:
     - bash-completion
     - inotify
+    - localization
 
 - import_playbook: ubuntu-xenial.yml
   when:
