@@ -8,14 +8,9 @@
 - name: main
   hosts: all
   roles:
-    - bash-completion
     - docker-compose
-    - font
     - i3-bionic
     - initrc
-    - localization
     - pipenv
     - prompt
     - vscode
-    - xdm
-    - xfce4-terminal

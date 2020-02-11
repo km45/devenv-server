@@ -8,20 +8,15 @@
 - name: main
   hosts: all
   roles:
-    - bash-completion
     - cpplint-xenial
     - docker-compose-xenial
-    - font
     - git-config
     - i3-bionic
     - initrc
-    - localization
     - prompt
     - rtags-xenial
     - samba-xenial
     - swap
     - thunar
     - vscode
-    - xdm
-    - xfce4-terminal
     - yamllint

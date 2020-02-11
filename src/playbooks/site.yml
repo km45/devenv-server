@@ -19,7 +19,12 @@
 # common roles (not-tested by molecule)
 - hosts: all
   roles:
+    - bash-completion
+    - font
     - inotify
+    - localization
+    - xdm
+    - xfce4-terminal
 
 - import_playbook: ubuntu-xenial.yml
   when:
