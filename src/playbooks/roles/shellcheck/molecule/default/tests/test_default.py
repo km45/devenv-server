@@ -1,4 +1,6 @@
 import os
+
+import semver
 import textwrap
 
 import testinfra.utils.ansible_runner
@@ -36,3 +38,13 @@ def test_return_code(host):
 
     result = host.run(f"cd {tmpdir} && shellcheck good_script.sh")
     assert result.rc == 0
+
+
+def test_version(host):
+    version = host.check_output(
+        "shellcheck --version | grep ^version | awk '{print $2}'")
+
+    assert version is not None
+
+    assert semver.match(version, ">=0.7.0")
+    assert semver.match(version, "<1.0.0")
