@@ -1,6 +1,0 @@
----
-
-- name: install packages
-  pip:
-    name: yamllint
-    executable: /home/vagrant/.pyenv/shims/pip
