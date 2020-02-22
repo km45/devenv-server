@@ -37,6 +37,7 @@ awesome-ci:
 	docker run --rm -v $(PWD)/src:/src cytopia/awesome-ci file-crlf --path=/src
 	docker run --rm -v $(PWD)/src:/src cytopia/awesome-ci file-trailing-newline --path=/src --ignore=*/__pycache__/*
 	docker run --rm -v $(PWD)/src:/src cytopia/awesome-ci file-trailing-single-newline --path=/src --ignore=*/__pycache__/*
+	docker run --rm -v $(PWD)/src:/src cytopia/awesome-ci file-trailing-space --path=/src --ignore=*/__pycache__/*
 
 .PHONY: sync
 sync:
