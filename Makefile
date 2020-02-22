@@ -14,7 +14,7 @@ shell:
 	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
 
 .PHONY: lint
-lint: jsonlint ansiblelint
+lint: jsonlint ansiblelint awesome-ci
 
 .PHONY: jsonlint
 jsonlint:
@@ -31,6 +31,10 @@ ifeq ($(TTY), false)
 else
 	docker-compose exec    python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
 endif
+
+.PHONY: awesome-ci
+awesome-ci:
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-crlf --path=/ac
 
 .PHONY: sync
 sync:
