@@ -14,7 +14,7 @@ shell:
 	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
 
 .PHONY: lint
-lint: jsonlint ansiblelint
+lint: jsonlint ansiblelint awesome-ci
 
 .PHONY: jsonlint
 jsonlint:
@@ -31,6 +31,17 @@ ifeq ($(TTY), false)
 else
 	docker-compose exec    python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
 endif
+
+.PHONY: awesome-ci
+awesome-ci:
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-crlf                    --path=/ac
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-newline        --path=/ac --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-single-newline --path=/ac --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-space          --path=/ac --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-utf8                    --path=/ac --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-utf8-bom                --path=/ac --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci syntax-json                  --path=/ac --ignore=".git,*/__pycache__" --extension=json
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci syntax-markdown              --path=/ac --ignore=".git,*/__pycache__" --extension=md
 
 .PHONY: sync
 sync:
