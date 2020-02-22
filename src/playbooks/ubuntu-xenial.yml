@@ -10,7 +10,6 @@
   roles:
     - cpplint-xenial
     - docker-compose-xenial
-    - git-config
     - i3-bionic
     - initrc
     - prompt

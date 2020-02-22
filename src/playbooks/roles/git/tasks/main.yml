@@ -11,5 +11,6 @@
     name: git
     state: latest  # noqa 403
 
+- include_tasks: config.yml
 - include_tasks: gitk.yml
 - include_tasks: ignore.yml
