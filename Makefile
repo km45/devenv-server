@@ -39,6 +39,7 @@ awesome-ci:
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-single-newline --path=/ac  --ignore=".git,*/__pycache__"
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-space --path=/ac  --ignore=".git,*/__pycache__"
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-utf8 --path=/ac  --ignore=".git,*/__pycache__"
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-utf8-bom --path=/ac  --ignore=".git,*/__pycache__"
 
 .PHONY: sync
 sync:
