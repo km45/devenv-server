@@ -22,6 +22,7 @@
     - bash-completion
     - font
     - inotify
+    - inputrc
     - localization
     - xdm
     - xfce4-terminal

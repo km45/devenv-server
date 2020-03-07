@@ -10,7 +10,6 @@
   roles:
     - docker-compose-xenial
     - i3-bionic
-    - inputrc
     - prompt
     - rtags-xenial
     - samba-xenial
