@@ -10,7 +10,7 @@
   roles:
     - docker-compose
     - i3-bionic
-    - initrc
+    - inputrc
     - pipenv
     - prompt
     - vscode
