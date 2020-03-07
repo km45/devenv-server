@@ -10,6 +10,5 @@
   roles:
     - docker-compose
     - i3-bionic
-    - pipenv
     - prompt
     - vscode
