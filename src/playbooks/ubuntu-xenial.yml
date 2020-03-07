@@ -8,7 +8,6 @@
 - name: main
   hosts: all
   roles:
-    - cpplint-xenial
     - docker-compose-xenial
     - i3-bionic
     - initrc
