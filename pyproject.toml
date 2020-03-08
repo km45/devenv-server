@@ -6,7 +6,7 @@ authors = ["Kamei Shogo <km45@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-molecule = "^2.22"
+molecule = "^3.0.2"
 docker = "^4.1.0"
 parse = "^1.14.0"
 semver = "^2.9.0"
