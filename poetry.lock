@@ -25,14 +25,6 @@ version = ">=0.15.37,<1"
 
 [[package]]
 category = "main"
-description = "Library provides common APIs to load and dump configuration files in various formats"
-name = "anyconfig"
-optional = false
-python-versions = "*"
-version = "0.9.7"
-
-[[package]]
-category = "main"
 description = "A small Python module for determining appropriate platform-specific dirs, e.g. a \"user data dir\"."
 name = "appdirs"
 optional = false
@@ -205,6 +197,20 @@ click = "*"
 jinja2 = "*"
 shellingham = "*"
 six = "*"
+
+[[package]]
+category = "main"
+description = "Colorization of help messages in Click"
+name = "click-help-colors"
+optional = false
+python-versions = "*"
+version = "0.7"
+
+[package.dependencies]
+click = ">=7.0"
+
+[package.extras]
+dev = ["pytest"]
 
 [[package]]
 category = "main"
@@ -446,45 +452,34 @@ description = "Molecule aids in the development and testing of Ansible roles"
 name = "molecule"
 optional = false
 python-versions = ">=2.7,!=3.0.*,!=3.1.*,!=3.2.*,!=3.3.*,!=3.4.*"
-version = "2.22"
+version = "3.0.2"
 
 [package.dependencies]
 Jinja2 = ">=2.10.1"
 PyYAML = ">=5.1,<6"
-ansible = ">=2.5"
-ansible-lint = ">=4.0.2,<5"
-anyconfig = "0.9.7"
+ansible = ">=2.8"
 cerberus = ">=1.3.1"
-click = ">=6.7"
-click-completion = ">=0.3.1"
+click = ">=7.0"
+click-completion = ">=0.5.1"
+click-help-colors = ">=0.6"
 colorama = ">=0.3.9"
 cookiecutter = ">=1.6.0"
-flake8 = ">=3.6.0"
 paramiko = ">=2.5.0,<3"
 pexpect = ">=4.6.0,<5"
+pluggy = ">=0.7.1,<1.0"
 pre-commit = ">=1.17.0,<2"
-psutil = ">=5.4.6,<6"
 python-gilt = ">=1.2.1,<2"
 sh = ">=1.12.14"
 six = ">=1.11.0"
-tabulate = ">=0.8.3"
-testinfra = ">=3.0.6,<4"
+tabulate = ">=0.8.4"
 tree-format = ">=0.1.2"
 yamllint = ">=1.15.0,<2"
 
 [package.extras]
-azure = ["ansible"]
-digitalocean = ["dopy"]
 docker = ["docker (>=2.0.0)", "selinux"]
-docs = ["alabaster", "sphinx"]
-ec2 = ["boto", "boto3"]
-gce = ["apache-libcloud"]
-hetznercloud = ["hcloud (>=1.2.1)"]
-linode = ["linode-python"]
-lxc = ["lxc-python2"]
-openstack = ["shade"]
-test = ["flake8 (>=3.6.0,<4)", "mock (>=3.0.5,<4)", "pytest (>=4.6.3,<5)", "pytest-cov (>=2.7.1,<3)", "pytest-helpers-namespace (>=2019.1.8,<2020)", "pytest-mock (>=1.10.4,<2)", "pytest-verbose-parametrize (>=1.7.0,<2)", "pytest-xdist (>=1.29.0,<2)", "shade (>=1.31.0,<2)"]
-vagrant = ["python-vagrant"]
+docs = ["simplejson", "sphinx", "sphinx-rtd-theme"]
+lint = ["ansible-lint (>=4.1.1a2,<5)", "flake8 (>=3.6.0)", "pre-commit (>=1.17.0)", "yamllint (>=1.15.0)"]
+test = ["ansi2html", "mock (>=3.0.5,<4)", "pytest-cov (>=2.7.1,<3)", "pytest-helpers-namespace (>=2019.1.8,<2020)", "pytest-mock (>=1.10.4,<2)", "pytest-verbose-parametrize (>=1.7.0,<2)", "pytest-sugar (>=0.9.2,<1)", "pytest-xdist (>=1.29.0,<2)", "pytest (>=4.6.3,<5)", "shade (>=1.31.0,<2)", "testinfra (>=3.4.0)", "pytest-html (>=1.21.0,<2.0)", "pytest-html (>=1.21.0)"]
 windows = ["pywinrm"]
 
 [[package]]
@@ -622,18 +617,6 @@ virtualenv = ">=15.2"
 [package.dependencies.importlib-metadata]
 python = "<3.8"
 version = "*"
-
-[[package]]
-category = "main"
-description = "Cross-platform lib for process and system monitoring in Python."
-marker = "sys_platform != \"win32\" and sys_platform != \"cygwin\""
-name = "psutil"
-optional = false
-python-versions = ">=2.6, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "5.7.0"
-
-[package.extras]
-enum = ["enum34"]
 
 [[package]]
 category = "main"
@@ -889,12 +872,11 @@ category = "main"
 description = "Test infrastructures"
 name = "testinfra"
 optional = false
-python-versions = "*"
-version = "3.4.0"
+python-versions = ">=3.4"
+version = "5.0.0"
 
 [package.dependencies]
 pytest = "!=3.0.2"
-six = ">=1.4"
 
 [package.extras]
 ansible = ["ansible"]
@@ -1026,7 +1008,7 @@ docs = ["sphinx", "jaraco.packaging (>=3.2)", "rst.linker (>=1.9)"]
 testing = ["jaraco.itertools", "func-timeout"]
 
 [metadata]
-content-hash = "9c905bc0f21c178494c23d62308fd4ad8dc67872567b55fe966476d0cae7b37b"
+content-hash = "84a0a4c6e0fa36b3101e6c0949bc6b71e4b365c2704ad454124d911221438e33"
 python-versions = "^3.7"
 
 [metadata.files]
@@ -1036,9 +1018,6 @@ ansible = [
 ansible-lint = [
     {file = "ansible-lint-4.2.0.tar.gz", hash = "sha256:eb925d8682d70563ccb80e2aca7b3edf84fb0b768cea3edc6846aac7abdc414a"},
     {file = "ansible_lint-4.2.0-py2.py3-none-any.whl", hash = "sha256:b9fc9a6564f5d60a4284497f966f38ef78f0e2505edbe2bd1225f1ade31c2d8a"},
-]
-anyconfig = [
-    {file = "anyconfig-0.9.7.tar.gz", hash = "sha256:4d6016ae6eecc5e502bc7e99ae0639c5710c5c67bde5f21b06b9eaafd9ce0e7e"},
 ]
 appdirs = [
     {file = "appdirs-1.4.3-py2.py3-none-any.whl", hash = "sha256:d8b24664561d0d34ddfaec54636d502d7cea6e29c3eaf68f3df6180863e2166e"},
@@ -1142,6 +1121,10 @@ click = [
 ]
 click-completion = [
     {file = "click-completion-0.5.2.tar.gz", hash = "sha256:5bf816b81367e638a190b6e91b50779007d14301b3f9f3145d68e3cade7bce86"},
+]
+click-help-colors = [
+    {file = "click-help-colors-0.7.tar.gz", hash = "sha256:fa574d591ee1d80e6da035df9f471cf0248060c177ff8f99008e45b8401c7fe2"},
+    {file = "click_help_colors-0.7-py3-none-any.whl", hash = "sha256:f41ae922e649a9b48119a66109532613ccd0d414f628eafddb897bbf6f577bd1"},
 ]
 colorama = [
     {file = "colorama-0.4.3-py2.py3-none-any.whl", hash = "sha256:7d73d2a99753107a36ac6b455ee49046802e59d9d076ef8e47b61499fa29afff"},
@@ -1292,8 +1275,8 @@ mccabe = [
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
 ]
 molecule = [
-    {file = "molecule-2.22-py2.py3-none-any.whl", hash = "sha256:12fa4231ed69c6e7f50432588eaace36cea917a8c73c1751269ce55df32ced24"},
-    {file = "molecule-2.22.tar.gz", hash = "sha256:d9d7621167041ae2a8eb19f1f8dc23c071cdab2cd3ca80655e2c8796b4c00e09"},
+    {file = "molecule-3.0.2-py2.py3-none-any.whl", hash = "sha256:bed8d8080fcb7985641b2191f80a957aca1b404bee393bc76f862cb2addb06f2"},
+    {file = "molecule-3.0.2.tar.gz", hash = "sha256:10cd5eed0f2b1a8676d867e572d2b2e85a94f9af91e6e21136ccfbf830e2203e"},
 ]
 monotonic = [
     {file = "monotonic-1.5-py2.py3-none-any.whl", hash = "sha256:552a91f381532e33cbd07c6a2655a21908088962bb8fa7239ecbcc6ad1140cc7"},
@@ -1340,19 +1323,6 @@ poyo = [
 pre-commit = [
     {file = "pre_commit-1.21.0-py2.py3-none-any.whl", hash = "sha256:f92a359477f3252452ae2e8d3029de77aec59415c16ae4189bcfba40b757e029"},
     {file = "pre_commit-1.21.0.tar.gz", hash = "sha256:8f48d8637bdae6fa70cc97db9c1dd5aa7c5c8bf71968932a380628c25978b850"},
-]
-psutil = [
-    {file = "psutil-5.7.0-cp27-none-win32.whl", hash = "sha256:298af2f14b635c3c7118fd9183843f4e73e681bb6f01e12284d4d70d48a60953"},
-    {file = "psutil-5.7.0-cp27-none-win_amd64.whl", hash = "sha256:75e22717d4dbc7ca529ec5063000b2b294fc9a367f9c9ede1f65846c7955fd38"},
-    {file = "psutil-5.7.0-cp35-cp35m-win32.whl", hash = "sha256:f344ca230dd8e8d5eee16827596f1c22ec0876127c28e800d7ae20ed44c4b310"},
-    {file = "psutil-5.7.0-cp35-cp35m-win_amd64.whl", hash = "sha256:e2d0c5b07c6fe5a87fa27b7855017edb0d52ee73b71e6ee368fae268605cc3f5"},
-    {file = "psutil-5.7.0-cp36-cp36m-win32.whl", hash = "sha256:a02f4ac50d4a23253b68233b07e7cdb567bd025b982d5cf0ee78296990c22d9e"},
-    {file = "psutil-5.7.0-cp36-cp36m-win_amd64.whl", hash = "sha256:1413f4158eb50e110777c4f15d7c759521703bd6beb58926f1d562da40180058"},
-    {file = "psutil-5.7.0-cp37-cp37m-win32.whl", hash = "sha256:d008ddc00c6906ec80040d26dc2d3e3962109e40ad07fd8a12d0284ce5e0e4f8"},
-    {file = "psutil-5.7.0-cp37-cp37m-win_amd64.whl", hash = "sha256:73f35ab66c6c7a9ce82ba44b1e9b1050be2a80cd4dcc3352cc108656b115c74f"},
-    {file = "psutil-5.7.0-cp38-cp38-win32.whl", hash = "sha256:60b86f327c198561f101a92be1995f9ae0399736b6eced8f24af41ec64fb88d4"},
-    {file = "psutil-5.7.0-cp38-cp38-win_amd64.whl", hash = "sha256:d84029b190c8a66a946e28b4d3934d2ca1528ec94764b180f7d6ea57b0e75e26"},
-    {file = "psutil-5.7.0.tar.gz", hash = "sha256:685ec16ca14d079455892f25bd124df26ff9137664af445563c1bd36629b5e0e"},
 ]
 ptyprocess = [
     {file = "ptyprocess-0.6.0-py2.py3-none-any.whl", hash = "sha256:d7cc528d76e76342423ca640335bd3633420dc1366f258cb31d05e865ef5ca1f"},
@@ -1498,8 +1468,8 @@ tabulate = [
     {file = "tabulate-0.8.6.tar.gz", hash = "sha256:5470cc6687a091c7042cee89b2946d9235fe9f6d49c193a4ae2ac7bf386737c8"},
 ]
 testinfra = [
-    {file = "testinfra-3.4.0-py2.py3-none-any.whl", hash = "sha256:4ed68a44137e0a552a7a5d3ed6f1db96fe9f83dd5f78a088d335e2aefae07745"},
-    {file = "testinfra-3.4.0.tar.gz", hash = "sha256:ce90c6f06e4a03fcb1af1fa0f028baca74021dbfe5449044767b3788dcec1a46"},
+    {file = "testinfra-5.0.0-py3-none-any.whl", hash = "sha256:2a0ebc128389e3e8c52e08ee78c268a1580b0edc88097e12d624c7a3c809f0b1"},
+    {file = "testinfra-5.0.0.tar.gz", hash = "sha256:b603bf25db98a6c5f13660c4197e73fa29722c6551bdf054f6eeadf8ef81541a"},
 ]
 toml = [
     {file = "toml-0.10.0-py2.7.egg", hash = "sha256:f1db651f9657708513243e61e6cc67d101a39bad662eaa9b5546f789338e07a3"},
