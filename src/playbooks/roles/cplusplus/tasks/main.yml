@@ -14,6 +14,7 @@
       become: yes
       apt:
         name:
+          - apt-transport-https
           - lsb-release
           - software-properties-common
           - wget
