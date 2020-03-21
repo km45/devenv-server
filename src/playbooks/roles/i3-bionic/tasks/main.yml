@@ -6,6 +6,7 @@
     name:
       - i3
       - i3blocks
+      - sysstat  # required by i3blocks-contrib blocklet cpu_usage
 
 - name: create directories to put config file
   file:
