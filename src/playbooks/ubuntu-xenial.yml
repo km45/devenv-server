@@ -9,7 +9,6 @@
   hosts: all
   roles:
     - docker-compose-xenial
-    - i3-bionic
     - prompt
     - rtags-xenial
     - swap
