@@ -9,6 +9,5 @@
   hosts: all
   roles:
     - docker-compose
-    - i3
     - prompt
     - vscode
