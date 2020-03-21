@@ -24,6 +24,7 @@
     - inotify
     - inputrc
     - localization
+    - samba
     - xdm
     - xfce4-terminal
 
