@@ -12,7 +12,7 @@
     - i3-bionic
     - prompt
     - rtags-xenial
-    - samba-xenial
+    - samba
     - swap
     - thunar
     - vscode
