@@ -6,14 +6,17 @@ driver:
 platforms:
   - name: xenial
     image: ubuntu:16.04
+    dockerfile: DockerfileExtended.j2
   - name: bionic
     image: ubuntu:18.04
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
+  options:
+    user: vagrant
 verifier:
-  name: testinfra
+  name: ansible
 lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8

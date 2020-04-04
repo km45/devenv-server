@@ -15,9 +15,8 @@ provisioner:
   options:
     user: vagrant
 verifier:
-  name: testinfra
+  name: ansible
 lint: |
   set -e
   yamllint .
   ansible-lint -x 701
-  flake8

@@ -1,0 +1,20 @@
+set pagination off
+b main
+r
+b 7
+b 9
+c
+p max
+c
+p max
+n
+p max
+c
+p max
+n
+p max
+d 2
+b 12
+c
+p max
+q

@@ -1,0 +1,12 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: test command existence
+      command: bash -c "type {{ item }}"
+      register: result
+      changed_when: False
+      with_items:
+        - unzip
+        - zip
+        - zipinfo

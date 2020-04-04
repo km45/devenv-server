@@ -11,9 +11,8 @@ platforms:
 provisioner:
   name: ansible
 verifier:
-  name: testinfra
+  name: ansible
 lint: |
   set -e
   yamllint .
   ansible-lint
-  flake8

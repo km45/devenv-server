@@ -1,0 +1,34 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: assert test environment
+      block:
+        - name: determine remote user
+          command: whoami
+          register: result
+          changed_when: False
+        - name: assert remote user
+          assert:
+            that:
+              - result.stdout == "vagrant"
+    - name: test command existence
+      command: bash -c ". /home/vagrant/.bashrc.d/pyenv.bashrc && type {{ item }}"
+      register: result
+      changed_when: False
+      with_items:
+        - cpplint
+        - pipenv
+        - poetry
+        - pyenv
+    - name: test global python version
+      block:
+        - name: determine global python version
+          command: bash -c ". /home/vagrant/.bashrc.d/pyenv.bashrc && python --version | sed 's|^Python ||g'"
+          register: result
+          changed_when: False
+        - name: assert global python version
+          assert:
+            that:
+              - result.stdout == "3.7.3"
+            fail_msg: "actual version is {{ result.stdout }}"
