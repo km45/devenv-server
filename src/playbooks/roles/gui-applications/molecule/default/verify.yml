@@ -1,0 +1,13 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: test command existence
+      shell: type {{ item }}
+      register: result
+      changed_when: False
+      failed_when: result.rc != 0
+      with_items:
+        - firefox
+        - ghex
+        - meld
