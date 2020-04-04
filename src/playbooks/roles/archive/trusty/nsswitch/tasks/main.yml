@@ -1,9 +1,0 @@
----
-
-- name: enable dns
-  become: yes
-  replace:
-    backup: yes  # yamllint disable-line rule:truthy
-    regexp: '(hosts:.*) \[NOTFOUND=return\] (dns.*)'
-    replace: '\1 \2'
-    path: /etc/nsswitch.conf
