@@ -1,0 +1,149 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: test command existence
+      command: bash -c "type {{ item }}"
+      register: result
+      changed_when: False
+      with_items:
+        - clang-format
+        - cmake
+        - g++
+        - gdb
+        - ninja
+    - name: test building c++ project by g++
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put c++ code
+          copy:
+            src: "hello_world.cpp"
+            dest: "{{ tmpdir.path }}/source.cpp"
+        - name: build c++ project by g++ directly
+          command: g++ source.cpp
+          args:
+            chdir: "{{ tmpdir.path }}"
+        - name: run executable
+          command: ./a.out
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False
+          register: result
+        - name: assert executable output
+          assert:
+            that:
+              - result.stdout == "Hello, world!"
+            fail_msg: "actual result is {{ result.stdout }}"
+    - name: test debugging executable by gdb
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put c++ code
+          copy:
+            src: "max.cpp"
+            dest: "{{ tmpdir.path }}/source.cpp"
+        - name: build c++11 project with debug option by g++ directly
+          command: g++ -std=c++11 -g source.cpp
+          args:
+            chdir: "{{ tmpdir.path }}"
+        - name: put gdb command file
+          copy:
+            src: "max.gdbcommand"
+            dest: "{{ tmpdir.path }}/gdbcommand"
+        - name: debug executable by gdb with command file
+          command: gdb ./a.out --command=gdbcommand
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False
+          register: result
+        - name: assert executable output
+          assert:
+            that:
+              - result.stdout_lines|select('equalto', '$1 = 2')|list
+              - result.stdout_lines|select('equalto', '$2 = 2')|list
+              - result.stdout_lines|select('equalto', '$3 = 3')|list
+              - result.stdout_lines|select('equalto', '$4 = 3')|list
+              - result.stdout_lines|select('equalto', '$5 = 4')|list
+              - result.stdout_lines|select('equalto', '$6 = 4')|list
+            fail_msg: "actual result is {{ result.stdout_lines }}"
+    - name: test building c++ project via cmake
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put c++ code
+          copy:
+            src: "hello_world.cpp"
+            dest: "{{ tmpdir.path }}/source.cpp"
+        - name: put CMakeLists.txt
+          copy:
+            src: "CMakeLists.txt"
+            dest: "{{ tmpdir.path }}/CMakeLists.txt"
+        - name: build c++ project via cmake
+          command: "{{ item }}"
+          args:
+            chdir: "{{ tmpdir.path }}"
+          with_items:
+            - cmake .
+            - cmake --build .
+        - name: run executable
+          command: ./test2
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False
+          register: result
+        - name: assert executable output
+          assert:
+            that:
+              - result.stdout == "Hello, world!"
+            fail_msg: "actual result is {{ result.stdout }}"
+    - name: test building c++ project using ninja via cmake
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put c++ code
+          copy:
+            src: "hello_world.cpp"
+            dest: "{{ tmpdir.path }}/source.cpp"
+        - name: put CMakeLists.txt
+          copy:
+            src: "CMakeLists.txt"
+            dest: "{{ tmpdir.path }}/CMakeLists.txt"
+        - name: build c++ project using ninja via cmake
+          command: "{{ item }}"
+          args:
+            chdir: "{{ tmpdir.path }}"
+          with_items:
+            - cmake -G Ninja .
+            - cmake --build .
+        - name: run executable
+          command: ./test2
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False
+          register: result
+        - name: assert executable output
+          assert:
+            that:
+              - result.stdout == "Hello, world!"
+            fail_msg: "actual result is {{ result.stdout }}"
+    - name: test clang-format version
+      block:
+        - name: determine clang-format version
+          command: bash -c "clang-format --version | sed 's|clang-format version \([0-9]*\.[0-9]*\.[0-9]*\).*|\1|g' | tr -d '\n'"
+          register: result
+          changed_when: False
+        - name: assert clang-format version
+          assert:
+            that:
+              - result.stdout is version('9.0.0', '>=')
+              - result.stdout is version('10.0.0', '<')
+            fail_msg: "actual version is {{ result.stdout }}"
