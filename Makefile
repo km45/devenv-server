@@ -34,7 +34,7 @@ endif
 
 .PHONY: awesome-ci
 awesome-ci:
-	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-crlf                    --path=/ac
+	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-crlf                    --path=/ac --ignore=".git,*/__pycache__"
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-newline        --path=/ac --ignore=".git,*/__pycache__"
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-single-newline --path=/ac --ignore=".git,*/__pycache__"
 	docker run --rm -v $(PWD):/ac cytopia/awesome-ci file-trailing-space          --path=/ac --ignore=".git,*/__pycache__"
