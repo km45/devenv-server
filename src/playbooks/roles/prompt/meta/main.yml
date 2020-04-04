@@ -1,4 +1,4 @@
 ---
 
 dependencies:
-  - bashrc.d
+  - dependencies/bashrc.d
