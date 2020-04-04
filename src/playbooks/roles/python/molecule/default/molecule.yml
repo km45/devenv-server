@@ -20,4 +20,3 @@ lint: |
   set -e
   yamllint .
   ansible-lint -x 701
-  flake8
