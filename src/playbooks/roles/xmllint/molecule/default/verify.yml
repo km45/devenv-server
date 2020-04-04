@@ -1,0 +1,9 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: test command existence
+      shell: type xmllint
+      register: result
+      changed_when: False
+      failed_when: result.rc != 0
