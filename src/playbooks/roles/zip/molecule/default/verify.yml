@@ -6,7 +6,6 @@
       command: bash -c "type {{ item }}"
       register: result
       changed_when: False
-      failed_when: result.rc != 0
       with_items:
         - unzip
         - zip

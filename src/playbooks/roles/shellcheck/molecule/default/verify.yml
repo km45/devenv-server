@@ -6,7 +6,6 @@
       command: bash -c "type {{ item }}"
       register: result
       changed_when: False
-      failed_when: result.rc != 0
       with_items:
         - shellcheck
     - name: test shellcheck version
@@ -15,7 +14,6 @@
           command: bash -c "shellcheck --version | grep ^version | awk '{print $2}'"
           register: result
           changed_when: False
-          failed_when: result.rc != 0
         - name: assert shellcheck version
           assert:
             that:
