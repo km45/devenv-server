@@ -38,7 +38,8 @@
           tempfile:
             state: directory
           register: tmpdir
-        - command: git init
+        - name: initialize local git repository
+          command: git init # noqa 303
           args:
             chdir: "{{ tmpdir.path }}"
         - name: assert test environment
