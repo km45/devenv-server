@@ -19,4 +19,4 @@ verifier:
 lint: |
   set -e
   yamllint .
-  ansible-lint -x 701
+  ansible-lint
