@@ -15,7 +15,7 @@ provisioner:
   options:
     user: vagrant
 verifier:
-  name: testinfra
+  name: ansible
 lint: |
   set -e
   yamllint .
