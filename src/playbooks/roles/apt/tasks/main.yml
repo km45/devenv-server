@@ -5,12 +5,12 @@
   apt:
     name: aptitude
 
-- name: change repository to jp mirror
+- name: enable automatically select apt repository mirror
   become: yes
   replace:
     path: /etc/apt/sources.list
     regexp: 'http://archive\.ubuntu\.com/ubuntu/'
-    replace: 'http://jp.archive.ubuntu.com/ubuntu/'
+    replace: 'mirror://mirrors.ubuntu.com/mirrors.txt'
   register: change_repository
 
 - name: update cache if repository changed
