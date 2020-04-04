@@ -49,7 +49,7 @@ sync:
 
 .PHONY: test
 test:
-	poetry run bash misc/run-molecule test
+	poetry run bash -c "cd src/playbooks/roles/${ROLE} && molecule test"
 
 .PHONY: clean
 clean:
