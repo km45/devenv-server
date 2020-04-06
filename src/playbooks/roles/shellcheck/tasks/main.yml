@@ -19,7 +19,7 @@
     - name: download and unarchive pre-compiled binary
       become: yes
       unarchive:
-        src: "https://storage.googleapis.com/shellcheck/shellcheck-v{{ shellcheck_version }}.linux.x86_64.tar.xz"
+        src: "https://github.com/koalaman/shellcheck/releases/download/v{{ shellcheck_version }}/shellcheck-v{{ shellcheck_version }}.linux.x86_64.tar.xz"
         dest: /usr/local/src
         remote_src: yes
     - name: create directory to put executable

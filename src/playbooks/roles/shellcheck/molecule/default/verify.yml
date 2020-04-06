@@ -17,5 +17,6 @@
         - name: assert shellcheck version
           assert:
             that:
-              - result.stdout == "0.7.0"
+              - result.stdout is version('0.7.0', '>=')
+              - result.stdout is version('0.8.0', '<')
             fail_msg: "actual version is {{ result.stdout }}"
