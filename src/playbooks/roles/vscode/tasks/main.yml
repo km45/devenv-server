@@ -6,6 +6,7 @@
     name:
       - apt-transport-https
       - jq
+      - xsel  # for vscode plugin gitlens
 
 - name: add apt key
   become: yes
