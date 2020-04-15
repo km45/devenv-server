@@ -5,4 +5,3 @@
   roles:
     - docker-compose
     - prompt
-    - vscode

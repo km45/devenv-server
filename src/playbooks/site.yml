@@ -14,6 +14,7 @@
     - nkf
     - python
     - shellcheck
+    - vscode
     - xmllint
     - zip
 
