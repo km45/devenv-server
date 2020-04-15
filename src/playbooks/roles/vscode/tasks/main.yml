@@ -6,6 +6,7 @@
     name:
       - apt-transport-https
       - jq
+      - moreutils  # for sponge used to overwrite config
       - xsel  # for vscode plugin gitlens
 
 - name: add apt key

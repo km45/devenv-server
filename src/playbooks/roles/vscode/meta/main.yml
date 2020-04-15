@@ -1,4 +1,0 @@
----
-
-dependencies:
-  - moreutils  # for sponge used to overwrite config
