@@ -39,7 +39,7 @@
 - name: put user config.json
   copy:
     src: customized_settings.json
-    dest: "{{ vscode_common_settings_file_path }}"
+    dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
 
 - name: add locale.json

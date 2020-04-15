@@ -1,7 +1,5 @@
 ---
 
-vscode_common_settings_file_path: /home/vagrant/.config/Code/User/settings.json
-
 vscode_plugins:
   # ----------------------------------------------------------------------------
   # Common
