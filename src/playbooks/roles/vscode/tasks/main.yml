@@ -6,8 +6,8 @@
     name:
       - apt-transport-https
       - jq
-      - moreutils  # for sponge used to overwrite config
-      - xsel  # for vscode plugin gitlens
+      - moreutils # for sponge used to overwrite config
+      - xsel # for vscode plugin gitlens
 
 - name: add apt key
   become: yes
@@ -56,9 +56,10 @@
     replace: ''
 
 - name: check whether already exist vaild common settings
-  shell: |-
+  command: |-
     test -s "{{ vscode_common_settings_file_path }}"
   register: checked_result
+  changed_when: False # No effect on environment
   failed_when: checked_result.rc not in [0, 1]
 
 - name: initialize common settings
