@@ -68,6 +68,7 @@
   when: checked_result.rc == 1
 
 - name: merge customized settings into common settings
+  # noqa 301 306
   shell: |-
     jq --slurp --indent 4 '.[0] * .[1]' \
       "{{ vscode_common_settings_file_path }}" \
