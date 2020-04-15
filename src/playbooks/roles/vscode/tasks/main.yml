@@ -1,5 +1,11 @@
 ---
 
+- name: install requirements
+  become: yes
+  apt:
+    name:
+      - apt-transport-https
+
 - name: add apt key
   become: yes
   apt_key:
