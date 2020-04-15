@@ -36,9 +36,9 @@
   loop_control:
     loop_var: vscode_plugin
 
-- name: put user config.json
+- name: put user settings.json
   copy:
-    src: customized_settings.json
+    src: settings.json
     dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
 
