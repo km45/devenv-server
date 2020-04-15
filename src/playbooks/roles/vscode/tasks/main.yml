@@ -36,51 +36,11 @@
   loop_control:
     loop_var: vscode_plugin
 
-- name: create temporary working directory
-  tempfile:
-    state: directory
-  register: tmpdir
-
-- name: show temporary working directory path
-  debug:
-    msg: "{{ tmpdir.path }}"
-
-- name: copy customized settings file to temporary working directory
+- name: put user config.json
   copy:
     src: customized_settings.json
-    dest: "{{ tmpdir.path }}/customized_settings.json"
+    dest: "{{ vscode_common_settings_file_path }}"
     mode: 0664
-
-- name: remove CR code in customized settings file
-  replace:
-    dest: "{{ tmpdir.path }}/customized_settings.json"
-    regexp: '\r'
-    replace: ''
-
-- name: check whether already exist vaild common settings
-  command: |-
-    test -s "{{ vscode_common_settings_file_path }}"
-  register: checked_result
-  changed_when: False # No effect on environment
-  failed_when: checked_result.rc not in [0, 1]
-
-- name: initialize common settings
-  shell: |-
-    echo '{}' > "{{ vscode_common_settings_file_path }}"
-  when: checked_result.rc == 1
-
-- name: merge customized settings into common settings
-  # noqa 301 306
-  shell: |-
-    jq --slurp --indent 4 '.[0] * .[1]' \
-      "{{ vscode_common_settings_file_path }}" \
-      "{{ tmpdir.path }}/customized_settings.json" \
-    | sponge "{{ vscode_common_settings_file_path }}"
-
-- name: remove temporary working directory
-  file:
-    path: "{{ tmpdir.path }}"
-    state: absent
 
 - name: add locale.json
   copy:
