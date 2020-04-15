@@ -24,7 +24,6 @@
   become: yes
   apt:
     name: code
-    update_cache: yes  # yamllint disable-line rule:truthy
 
 - name: install plugins
   include_tasks: inner/install_plugin.yml
