@@ -7,10 +7,25 @@
       - firefox
       - firefox-locale-ja
 
+- name: install caja
+  block:
+    - name: install caja
+      become: yes
+      apt:
+        name:
+          - caja
+    - name: install icon theme for Ubuntu 16.04
+      become: yes
+      apt:
+        name:
+          - gnome-icon-theme-full
+      when:
+        - ansible_distribution == "Ubuntu"
+        - ansible_distribution_version == "16.04"
+
 - name: install other packages
   become: yes
   apt:
     name:
-      - caja
       - ghex
       - meld
