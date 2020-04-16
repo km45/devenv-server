@@ -18,6 +18,7 @@ jobs:
       - run: make test ROLE=nkf
       - run: make test ROLE=python
       - run: make test ROLE=shellcheck
+      - run: make test ROLE=vscode
       - run: make test ROLE=xmllint
       - run: make test ROLE=zip
       - run: make up

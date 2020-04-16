@@ -1,6 +1,0 @@
----
-
-dependencies:
-  - jq
-  - moreutils  # for sponge used to overwrite config
-  - xsel  # for vscode plugin gitlens

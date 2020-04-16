@@ -1,5 +1,16 @@
 ---
 
+- name: install requirements
+  become: yes
+  apt:
+    name:
+      - apt-transport-https
+      - jq
+      - libasound2
+      - libx11-xcb1
+      - moreutils # for sponge used to overwrite config
+      - xsel # for vscode plugin gitlens
+
 - name: add apt key
   become: yes
   apt_key:
@@ -18,7 +29,6 @@
   become: yes
   apt:
     name: code
-    update_cache: yes  # yamllint disable-line rule:truthy
 
 - name: install plugins
   include_tasks: inner/install_plugin.yml
@@ -26,49 +36,11 @@
   loop_control:
     loop_var: vscode_plugin
 
-- name: create temporary working directory
-  tempfile:
-    state: directory
-  register: tmpdir
-
-- name: show temporary working directory path
-  debug:
-    msg: "{{ tmpdir.path }}"
-
-- name: copy customized settings file to temporary working directory
+- name: put user settings.json
   copy:
-    src: customized_settings.json
-    dest: "{{ tmpdir.path }}/customized_settings.json"
+    src: settings.json
+    dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
-
-- name: remove CR code in customized settings file
-  replace:
-    dest: "{{ tmpdir.path }}/customized_settings.json"
-    regexp: '\r'
-    replace: ''
-
-- name: check whether already exist vaild common settings
-  shell: |-
-    test -s "{{ vscode_common_settings_file_path }}"
-  register: checked_result
-  failed_when: checked_result.rc not in [0, 1]
-
-- name: initialize common settings
-  shell: |-
-    echo '{}' > "{{ vscode_common_settings_file_path }}"
-  when: checked_result.rc == 1
-
-- name: merge customized settings into common settings
-  shell: |-
-    jq --slurp --indent 4 '.[0] * .[1]' \
-      "{{ vscode_common_settings_file_path }}" \
-      "{{ tmpdir.path }}/customized_settings.json" \
-    | sponge "{{ vscode_common_settings_file_path }}"
-
-- name: remove temporary working directory
-  file:
-    path: "{{ tmpdir.path }}"
-    state: absent
 
 - name: add locale.json
   copy:
