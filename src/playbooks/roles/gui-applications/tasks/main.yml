@@ -11,5 +11,6 @@
   become: yes
   apt:
     name:
+      - caja
       - ghex
       - meld
