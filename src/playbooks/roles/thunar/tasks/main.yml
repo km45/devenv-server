@@ -1,8 +1,0 @@
----
-
-- name: install packages
-  become: yes
-  apt:
-    name:
-      - thunar
-      - gnome-icon-theme-full
