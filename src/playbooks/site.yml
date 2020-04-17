@@ -28,6 +28,7 @@
     - inputrc
     - localization
     - samba
+    - swap
     - xdm
     - xfce4-terminal
 
