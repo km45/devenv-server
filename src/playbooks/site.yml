@@ -27,6 +27,7 @@
     - inotify
     - inputrc
     - localization
+    - prompt
     - samba
     - swap
     - xdm

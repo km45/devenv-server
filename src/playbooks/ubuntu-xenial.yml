@@ -4,5 +4,4 @@
   hosts: all
   roles:
     - docker-compose-xenial
-    - prompt
     - rtags-xenial
