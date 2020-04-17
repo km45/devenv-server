@@ -4,4 +4,3 @@
   hosts: all
   roles:
     - docker-compose
-    - prompt
