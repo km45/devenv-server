@@ -16,6 +16,6 @@ MiscTabCloseMiddleClick=TRUE
 MiscTabPosition=GTK_POS_TOP
 MiscHighlightUrls=TRUE
 MiscScrollAlternateScreen=TRUE
-ColorPalette=#000000;#cc0000;#4e9a06;#c4a000;#3465a4;#75507b;#06989a;#d3d7cf;#555753;#ef2929;#8ae234;#fce94f;#739fcf;#ad7fa8;#34e2e2;#eeeeec
+ColorPalette=#000000;#d11600;#37c32c;#e3c421;#5c6bfd;#dd5be5;#6eb4f2;#e0e0e0;#535353;#f4152c;#01ea10;#ffee1d;#8cb0f8;#e056f5;#67ecff;#f4f4f4
 ScrollingLines=20000
 ScrollingOnOutput=FALSE
