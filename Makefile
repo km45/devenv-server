@@ -55,8 +55,17 @@ test:
 clean:
 	rm -rf $(OUT)
 
+.PHONY: package-xenial
+package-xenial:
+	mkdir -p $(OUT)/ubuntu-xenial-vagrant
+	cp -p src/vagrantfiles/ubuntu-xenial/Vagrantfile $(OUT)/ubuntu-xenial-vagrant
+	cp -pr src/playbooks $(OUT)/ubuntu-xenial-vagrant
+
+.PHONY: package-bionic
+package-bionic:
+	mkdir -p $(OUT)/ubuntu-bionic-vagrant
+	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/ubuntu-bionic-vagrant
+	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
+
 .PHONY: package
-package: clean
-	mkdir -p $(OUT)
-	cp -p src/vagrantfiles/ubuntu-xenial/Vagrantfile $(OUT)
-	cp -pr src/playbooks $(OUT)
+package: clean package-xenial package-bionic
