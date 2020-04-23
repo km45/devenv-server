@@ -22,6 +22,7 @@
 - hosts: all
   roles:
     - bash-completion
+    - docker
     - font
     - i3
     - inotify
@@ -37,8 +38,3 @@
   when:
     - ansible_distribution == "Ubuntu"
     - ansible_distribution_version == "16.04"
-
-- import_playbook: ubuntu-bionic.yml
-  when:
-    - ansible_distribution == "Ubuntu"
-    - ansible_distribution_version == "18.04"
