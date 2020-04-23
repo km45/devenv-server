@@ -24,7 +24,6 @@ vscode_plugins:
   # C++
   # ----------------------------------------------------------------------------
   - ajshort.include-autocomplete
-  - jomiller.rtags-client
   - mine.cpplint
   - ms-vscode.cpptools
   - twxs.cmake
