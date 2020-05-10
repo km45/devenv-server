@@ -4,9 +4,9 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: xenial
+  - name: xmllint-xenial
     image: ubuntu:16.04
-  - name: bionic
+  - name: xmllint-bionic
     image: ubuntu:18.04
 provisioner:
   name: ansible

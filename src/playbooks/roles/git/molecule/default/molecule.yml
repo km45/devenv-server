@@ -4,10 +4,10 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: xenial
+  - name: git-xenial
     image: ubuntu:16.04
     dockerfile: DockerfileExtended.j2
-  - name: bionic
+  - name: git-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
 provisioner:
