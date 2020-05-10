@@ -2,3 +2,4 @@
 /yarn.lock
 /dest
 __pycache__
+/test-all-summary.log
