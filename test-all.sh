@@ -4,7 +4,7 @@ set -eu
 readonly PARALLEL_SUMMARY_FILE="test-all-summary.log"
 
 function main() {
-    rm -rf test-all.log test-all-results
+    rm -f ${PARALLEL_SUMMARY_FILE}
 
     set +e
     parallel \
