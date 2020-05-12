@@ -12,7 +12,15 @@ jobs:
       - name: setup poetry
         uses: dschep/install-poetry-action@v1
       - run: make sync
-      - run: make test-all
+      - run: make test ROLE=cplusplus
+      - run: make test ROLE=git
+      - run: make test ROLE=gui-applications
+      - run: make test ROLE=nkf
+      - run: make test ROLE=python
+      - run: make test ROLE=shellcheck
+      - run: make test ROLE=vscode
+      - run: make test ROLE=xmllint
+      - run: make test ROLE=zip
       - run: make up
       - run: make lint TTY=false
       - run: make down
