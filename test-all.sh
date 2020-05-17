@@ -18,6 +18,7 @@ function main() {
             gui-applications \
             nkf \
             python \
+            rust \
             shellcheck \
             vscode \
             xmllint \
