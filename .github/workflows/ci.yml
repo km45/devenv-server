@@ -17,6 +17,7 @@ jobs:
       - run: make test ROLE=gui-applications
       - run: make test ROLE=nkf
       - run: make test ROLE=python
+      - run: make test ROLE=rust
       - run: make test ROLE=shellcheck
       - run: make test ROLE=vscode
       - run: make test ROLE=xmllint
