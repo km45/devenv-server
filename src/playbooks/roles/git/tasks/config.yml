@@ -10,3 +10,5 @@
       value: short
     - name: push.default
       value: simple
+    - name: pull.ff
+      value: only
