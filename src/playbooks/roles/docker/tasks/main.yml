@@ -1,3 +1,20 @@
 ---
 
-- include_tasks: "{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml"
+- name: install packages
+  become: yes
+  apt:
+    name: docker.io
+
+- name: add vagrant user to docker group
+  become: yes
+  user:
+    name: vagrant
+    groups: docker
+    append: yes
+
+- name: download docker-compose
+  become: yes
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.24.0/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
