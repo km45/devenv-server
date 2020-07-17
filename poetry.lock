@@ -195,7 +195,7 @@ description = "A Python library for the Docker Engine API."
 name = "docker"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "4.2.1"
+version = "4.2.2"
 
 [package.dependencies]
 requests = ">=2.14.2,<2.18.0 || >2.18.0"
@@ -286,7 +286,7 @@ description = "Molecule aids in the development and testing of Ansible roles"
 name = "molecule"
 optional = false
 python-versions = ">=3.6"
-version = "3.0.4"
+version = "3.0.6"
 
 [package.dependencies]
 Jinja2 = ">=2.10.1"
@@ -303,16 +303,16 @@ pexpect = ">=4.6.0,<5"
 pluggy = ">=0.7.1,<1.0"
 python-gilt = ">=1.2.1,<2"
 selinux = "*"
-sh = ">=1.12.14,<1.13"
+sh = ">=1.13.1,<1.14"
 tabulate = ">=0.8.4"
 tree-format = ">=0.1.2"
 yamllint = ">=1.15.0,<2"
 
 [package.extras]
 docker = ["docker (>=2.0.0)"]
-docs = ["simplejson", "sphinx", "sphinx-rtd-theme"]
+docs = ["simplejson", "sphinx", "sphinx-ansible-theme (>=0.2.2)"]
 lint = ["ansible-lint (>=4.2.0,<5)", "flake8 (>=3.6.0)", "pre-commit (>=1.21.0)", "yamllint (>=1.15.0)"]
-test = ["ansi2html", "coverage (<5)", "mock (>=3.0.5,<4)", "pytest-cov (>=2.7.1,<3)", "pytest-helpers-namespace (>=2019.1.8,<2020)", "pytest-html (>=1.21.0)", "pytest-mock (>=1.10.4,<2)", "pytest-verbose-parametrize (>=1.7.0,<2)", "pytest-plus", "pytest-xdist (>=1.29.0,<2)", "pytest (>=5.4.0,<5.5)", "testinfra (>=3.4.0)"]
+test = ["ansi2html", "coverage (<5)", "mock (>=3.0.5,<4)", "packaging", "pytest-cov (>=2.7.1,<3)", "pytest-helpers-namespace (>=2019.1.8,<2020)", "pytest-html (>=1.21.0)", "pytest-mock (>=1.10.4,<2)", "pytest-verbose-parametrize (>=1.7.0,<2)", "pytest-plus", "pytest-xdist (>=1.29.0,<2)", "pytest (>=5.4.0,<5.5)", "testinfra (>=3.4.0)"]
 windows = ["pywinrm"]
 
 [[package]]
@@ -464,7 +464,7 @@ description = "A Python Slugify application that handles Unicode"
 name = "python-slugify"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*, !=3.4.*"
-version = "4.0.0"
+version = "4.0.1"
 
 [package.dependencies]
 text-unidecode = ">=1.3"
@@ -553,7 +553,7 @@ description = "Python subprocess replacement"
 name = "sh"
 optional = false
 python-versions = "*"
-version = "1.12.14"
+version = "1.13.1"
 
 [[package]]
 category = "main"
@@ -631,7 +631,7 @@ description = "A linter for YAML files."
 name = "yamllint"
 optional = false
 python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*, !=3.3.*"
-version = "1.23.0"
+version = "1.24.2"
 
 [package.dependencies]
 pathspec = ">=0.5.3"
@@ -776,8 +776,8 @@ distro = [
     {file = "distro-1.5.0.tar.gz", hash = "sha256:0e58756ae38fbd8fc3020d54badb8eae17c5b9dcbed388b17bb55b8a5928df92"},
 ]
 docker = [
-    {file = "docker-4.2.1-py2.py3-none-any.whl", hash = "sha256:672f51aead26d90d1cfce84a87e6f71fca401bbc2a6287be18603583620a28ba"},
-    {file = "docker-4.2.1.tar.gz", hash = "sha256:380a20d38fbfaa872e96ee4d0d23ad9beb0f9ed57ff1c30653cbeb0c9c0964f2"},
+    {file = "docker-4.2.2-py2.py3-none-any.whl", hash = "sha256:03a46400c4080cb6f7aa997f881ddd84fef855499ece219d75fbdb53289c17ab"},
+    {file = "docker-4.2.2.tar.gz", hash = "sha256:26eebadce7e298f55b76a88c4f8802476c5eaddbdbe38dbc6cce8781c47c9b54"},
 ]
 fasteners = [
     {file = "fasteners-0.15-py2.py3-none-any.whl", hash = "sha256:007e4d2b2d4a10093f67e932e5166722d2eab83b77724156e92ad013c6226574"},
@@ -835,8 +835,8 @@ markupsafe = [
     {file = "MarkupSafe-1.1.1.tar.gz", hash = "sha256:29872e92839765e546828bb7754a68c418d927cd064fd4708fab9fe9c8bb116b"},
 ]
 molecule = [
-    {file = "molecule-3.0.4-py2.py3-none-any.whl", hash = "sha256:b4f556495a0b8955ca4ac2f86b9a675b26b6adcba93206efd325a5b61d90548f"},
-    {file = "molecule-3.0.4.tar.gz", hash = "sha256:29137de659d45ecdef28d107c0dc7e85ab3d5e37d5d17813430a7cc15be5b02e"},
+    {file = "molecule-3.0.6-py2.py3-none-any.whl", hash = "sha256:e3ba0fb0bab1f60b6f0aef768a3759b383267773be47ee942adadf27d9f6fa35"},
+    {file = "molecule-3.0.6.tar.gz", hash = "sha256:b83d73b3e34ad9bc7cc62f1869a2c9e4c4cc5e5c5a2d9de963e838d5f37fb47b"},
 ]
 monotonic = [
     {file = "monotonic-1.5-py2.py3-none-any.whl", hash = "sha256:552a91f381532e33cbd07c6a2655a21908088962bb8fa7239ecbcc6ad1140cc7"},
@@ -900,7 +900,7 @@ python-gilt = [
     {file = "python_gilt-1.2.3-py2.py3-none-any.whl", hash = "sha256:e220ea2e7e190ee06dbfa5fafe87967858b4ac0cf53f3072fa6ece4664a42082"},
 ]
 python-slugify = [
-    {file = "python-slugify-4.0.0.tar.gz", hash = "sha256:a8fc3433821140e8f409a9831d13ae5deccd0b033d4744d94b31fea141bdd84c"},
+    {file = "python-slugify-4.0.1.tar.gz", hash = "sha256:69a517766e00c1268e5bbfc0d010a0a8508de0b18d30ad5a1ff357f8ae724270"},
 ]
 pywin32 = [
     {file = "pywin32-228-cp27-cp27m-win32.whl", hash = "sha256:37dc9935f6a383cc744315ae0c2882ba1768d9b06700a70f35dc1ce73cd4ba9c"},
@@ -963,8 +963,8 @@ selinux = [
     {file = "selinux-0.2.1.tar.gz", hash = "sha256:d435f514e834e3fdc0941f6a29d086b80b2ea51b28112aee6254bd104ee42a74"},
 ]
 sh = [
-    {file = "sh-1.12.14-py2.py3-none-any.whl", hash = "sha256:ae3258c5249493cebe73cb4e18253a41ed69262484bad36fdb3efcb8ad8870bb"},
-    {file = "sh-1.12.14.tar.gz", hash = "sha256:b52bf5833ed01c7b5c5fb73a7f71b3d98d48e9b9b8764236237bdc7ecae850fc"},
+    {file = "sh-1.13.1-py2.py3-none-any.whl", hash = "sha256:6f792e45b45d039b423081558904981e8ab49572b0c38009fcc65feaab06bcda"},
+    {file = "sh-1.13.1.tar.gz", hash = "sha256:97a3d2205e3c6a842d87ebbc9ae93acae5a352b1bc4609b428d0fd5bb9e286a3"},
 ]
 shellingham = [
     {file = "shellingham-1.3.2-py2.py3-none-any.whl", hash = "sha256:7f6206ae169dc1a03af8a138681b3f962ae61cc93ade84d0585cca3aaf770044"},
@@ -995,8 +995,8 @@ websocket-client = [
     {file = "websocket_client-0.57.0.tar.gz", hash = "sha256:d735b91d6d1692a6a181f2a8c9e0238e5f6373356f561bb9dc4c7af36f452010"},
 ]
 yamllint = [
-    {file = "yamllint-1.23.0-py2.py3-none-any.whl", hash = "sha256:0fa69bf8a86182b7fe14918bdd3a30354c869966bbc7cbfff176af71bda9c806"},
-    {file = "yamllint-1.23.0.tar.gz", hash = "sha256:59f3ff77f44e7f46be6aecdb985830f73a1c51e290b7082a7d38c2ae1940f4a9"},
+    {file = "yamllint-1.24.2-py2.py3-none-any.whl", hash = "sha256:ad3b0d30317dca005d7af99ff27248d459cae2d931a2ff06a134b67bcd405b30"},
+    {file = "yamllint-1.24.2.tar.gz", hash = "sha256:40b68de6bacdccec1585dbd54072731b10da7fc2f9cfd96517a71f066208b61f"},
 ]
 zipp = [
     {file = "zipp-3.1.0-py3-none-any.whl", hash = "sha256:aa36550ff0c0b7ef7fa639055d797116ee891440eac1a56f378e2d3179e0320b"},
