@@ -1,0 +1,5 @@
+---
+- name: install packages
+  zypper:
+    name:
+      - ShellCheck

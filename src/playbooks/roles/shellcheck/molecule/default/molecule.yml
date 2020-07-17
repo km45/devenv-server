@@ -8,6 +8,8 @@ platforms:
     image: ubuntu:16.04
   - name: shellcheck-bionic
     image: ubuntu:18.04
+  - name: shellcheck-opensuse-leap-15.2
+    image: opensuse/leap:15.2
 provisioner:
   name: ansible
 verifier:
