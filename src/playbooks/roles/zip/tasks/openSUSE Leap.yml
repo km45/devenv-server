@@ -1,0 +1,7 @@
+---
+- name: install packages
+  become: yes
+  zypper:
+    name:
+      - unzip
+      - zip
