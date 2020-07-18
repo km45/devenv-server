@@ -1,7 +1,2 @@
 ---
-
-- name: install packages
-  become: yes
-  apt:
-    name:
-      - libxml2-utils
+- include_tasks: "{{ ansible_distribution }}.yml"

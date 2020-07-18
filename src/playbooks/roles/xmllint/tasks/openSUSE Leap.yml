@@ -1,0 +1,6 @@
+---
+- name: install packages
+  become: yes
+  zypper:
+    name:
+      - libxml2-tools
