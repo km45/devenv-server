@@ -2,6 +2,5 @@
 
 - include_tasks: pyenv.yml
 - include_tasks: version.yml
-- include_tasks: pipenv.yml
 - include_tasks: poetry.yml
 - include_tasks: cpplint.yml
