@@ -23,6 +23,25 @@
           - libssl-dev
           - make
           - zlib1g-dev
+      when:
+        - ansible_distribution == "Ubuntu"
+    - name: install requirements for openSUSE
+      become: yes
+      zypper:
+        name:
+          - gcc
+          - gzip
+          - libbz2-devel
+          - libffi-devel
+          - make
+          - openssl-devel
+          - readline-devel
+          - sqlite3-devel
+          - tar
+          - tk-devel
+          - zlib-devel
+      when:
+        - ansible_distribution == "openSUSE Leap"
     - name: install python 3.7.3
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc

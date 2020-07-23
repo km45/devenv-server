@@ -2,3 +2,4 @@
 
 dependencies:
   - dependencies/bashrc.d
+  - dependencies/curl
