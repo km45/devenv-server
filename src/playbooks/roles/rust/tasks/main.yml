@@ -14,11 +14,20 @@
 - name: install rustup
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: install requirements by apt
       become: yes
       apt:
         name:
           - curl
+      when:
+        - ansible_distribution == "Ubuntu"
+    - name: install requirements by zypper
+      become: yes
+      zypper:
+        name:
+          - curl
+      when:
+        - ansible_distribution == "openSUSE Leap"
     - name: create temporary working directory
       tempfile:
         state: directory
