@@ -1,0 +1,7 @@
+---
+- name: install gitk
+  become: yes
+  zypper:
+    name:
+      - git
+      - gitk

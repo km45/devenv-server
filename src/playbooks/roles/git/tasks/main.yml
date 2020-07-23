@@ -1,16 +1,4 @@
 ---
-
-- name: add apt repository
-  become: yes
-  apt_repository:
-    repo: ppa:git-core/ppa
-
-- name: install packages
-  become: yes
-  apt:
-    name: git
-    state: latest  # noqa 403
-
+- include_tasks: "{{ ansible_distribution }}.yml"
 - include_tasks: config.yml
-- include_tasks: gitk.yml
 - include_tasks: ignore.yml
