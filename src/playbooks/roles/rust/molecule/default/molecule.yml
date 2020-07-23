@@ -10,7 +10,6 @@ platforms:
   - name: rust-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
-  # TODO: support this
   - name: rust-opensuse-leap-15.2
     image: opensuse/leap:15.2
     dockerfile: DockerfileExtended.j2
