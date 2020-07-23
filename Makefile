@@ -73,3 +73,7 @@ package-bionic:
 
 .PHONY: package
 package: clean package-xenial package-bionic
+
+.PHONY: distribute-templates
+distribute-templates:
+	cp -p templates/DockerfileExtended.j2 src/playbooks/roles/rust/molecule/default/DockerfileExtended.j2
