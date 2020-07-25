@@ -1,5 +1,6 @@
 ---
 - name: install packages
+  become: yes
   zypper:
     name:
       - ShellCheck
