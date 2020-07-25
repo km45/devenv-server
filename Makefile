@@ -65,8 +65,14 @@ package-bionic:
 	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/ubuntu-bionic-vagrant
 	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
 
+.PHONY: package-opensuse
+package-opensuse:
+	mkdir -p $(OUT)/opensuse-leap-15-2
+	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/opensuse-leap-15-2
+	cp -pr src/playbooks $(OUT)/opensuse-leap-15-2
+
 .PHONY: package
-package: clean package-bionic
+package: clean package-bionic package-opensuse
 
 .PHONY: distribute-templates
 distribute-templates:
