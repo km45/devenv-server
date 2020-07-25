@@ -1,23 +1,44 @@
 ---
 
-- name: install firefox
-  become: yes
-  apt:
-    name:
-      - firefox
-      - firefox-locale-ja
-
-- name: install caja
+- name: install packages for Ubuntu
+  when:
+    - ansible_distribution == "Ubuntu"
   block:
+    - name: install firefox
+      become: yes
+      apt:
+        name:
+          - firefox
+          - firefox-locale-ja
     - name: install caja
       become: yes
       apt:
         name:
           - caja
+    - name: install other packages
+      become: yes
+      apt:
+        name:
+          - ghex
+          - meld
 
-- name: install other packages
-  become: yes
-  apt:
-    name:
-      - ghex
-      - meld
+- name: install packages for openSUSE
+  when:
+    - ansible_distribution == "openSUSE Leap"
+  block:
+    - name: install firefox
+      become: yes
+      zypper:
+        name:
+          - MozillaFirefox
+    - name: install caja
+      become: yes
+      zypper:
+        name:
+          - caja
+    - name: install other packages
+      become: yes
+      zypper:
+        name:
+          - ghex
+          - meld
