@@ -4,9 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: git-xenial
-    image: ubuntu:16.04
-    dockerfile: DockerfileExtended.j2
   - name: git-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
