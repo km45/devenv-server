@@ -1,0 +1,10 @@
+---
+- name: install packages
+  become: yes
+  zypper:
+    name:
+      - clang
+      - cmake
+      - gcc-c++
+      - gdb
+      - ninja

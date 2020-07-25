@@ -10,13 +10,12 @@ platforms:
       - SYS_PTRACE
     security_opts:
       - seccomp=unconfined
-  # TODO: support this
-  # - name: cplusplus-leap-15.2
-  #   image: opensuse/leap:15.2
-  #   capabilities:
-  #     - SYS_PTRACE
-  #   security_opts:
-  #     - seccomp=unconfined
+  - name: cplusplus-leap-15.2
+    image: opensuse/leap:15.2
+    capabilities:
+      - SYS_PTRACE
+    security_opts:
+      - seccomp=unconfined
 provisioner:
   name: ansible
 verifier:
