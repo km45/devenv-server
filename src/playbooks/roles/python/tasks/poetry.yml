@@ -1,5 +1,20 @@
 ---
 
+- name: install requirements
+  become: yes
+  apt:
+    name: python-setuptools
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install requirements
+  become: yes
+  zypper:
+    name:
+      - python2-setuptools
+  when:
+    - ansible_distribution == "openSUSE Leap"
+
 - name: install packages
   pip:
     name: poetry

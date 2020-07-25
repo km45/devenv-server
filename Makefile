@@ -59,12 +59,6 @@ test-all:
 clean:
 	rm -rf $(OUT)
 
-.PHONY: package-xenial
-package-xenial:
-	mkdir -p $(OUT)/ubuntu-xenial-vagrant
-	cp -p src/vagrantfiles/ubuntu-xenial/Vagrantfile $(OUT)/ubuntu-xenial-vagrant
-	cp -pr src/playbooks $(OUT)/ubuntu-xenial-vagrant
-
 .PHONY: package-bionic
 package-bionic:
 	mkdir -p $(OUT)/ubuntu-bionic-vagrant
@@ -72,7 +66,7 @@ package-bionic:
 	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
 
 .PHONY: package
-package: clean package-xenial package-bionic
+package: clean package-bionic
 
 .PHONY: distribute-templates
 distribute-templates:

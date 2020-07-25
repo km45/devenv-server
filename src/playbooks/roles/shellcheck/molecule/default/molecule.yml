@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: shellcheck-xenial
-    image: ubuntu:16.04
   - name: shellcheck-bionic
     image: ubuntu:18.04
   - name: shellcheck-opensuse-leap-15.2

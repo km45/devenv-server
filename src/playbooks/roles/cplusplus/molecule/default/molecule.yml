@@ -4,12 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: cplusplus-xenial
-    image: ubuntu:16.04
-    capabilities:
-      - SYS_PTRACE
-    security_opts:
-      - seccomp=unconfined
   - name: cplusplus-bionic
     image: ubuntu:18.04
     capabilities:
