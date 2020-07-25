@@ -1,34 +1,59 @@
 ---
 
-- name: install requirements
-  become: yes
-  apt:
-    name:
-      - apt-transport-https
-      - jq
-      - libasound2
-      - libx11-xcb1
-      - moreutils # for sponge used to overwrite config
-      - xsel # for vscode plugin gitlens
+- name: install vscode and requirements for Ubuntu
+  when:
+    - ansible_distribution == "Ubuntu"
+  block:
+   - name: install requirements
+     become: yes
+     apt:
+       name:
+         - apt-transport-https
+         - libasound2
+         - libx11-xcb1
+         - xsel # for vscode plugin gitlens
+   - name: add apt key
+     become: yes
+     apt_key:
+       url: https://packages.microsoft.com/keys/microsoft.asc
+       keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+   - name: add apt repository
+     become: yes
+     apt_repository:
+       repo: >-
+         deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+       filename: vscode
+       state: present
+   - name: install packages
+     become: yes
+     apt:
+       name: code
 
-- name: add apt key
-  become: yes
-  apt_key:
-    url: https://packages.microsoft.com/keys/microsoft.asc
-    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
-
-- name: add apt repository
-  become: yes
-  apt_repository:
-    repo: >-
-      deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
-    filename: vscode
-    state: present
-
-- name: install packages
-  become: yes
-  apt:
-    name: code
+- name: install vscode and requirements for openSUSE
+  when:
+    - ansible_distribution == "openSUSE Leap"
+  block:
+    - name: add rpm key
+      become: yes
+      rpm_key:
+        key: https://packages.microsoft.com/keys/microsoft.asc
+    - name: install requirements
+      become: yes
+      zypper:
+        name:
+          - libX11-xcb1
+          # - libasound2
+          # - xsel # for vscode plugin gitlens
+    - name: add zypper repository
+      become: yes
+      zypper_repository:
+        name: vscode
+        repo: https://packages.microsoft.com/yumrepos/vscode
+        state: present
+    - name: install packages
+      become: yes
+      zypper:
+        name: code
 
 - name: install plugins
   include_tasks: inner/install_plugin.yml
