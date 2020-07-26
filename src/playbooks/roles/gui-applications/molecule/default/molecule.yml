@@ -6,6 +6,8 @@ driver:
 platforms:
   - name: gui-applications-bionic
     image: ubuntu:18.04
+    # TODO
+    # dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
 verifier:
