@@ -76,3 +76,4 @@ distribute-templates:
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/rust/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/shellcheck/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/vscode/molecule/default/
+	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/zip/molecule/default/
