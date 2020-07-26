@@ -70,6 +70,7 @@ package: clean package-bionic
 
 .PHONY: distribute-templates
 distribute-templates:
+	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/cplusplus/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/git/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/nkf/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/python/molecule/default/
