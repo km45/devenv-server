@@ -6,8 +6,11 @@ driver:
 platforms:
   - name: shellcheck-bionic
     image: ubuntu:18.04
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
+  options:
+    user: vagrant
 verifier:
   name: ansible
 lint: |

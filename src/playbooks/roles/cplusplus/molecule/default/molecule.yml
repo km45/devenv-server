@@ -6,12 +6,15 @@ driver:
 platforms:
   - name: cplusplus-bionic
     image: ubuntu:18.04
+    dockerfile: DockerfileExtended.j2
     capabilities:
       - SYS_PTRACE
     security_opts:
       - seccomp=unconfined
 provisioner:
   name: ansible
+  options:
+    user: vagrant
 verifier:
   name: ansible
 lint: |
