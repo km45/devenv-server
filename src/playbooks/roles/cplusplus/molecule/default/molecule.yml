@@ -11,6 +11,14 @@ platforms:
       - SYS_PTRACE
     security_opts:
       - seccomp=unconfined
+  # TODO: Support this
+  # - name: cplusplus-buster
+  #   image: debian:10
+  #   dockerfile: DockerfileExtended.j2
+  #   capabilities:
+  #     - SYS_PTRACE
+  #   security_opts:
+  #     - seccomp=unconfined
 provisioner:
   name: ansible
   options:

@@ -7,6 +7,10 @@ platforms:
   - name: zip-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
+  # TODO: Support this
+  # - name: zip-buster
+  #   image: debian:10
+  #   dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:
