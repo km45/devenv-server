@@ -27,9 +27,9 @@ endif
 .PHONY: ansiblelint
 ansiblelint:
 ifeq ($(TTY), false)
-	docker-compose exec -T python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+	docker-compose exec -T python bash -c "ansible-lint -x 106,208,301,305,306,701 src/playbooks/site.yml"
 else
-	docker-compose exec    python bash -c "ansible-lint -x 301,305,306,701 src/playbooks/site.yml"
+	docker-compose exec    python bash -c "ansible-lint -x 106,208,301,305,306,701 src/playbooks/site.yml"
 endif
 
 .PHONY: awesome-ci
