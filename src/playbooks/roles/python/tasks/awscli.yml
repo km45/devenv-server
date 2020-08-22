@@ -1,0 +1,5 @@
+---
+- name: install packages
+  pip:
+    name: awscli
+    executable: /home/vagrant/.pyenv/shims/pip
