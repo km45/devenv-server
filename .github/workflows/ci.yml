@@ -16,6 +16,7 @@ jobs:
       - run: make test ROLE=git
       - run: make test ROLE=gui-applications
       - run: make test ROLE=nkf
+      - run: make test ROLE=prompt
       - run: make test ROLE=python
       - run: make test ROLE=rust
       - run: make test ROLE=shellcheck
