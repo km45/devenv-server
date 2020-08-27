@@ -1,8 +1,19 @@
 ---
 
-- name: install packages
+- name: install packages by apt
   become: yes
   apt:
     name:
       - unzip
       - zip
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install packages by apt
+  become: yes
+  pacman:
+    name:
+      - unzip
+      - zip
+  when:
+    - ansible_distribution == "Archlinux"
