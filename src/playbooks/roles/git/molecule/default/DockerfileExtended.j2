@@ -3,6 +3,15 @@
 {% endwith %}
 
 {# Add user vagrant and enable passwordless sudo #}
-RUN adduser vagrant \
-    && adduser vagrant sudo \
-    && echo 'Defaults exempt_group=sudo' >> /etc/sudoers
+RUN if [ $(command -v adduser) ]; then \
+        # for Ubuntu
+        adduser vagrant && \
+        adduser vagrant sudo; \
+    else \
+        # for Arch Linux
+        useradd --create-home vagrant && \
+        groupadd sudo && \
+        usermod -aG sudo vagrant && \
+        sed -i 's|# %sudo\tALL=(ALL) ALL|%sudo\tALL=(ALL) ALL|g' /etc/sudoers; \
+    fi && \
+    echo 'Defaults exempt_group=sudo' >> /etc/sudoers
