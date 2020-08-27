@@ -21,7 +21,11 @@
           # 2. remove control characters SOH and STX
           # 3. remove colors
           #    refer: https://stackoverflow.com/questions/17998978/removing-colors-from-output
-          command: bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" | sed 's|\[0;|\[|g' | tr -d '\001-\002' | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
+          command: |-
+            bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
+              | sed 's|\[0;|\[|g' \
+              | tr -d '\001-\002' \
+              | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
           register: result
           changed_when: False
         - name: assert colorless bash prompt at ordinary directory
@@ -40,7 +44,11 @@
           args:
             chdir: "{{ tmpdir.path }}"
         - name: evaluate colorless bash prompt at ordinary directory
-          command: bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" | sed 's|\[0;|\[|g' | tr -d '\001-\002' | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
+          command: |-
+            bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
+              | sed 's|\[0;|\[|g' \
+              | tr -d '\001-\002' \
+              | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
           args:
             chdir: "{{ tmpdir.path }}"
           register: result
