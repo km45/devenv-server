@@ -12,6 +12,7 @@
     - git
     - gui-applications
     - nkf
+    - prompt
     - python
     - rust
     - shellcheck
@@ -29,7 +30,6 @@
     - inotify
     - inputrc
     - localization
-    - prompt
     - samba
     - swap
     - xdm

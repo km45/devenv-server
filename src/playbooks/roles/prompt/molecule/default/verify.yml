@@ -1,0 +1,63 @@
+---
+- name: verify
+  hosts: all
+  tasks:
+    - name: assert test environment
+      block:
+        - name: determine remote user
+          command: whoami
+          register: result
+          changed_when: False
+        - name: assert remote user
+          assert:
+            that:
+              - result.stdout == "vagrant"
+            fail_msg: "actual result is {{ result.stdout }}"
+    - name: test colorless bash prompt at ordinary directory
+      block:
+        - name: evaluate colorless bash prompt at ordinary directory
+          # 1. expand $PS1 by "@P"
+          #    refer: https://stackoverflow.com/questions/22322879/how-to-print-current-bash-prompt
+          # 2. remove control characters SOH and STX
+          # 3. remove colors
+          #    refer: https://stackoverflow.com/questions/17998978/removing-colors-from-output
+          command: |-
+            bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
+              | sed 's|\[0;|\[|g' \
+              | tr -d '\001-\002' \
+              | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
+          register: result
+          changed_when: False
+        - name: assert colorless bash prompt at ordinary directory
+          assert:
+            that:
+              - result.stdout == "vagrant@{{ ansible_host }}:/ $ "
+            fail_msg: "actual result is {{ result.stdout_lines }}"
+    - name: test colorless bash prompt at git directory
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: initialize local git repository
+          command: git init # noqa 303
+          args:
+            chdir: "{{ tmpdir.path }}"
+        - name: evaluate colorless bash prompt at ordinary directory
+          command: |-
+            bash -c ". /home/vagrant/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
+              | sed 's|\[0;|\[|g' \
+              | tr -d '\001-\002' \
+              | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
+          args:
+            chdir: "{{ tmpdir.path }}"
+          register: result
+          changed_when: False
+        - name: debug printting
+          debug:
+            msg: "{{ result }}"
+        - name: assert colorless bash prompt at ordinary directory
+          assert:
+            that:
+              - result.stdout == "vagrant@{{ ansible_host }}:{{ tmpdir.path | basename }} (master) $ "
+            fail_msg: "actual result is {{ result.stdout_lines }}"
