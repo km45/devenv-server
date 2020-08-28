@@ -1,6 +1,6 @@
 ---
 - name: check whether already installed nkf
-  shell: command -v nkf
+  command: bash -c "command -v nkf"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
