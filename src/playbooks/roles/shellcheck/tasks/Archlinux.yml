@@ -1,0 +1,6 @@
+---
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - shellcheck
