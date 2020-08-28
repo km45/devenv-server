@@ -1,0 +1,45 @@
+---
+- name: check whether already installed nkf
+  shell: command -v nkf
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: install nkf
+  when: checked_result.rc == 1
+  block:
+    - name: install requirements
+      become: yes
+      pacman:
+        name:
+          - gcc
+          - make
+          - stow
+    - name: download and unarchive source files
+      become: yes
+      unarchive:
+        src: https://ja.osdn.net/frs/redir.php?m=jaist&f=nkf%2F70406%2Fnkf-{{ nkf_version }}.tar.gz
+        dest: /usr/local/src
+        remote_src: yes
+    - name: build nkf from source files
+      become: yes
+      shell: make
+      args:
+        chdir: /usr/local/src/nkf-{{ nkf_version }}
+    - name: create directory to install nkf
+      become: yes
+      file:
+        path: /usr/local/stow/nkf-{{ nkf_version }}
+        state: directory
+    - name: install nkf
+      become: yes
+      shell: make install prefix=/usr/local/stow/nkf-{{ nkf_version }}
+      args:
+        chdir: /usr/local/src/nkf-{{ nkf_version }}
+    - name: stow package
+      become: yes
+      args:
+        chdir: /usr/local/stow
+      shell: |-
+        ls | grep 'nkf-*' | xargs -n1 stow -D
+        stow -R nkf-{{ nkf_version }}

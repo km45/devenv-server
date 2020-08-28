@@ -7,10 +7,9 @@ platforms:
   - name: nkf-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
-  # TODO: support archlinux
-  # - name: nkf-archlinux
-  #   image: archlinux
-  #   dockerfile: DockerfileExtended.j2
+  - name: nkf-archlinux
+    image: archlinux
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:
