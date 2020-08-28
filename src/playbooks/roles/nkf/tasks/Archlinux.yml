@@ -23,7 +23,7 @@
         remote_src: yes
     - name: build nkf from source files
       become: yes
-      shell: make
+      command: make
       args:
         chdir: /usr/local/src/nkf-{{ nkf_version }}
     - name: create directory to install nkf
@@ -33,7 +33,7 @@
         state: directory
     - name: install nkf
       become: yes
-      shell: make install prefix=/usr/local/stow/nkf-{{ nkf_version }}
+      command: make install prefix=/usr/local/stow/nkf-{{ nkf_version }}
       args:
         chdir: /usr/local/src/nkf-{{ nkf_version }}
     - name: stow package
