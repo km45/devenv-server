@@ -7,10 +7,9 @@ platforms:
   - name: xmllint-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
-  # TODO: support archlinux
-  # - name: xmllint-archlinux
-  #   image: archlinux
-  #   dockerfile: DockerfileExtended.j2
+  - name: xmllint-archlinux
+    image: archlinux
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:

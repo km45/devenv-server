@@ -1,7 +1,17 @@
 ---
 
-- name: install packages
+- name: install packages by apt
   become: yes
   apt:
     name:
       - libxml2-utils
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install packages by pacman
+  become: yes
+  pacman:
+    name:
+      - libxml2
+  when:
+    - ansible_distribution == "Archlinux"
