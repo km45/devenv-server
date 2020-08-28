@@ -9,7 +9,7 @@
   when:
     - ansible_distribution == "Ubuntu"
 
-- name: install packages by apt
+- name: install packages by pacman
   become: yes
   pacman:
     name:
