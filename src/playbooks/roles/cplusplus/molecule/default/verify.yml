@@ -157,5 +157,4 @@
           assert:
             that:
               - result.stdout is version('9.0.0', '>=')
-              - result.stdout is version('10.0.0', '<')
             fail_msg: "actual version is {{ result.stdout }}"
