@@ -1,9 +1,18 @@
 ---
 
-- name: install requirements
+- name: install requirements by apt
   become: yes
   apt:
     name: python-setuptools
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install requirements by pacman
+  become: yes
+  pacman:
+    name: python-setuptools
+  when:
+    - ansible_distribution == "Archlinux"
 
 - name: install packages
   pip:

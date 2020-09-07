@@ -11,7 +11,7 @@
 - name: install pyenv
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: install requirements by apt
       become: yes
       apt:
         name:
@@ -23,6 +23,16 @@
           - libssl-dev
           - make
           - zlib1g-dev
+      when:
+        - ansible_distribution == "Ubuntu"
+    - name: install requirements by pacman
+      become: yes
+      pacman:
+        name:
+          - gcc
+          - make
+      when:
+        - ansible_distribution == "Archlinux"
     - name: install python 3.7.3
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
