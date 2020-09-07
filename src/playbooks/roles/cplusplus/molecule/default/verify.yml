@@ -22,6 +22,7 @@
         - cmake
         - g++
         - gdb
+        - make
         - ninja
     - name: test building c++ project by g++
       block:
