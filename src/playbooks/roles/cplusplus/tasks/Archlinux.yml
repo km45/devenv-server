@@ -1,0 +1,10 @@
+---
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - clang
+      - cmake
+      - gdb
+      - make
+      - ninja
