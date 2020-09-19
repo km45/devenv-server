@@ -13,25 +13,17 @@
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
+  when:
+    - ansible_distribution == "Archlinux"
 
 - name: install pyenv
   when: checked_result.rc == 1
   block:
-    - name: install requirements by apt
-      become: yes
-      apt:
-        name:
-          - curl
-          - git
-      when:
-        - ansible_distribution == "Ubuntu"
-    - name: install requirements by pacman
+    - name: install requirements
       become: yes
       pacman:
         name:
           - git
-      when:
-        - ansible_distribution == "Archlinux"
     - name: create temporary working directory
       tempfile:
         state: directory

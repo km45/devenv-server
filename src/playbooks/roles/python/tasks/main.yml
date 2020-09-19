@@ -1,6 +1,6 @@
 ---
 
-- include_tasks: pyenv.yml
+- include_tasks: pyenv/main.yml
 - include_tasks: version.yml
 - include_tasks: poetry.yml
 - include_tasks: awscli.yml
