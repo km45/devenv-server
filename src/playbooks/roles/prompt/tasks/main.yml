@@ -2,6 +2,6 @@
 
 - name: put bashrc file in ~/.bashrc.d
   copy:
-    src: bashrc
+    src: "{{ ansible_distribution }}.bashrc"
     dest: /home/vagrant/.bashrc.d/git-prompt.bashrc
     mode: 0755
