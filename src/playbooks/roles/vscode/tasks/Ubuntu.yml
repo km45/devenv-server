@@ -1,0 +1,51 @@
+---
+- name: install requirements
+  become: yes
+  apt:
+    name:
+      - apt-transport-https
+      - jq
+      - libasound2
+      - libdrm2
+      - libgbm1
+      - libx11-xcb1
+      - libxcb-dri3-0
+      - moreutils # for sponge used to overwrite config
+      - xsel # for vscode plugin gitlens
+
+- name: add apt key
+  become: yes
+  apt_key:
+    url: https://packages.microsoft.com/keys/microsoft.asc
+    keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
+
+- name: add apt repository
+  become: yes
+  apt_repository:
+    repo: >-
+      deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
+    filename: vscode
+    state: present
+
+- name: install packages
+  become: yes
+  apt:
+    name: code
+
+- name: install plugins
+  include_tasks: inner/install_plugin.yml
+  with_items: "{{ vscode_plugins }}"
+  loop_control:
+    loop_var: vscode_plugin
+
+- name: put user settings.json
+  copy:
+    src: settings.json
+    dest: /home/vagrant/.config/Code/User/settings.json
+    mode: 0664
+
+- name: add locale.json
+  copy:
+    src: locale.json
+    dest: "/home/vagrant/.config/Code/User/locale.json"
+    mode: 0664

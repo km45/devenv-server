@@ -1,0 +1,25 @@
+---
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      # TODO: Maybe missing some packages such as xsel
+      - code
+
+- name: install plugins
+  include_tasks: inner/install_plugin.yml
+  with_items: "{{ vscode_plugins }}"
+  loop_control:
+    loop_var: vscode_plugin
+
+- name: put user settings.json
+  copy:
+    src: settings.json
+    dest: "/home/vagrant/.config/Code - OSS/User/settings.json"
+    mode: 0664
+
+- name: add locale.json
+  copy:
+    src: locale.json
+    dest: "/home/vagrant/.config/Code - OSS/User/locale.json"
+    mode: 0664
