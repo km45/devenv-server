@@ -7,10 +7,9 @@ platforms:
   - name: gui-applications-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
-  # TODO: support archlinux
-  # - name: gui-applications-archlinux
-  #   image: archlinux
-  #   dockerfile: DockerfileExtended.j2
+  - name: gui-applications-archlinux
+    image: archlinux
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:

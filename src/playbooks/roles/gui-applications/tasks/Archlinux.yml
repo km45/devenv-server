@@ -1,0 +1,19 @@
+---
+- name: install firefox
+  become: yes
+  pacman:
+    name:
+      - firefox
+      - firefox-i18n-ja
+
+- name: install caja
+  become: yes
+  pacman:
+    name: caja
+
+- name: install other packages
+  become: yes
+  pacman:
+    name:
+      - ghex
+      - meld
