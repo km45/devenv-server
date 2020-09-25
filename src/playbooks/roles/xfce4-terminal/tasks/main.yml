@@ -1,9 +1,18 @@
 ---
 
-- name: install packages
+- name: install packages by apt
   become: yes
   apt:
     name: xfce4-terminal
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install packages by pacman
+  become: yes
+  pacman:
+    name: xfce4-terminal
+  when:
+    - ansible_distribution == "Archlinux"
 
 - name: create directory to put config file
   file:
