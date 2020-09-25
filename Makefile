@@ -65,8 +65,14 @@ package-bionic:
 	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/ubuntu-bionic-vagrant
 	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
 
+.PHONY: package-archlinux
+package-archlinux:
+	mkdir -p $(OUT)/archlinux-vagrant
+	cp -p src/vagrantfiles/archlinux/Vagrantfile $(OUT)/archlinux-vagrant
+	cp -pr src/playbooks $(OUT)/archlinux-vagrant
+
 .PHONY: package
-package: clean package-bionic
+package: clean package-bionic package-archlinux
 
 .PHONY: distribute-templates
 distribute-templates:
