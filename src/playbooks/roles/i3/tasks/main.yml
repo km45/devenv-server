@@ -1,12 +1,23 @@
 ---
-
-- name: install packages
+- name: install packages by apt
   become: yes
   apt:
     name:
       - i3
       - i3blocks
       - sysstat  # required by i3blocks-contrib blocklet cpu_usage
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install packages by pacman
+  become: yes
+  pacman:
+    name:
+      - i3-wm
+      - i3blocks
+      - sysstat  # required by i3blocks-contrib blocklet cpu_usage
+  when:
+    - ansible_distribution == "Archlinux"
 
 - name: create directories to put config file
   file:
