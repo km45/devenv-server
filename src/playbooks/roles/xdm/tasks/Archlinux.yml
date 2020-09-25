@@ -1,0 +1,19 @@
+---
+# TODO: rename role to display manager
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - lightdm-gtk-greeter
+      - xdg-user-dirs
+      - xorg-server
+
+- name: enable and start service
+  become: yes
+  systemd:
+    name: lightdm
+    state: started
+    enabled: yes
+
+- name: create well known English-named user directories
+  shell: LC_ALL=C xdg-user-dirs-update
