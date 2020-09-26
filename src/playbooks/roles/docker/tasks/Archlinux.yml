@@ -1,0 +1,21 @@
+---
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - docker
+      - docker-compose
+
+- name: add vagrant user to docker group
+  become: yes
+  user:
+    name: vagrant
+    groups: docker
+    append: yes
+
+- name: enable docker service
+  become: yes
+  systemd:
+    name: docker
+    # state: started
+    enabled: yes
