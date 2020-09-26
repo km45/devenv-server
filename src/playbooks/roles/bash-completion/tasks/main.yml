@@ -1,6 +1,15 @@
 ---
 
-- name: install packages
+- name: install packages by apt
   become: yes
   apt:
     name: bash-completion
+  when:
+    - ansible_distribution == "Ubuntu"
+
+- name: install packages by pacman
+  become: yes
+  pacman:
+    name: bash-completion
+  when:
+    - ansible_distribution == "Archlinux"
