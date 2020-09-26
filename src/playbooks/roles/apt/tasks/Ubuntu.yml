@@ -1,0 +1,42 @@
+---
+
+- name: install aptitude for ansible module apt
+  become: yes
+  apt:
+    name: aptitude
+
+- name: enable automatically select apt repository mirror
+  become: yes
+  replace:
+    path: /etc/apt/sources.list
+    regexp: 'http://archive\.ubuntu\.com/ubuntu/'
+    replace: 'mirror://mirrors.ubuntu.com/mirrors.txt'
+  register: change_repository
+
+- name: update cache if repository changed
+  become: yes
+  apt:
+    update_cache: yes
+  when: change_repository.changed  # noqa 503
+
+- name: update cache if current one is older than an hour
+  become: yes
+  apt:
+    cache_valid_time: 3600
+    update_cache: yes
+
+- name: upgrade installed packages
+  become: yes
+  apt:
+    install_recommends: no
+    upgrade: safe
+
+- name: remove useless packages from the cache
+  become: yes
+  apt:
+    autoclean: yes
+
+- name: remove dependencies that are no longer required
+  become: yes
+  apt:
+    autoremove: yes
