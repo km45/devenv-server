@@ -1,4 +1,9 @@
 ---
+- name: install requirements
+  become: yes
+  pacman:
+    name: base-devel
+
 - name: install packages
   aur:
     name: otf-takao
