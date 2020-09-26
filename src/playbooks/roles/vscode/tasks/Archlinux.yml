@@ -3,7 +3,6 @@
   become: yes
   pacman:
     name:
-      # TODO: Maybe missing some packages such as xsel
       - base-devel
 
 - name: install packages
