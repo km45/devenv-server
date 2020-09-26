@@ -1,0 +1,4 @@
+---
+- name: install packages
+  aur:
+    name: otf-takao
