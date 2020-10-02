@@ -32,6 +32,18 @@
             that:
               - result.stdout == "3.7.3"
             fail_msg: "actual version is {{ result.stdout }}"
+    - name: test poetry version
+      block:
+        - name: determine poetry version
+          command: bash -c ". /home/vagrant/.bashrc.d/pyenv.bashrc && poetry --version | sed 's|Poetry version ||g'"
+          register: result
+          changed_when: False
+        - name: assert poetry version
+          assert:
+            that:
+              - result.stdout is version('1.1.0', '>=')
+              - result.stdout is version('2.0.0', '<')
+            fail_msg: "actual version is {{ result.stdout }}"
     - name: test AWS CLI version
       block:
         - name: determine AWS CLI version
