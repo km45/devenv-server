@@ -1,17 +1,2 @@
 ---
-
-- name: install packages
-  become: yes
-  apt:
-    name:
-      - fcitx-mozc
-      - language-pack-ja
-
-- name: set system locale
-  become: yes
-  shell: localectl set-locale LANG=ja_JP.UTF-8
-
-- name: set timezone
-  become: yes
-  timezone:
-    name: Asia/Tokyo
+- include_tasks: "{{ ansible_distribution }}.yml"

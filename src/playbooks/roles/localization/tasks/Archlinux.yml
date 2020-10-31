@@ -1,0 +1,22 @@
+---
+
+- name: install packages
+  become: yes
+  pacman:
+    name:
+      - fcitx-mozc
+      - fcitx-configtool
+
+- name: ensure locale
+  become: yes
+  locale_gen:
+    name: ja_JP.UTF-8
+
+- name: set system locale
+  become: yes
+  shell: localectl set-locale LANG=ja_JP.UTF-8
+
+- name: set timezone
+  become: yes
+  timezone:
+    name: Asia/Tokyo
