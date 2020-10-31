@@ -7,6 +7,8 @@
       - fcitx-mozc
       - fcitx-configtool
 
+# TODO: currently cannot input Japanese
+
 - name: ensure locale
   become: yes
   locale_gen:
