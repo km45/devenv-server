@@ -1,0 +1,33 @@
+---
+
+- name: install packages
+  become: yes
+  pacman:
+    name: samba
+
+- name: add config file
+  become: yes
+  copy:
+    src: smb.conf
+    dest: /etc/samba/
+    mode: 0644
+
+- name: add samba user
+  become: yes
+  shell: |-
+    echo -e '{{ password }}\n{{ password }}' \
+    | pdbedit -a -t -u "{{ username }}"
+
+- name: enable nmb service
+  become: yes
+  systemd:
+    name: nmb
+    state: started
+    enabled: yes
+
+- name: enable smb service
+  become: yes
+  systemd:
+    name: smb
+    state: started
+    enabled: yes

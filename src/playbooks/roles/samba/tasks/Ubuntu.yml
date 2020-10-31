@@ -1,0 +1,21 @@
+---
+
+- name: install packages by apt
+  become: yes
+  apt:
+    name: samba
+
+- name: add config file
+  become: yes
+  copy:
+    src: smb.conf
+    dest: /etc/samba/
+    mode: 0644
+
+- name: add samba user
+  become: yes
+  shell: |-
+    echo '{{ password }}\n{{ password }}' \
+    | pdbedit -a -t -u "{{ username }}"
+
+# REVIEW: Is required service restart operation?
