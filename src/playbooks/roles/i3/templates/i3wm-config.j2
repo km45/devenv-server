@@ -151,3 +151,9 @@ bar {
         # status_command i3status
         status_command i3blocks
 }
+
+{% if ansible_distribution == "Archlinux" %}
+exec dex -ae i3
+{% else %}
+# exec dex -ae i3
+{% endif %}

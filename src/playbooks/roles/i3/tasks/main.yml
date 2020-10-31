@@ -28,8 +28,8 @@
     - /home/vagrant/.config/i3blocks
 
 - name: add config file
-  copy:
-    src: i3wm-config
+  template:
+    src: i3wm-config.j2
     dest: /home/vagrant/.config/i3/config
     mode: 0664
 
@@ -76,3 +76,15 @@
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/load_average/load_average
     dest: /home/vagrant/.local/share/i3blocks/load_average
     state: link
+
+- name: install dex
+  when:
+    - ansible_distribution == "Archlinux"
+  block:
+    - name: install requirements
+      become: yes
+      pacman:
+        name: base-devel
+    - name: install packages
+      aur:
+        name: dex-git
