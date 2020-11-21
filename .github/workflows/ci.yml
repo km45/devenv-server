@@ -8,9 +8,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v2
       - name: setup poetry
-        uses: dschep/install-poetry-action@v1
+        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=cplusplus
       - run: make test ROLE=git
