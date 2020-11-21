@@ -6,9 +6,8 @@ authors = ["Kamei Shogo <km45@users.noreply.github.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.7"
-molecule = "^3.0.2"
-docker = "^4.1.0"
 ansible-lint = "^4.2.0"
+molecule = {extras = ["docker", "lint"], version = "^3.1.5"}
 
 [tool.poetry.dev-dependencies]
 
