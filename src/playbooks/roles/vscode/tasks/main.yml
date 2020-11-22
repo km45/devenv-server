@@ -5,6 +5,7 @@
   apt:
     name:
       - apt-transport-https
+      - gnupg
       - jq
       - libasound2
       - libdrm2
