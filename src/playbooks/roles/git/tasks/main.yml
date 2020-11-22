@@ -1,4 +1,9 @@
 ---
+- name: install requiremsnts
+  become: yes
+  apt:
+    name:
+      - gnupg
 
 - name: add apt repository
   become: yes
