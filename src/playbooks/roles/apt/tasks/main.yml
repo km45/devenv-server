@@ -19,16 +19,12 @@
     update_cache: yes
   when: change_repository.changed  # noqa 503
 
-- name: update cache if current one is older than an hour
+- name: update cache and upgrade packages if current one is older than an hour
   become: yes
   apt:
     cache_valid_time: 3600
-    update_cache: yes
-
-- name: upgrade installed packages
-  become: yes
-  apt:
     install_recommends: no
+    update_cache: yes
     upgrade: safe
 
 - name: remove useless packages from the cache
