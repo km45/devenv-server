@@ -3,7 +3,7 @@
 - name: install requirements
   become: yes
   apt:
-    name: python-setuptools
+    name: python3-setuptools
 
 - name: install packages
   pip:

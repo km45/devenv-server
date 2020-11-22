@@ -3,7 +3,7 @@
 - name: check whether already installed python 3.7.3 # noqa 306
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
-    pyenv versions | grep '^  system$' && pyenv versions | grep '^* 3.7.3 (set by /.*)$'
+    pyenv versions | grep '^* 3.7.3 (set by /.*)$'
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
