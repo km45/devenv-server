@@ -12,7 +12,6 @@ vscode_plugins:
   - Tyriar.sort-lines
   - wmaurer.change-case
   - wraith13.bracket-lens
-  - wraith13.wandbox-vscode
   #
   #
   # ----------------------------------------------------------------------------
