@@ -3,7 +3,7 @@
 - hosts: all
   roles:
     - distribution
-    - apt
+    - setup
 
 # common roles (tested by molecule)
 - hosts: all
