@@ -11,6 +11,7 @@ vscode_plugins:
   - streetsidesoftware.code-spell-checker
   - Tyriar.sort-lines
   - wmaurer.change-case
+  - wraith13.bracket-lens
   - wraith13.wandbox-vscode
   #
   #
