@@ -1,5 +1,4 @@
 ---
 
 dependencies:
-  - apt
   - dependencies/bashrc.d

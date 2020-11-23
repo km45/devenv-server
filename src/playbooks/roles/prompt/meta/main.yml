@@ -1,6 +1,5 @@
 ---
 
 dependencies:
-  - apt
   - dependencies/bashrc.d
   - git
