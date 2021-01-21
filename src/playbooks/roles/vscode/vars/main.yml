@@ -92,6 +92,7 @@ vscode_plugins:
   # ----------------------------------------------------------------------------
   # Shell script
   # ----------------------------------------------------------------------------
+  - foxundermoon.shell-format
   - rogalmic.bash-debug
   - timonwong.shellcheck
   #
