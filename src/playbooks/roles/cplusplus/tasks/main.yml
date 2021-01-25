@@ -1,13 +1,13 @@
 ---
 
-- name: check whether already installed clang 9
+- name: check whether already installed clang 11
   command: |-
-    which clang-9
+    which clang-11
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install clang 9
+- name: install clang 11
   when: checked_result.rc == 1
   block:
     - name: install requirements
@@ -28,7 +28,7 @@
         dest: "{{ tmpdir.path }}/llvm.sh"
     - name: execute clang automatic installation script
       become: yes
-      command: "bash {{ tmpdir.path }}/llvm.sh 9"
+      command: "bash {{ tmpdir.path }}/llvm.sh 11"
     - name: remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
@@ -38,15 +38,15 @@
   become: yes
   apt:
     name:
-      - clang-format-9
+      - clang-format-11
       - cmake
       - g++
       - gdb
       - ninja-build
 
-- name: correct clang-format version to 9
+- name: correct clang-format version to 11
   become: yes
   alternatives:
     link: /usr/bin/clang-format
     name: clang-format
-    path: /usr/bin/clang-format-9
+    path: /usr/bin/clang-format-11
