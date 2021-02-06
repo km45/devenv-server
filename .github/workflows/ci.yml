@@ -32,7 +32,7 @@ jobs:
       - name: setup poetry
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
-      - run: make test ROLE=gui-applications
+      - run: make test ROLE=gui_applications
   test_nkf:
     runs-on: ubuntu-18.04
     steps:
