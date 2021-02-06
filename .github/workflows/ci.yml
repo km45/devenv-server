@@ -23,6 +23,10 @@ jobs:
       - run: make test ROLE=vscode
       - run: make test ROLE=xmllint
       - run: make test ROLE=zip
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
       - run: make up
       - run: make lint TTY=false
       - run: make down
