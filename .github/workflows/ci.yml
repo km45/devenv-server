@@ -120,3 +120,20 @@ jobs:
       - run: make up
       - run: make lint TTY=false
       - run: make down
+  status_check:
+    runs-on: ubuntu-18.04
+    needs:
+      - test_cplusplus
+      - test_git
+      - test_gui_applications
+      - test_nkf
+      - test_prompt
+      - test_python
+      - test_rust
+      - test_shellcheck
+      - test_vscode
+      - test_xmllint
+      - test_zip
+      - lint
+    steps:
+      - run: echo 'pass'
