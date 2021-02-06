@@ -6,9 +6,3 @@
     name:
       - firefox
       - firefox-locale-ja
-
-- name: install other packages
-  become: yes
-  apt:
-    name:
-      - ghex
