@@ -15,7 +15,7 @@ function main() {
         make test ROLE={} ::: \
             cplusplus \
             git \
-            gui-applications \
+            gui_applications \
             nkf \
             python \
             rust \

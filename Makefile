@@ -72,7 +72,7 @@ package: clean package-bionic
 distribute-templates:
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/cplusplus/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/git/molecule/default/
-	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/gui-applications/molecule/default/
+	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/gui_applications/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/nkf/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/prompt/molecule/default/
 	cp -p templates/Dockerfile.j2 templates/DockerfileExtended.j2 src/playbooks/roles/python/molecule/default/
