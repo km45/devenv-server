@@ -14,7 +14,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=cplusplus
       - run: make test ROLE=git
-      - run: make test ROLE=gui-applications
+      - run: make test ROLE=gui_applications
       - run: make test ROLE=nkf
       - run: make test ROLE=prompt
       - run: make test ROLE=python

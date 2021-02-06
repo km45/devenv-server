@@ -10,7 +10,7 @@
   roles:
     - cplusplus
     - git
-    - gui-applications
+    - gui_applications
     - nkf
     - prompt
     - python

@@ -4,7 +4,7 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: gui-applications-bionic
+  - name: gui_applications-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
 provisioner:
