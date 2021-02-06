@@ -18,7 +18,6 @@
       register: result
       changed_when: False
       with_items:
-        - caja
         - firefox
         - ghex
         - meld

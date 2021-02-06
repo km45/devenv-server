@@ -7,14 +7,6 @@
       - firefox
       - firefox-locale-ja
 
-- name: install caja
-  block:
-    - name: install caja
-      become: yes
-      apt:
-        name:
-          - caja
-
 - name: install other packages
   become: yes
   apt:
