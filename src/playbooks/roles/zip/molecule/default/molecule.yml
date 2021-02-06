@@ -7,6 +7,9 @@ platforms:
   - name: zip-bionic
     image: ubuntu:18.04
     dockerfile: DockerfileExtended.j2
+  - name: zip-focal
+    image: ubuntu:20.04
+    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:

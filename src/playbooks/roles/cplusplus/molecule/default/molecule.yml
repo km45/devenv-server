@@ -11,6 +11,13 @@ platforms:
       - SYS_PTRACE
     security_opts:
       - seccomp=unconfined
+  - name: cplusplus-focal
+    image: ubuntu:20.04
+    dockerfile: DockerfileExtended.j2
+    capabilities:
+      - SYS_PTRACE
+    security_opts:
+      - seccomp=unconfined
 provisioner:
   name: ansible
   options:
