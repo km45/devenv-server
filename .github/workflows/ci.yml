@@ -3,7 +3,7 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  build:
+  test_cplusplus:
     runs-on: ubuntu-18.04
     steps:
       - uses: actions/checkout@v2
@@ -13,16 +13,110 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=cplusplus
+  test_git:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=git
+  test_gui_applications:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=gui_applications
+  test_nkf:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=nkf
+  test_prompt:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=prompt
+  test_python:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=python
+  test_rust:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=rust
+  test_shellcheck:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=shellcheck
+  test_vscode:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=vscode
+  test_xmllint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=xmllint
+  test_zip:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
       - run: make test ROLE=zip
+  lint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
       - run: make up
       - run: make lint TTY=false
       - run: make down
