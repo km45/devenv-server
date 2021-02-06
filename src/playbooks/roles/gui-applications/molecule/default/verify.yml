@@ -20,4 +20,3 @@
       with_items:
         - firefox
         - ghex
-        - meld
