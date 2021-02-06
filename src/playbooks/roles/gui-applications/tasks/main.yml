@@ -12,4 +12,3 @@
   apt:
     name:
       - ghex
-      - meld
