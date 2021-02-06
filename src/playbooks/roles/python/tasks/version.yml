@@ -1,6 +1,6 @@
 ---
 
-- name: check whether already installed python 3.7.9 # noqa 306
+- name: check whether already installed python 3.8.7 # noqa 306
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     pyenv versions | grep '^* 3.8.7 (set by /.*)$'
