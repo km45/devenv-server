@@ -65,8 +65,14 @@ package-bionic:
 	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/ubuntu-bionic-vagrant
 	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
 
+.PHONY: package-focal
+package-focal:
+	mkdir -p $(OUT)/ubuntu-focal-vagrant
+	cp -p src/vagrantfiles/ubuntu-focal/Vagrantfile $(OUT)/ubuntu-focal-vagrant
+	cp -pr src/playbooks $(OUT)/ubuntu-focal-vagrant
+
 .PHONY: package
-package: clean package-bionic
+package: clean package-bionic package-focal
 
 .PHONY: distribute-templates
 distribute-templates:
