@@ -46,8 +46,10 @@
     dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
 
+# TODO: Set locale in argv.json (JSONC file) for Ubuntu 20.04
 - name: add locale.json
   copy:
     src: locale.json
     dest: "/home/vagrant/.config/Code/User/locale.json"
     mode: 0664
+  when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "18.04"

@@ -9,7 +9,7 @@
 
 - name: set system locale
   become: yes
-  shell: localectl set-locale LANG=ja_JP.UTF-8
+  shell: localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:en_US
 
 - name: set timezone
   become: yes
