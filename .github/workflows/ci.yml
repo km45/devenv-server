@@ -13,6 +13,18 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=cplusplus
+  test_docker:
+    # Use macOS instance for VirtualBox
+    # because nested virtualization is not supported for Ubuntu instances
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
+      - run: make test ROLE=docker
   test_git:
     runs-on: ubuntu-18.04
     steps:
@@ -136,6 +148,7 @@ jobs:
     runs-on: ubuntu-18.04
     needs:
       - test_cplusplus
+      - test_docker
       - test_git
       - test_gui_applications
       - test_nkf
