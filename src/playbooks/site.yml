@@ -16,6 +16,7 @@
     - python
     - rust
     - shellcheck
+    - swap
     - vscode
     - xmllint
     - zip
@@ -31,6 +32,5 @@
     - inputrc
     - localization
     - samba
-    - swap
     - xdm
     - xfce4-terminal
