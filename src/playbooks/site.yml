@@ -9,6 +9,7 @@
 - hosts: all
   roles:
     - cplusplus
+    - docker
     - git
     - gui_applications
     - nkf
@@ -25,7 +26,6 @@
 - hosts: all
   roles:
     - bash-completion
-    - docker
     - font
     - i3
     - inotify
