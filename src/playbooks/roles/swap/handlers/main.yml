@@ -1,0 +1,4 @@
+---
+- name: disable swap devices and files for current session
+  become: yes
+  command: "swapoff --all"
