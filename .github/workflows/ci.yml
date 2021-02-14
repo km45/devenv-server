@@ -83,6 +83,18 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=shellcheck
+  test_swap:
+    # Use macOS instance for VirtualBox
+    # because nested virtualization is not supported for Ubuntu instances
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
+      - run: make test ROLE=swap
   test_vscode:
     runs-on: ubuntu-18.04
     steps:
@@ -131,6 +143,7 @@ jobs:
       - test_python
       - test_rust
       - test_shellcheck
+      - test_swap
       - test_vscode
       - test_xmllint
       - test_zip
