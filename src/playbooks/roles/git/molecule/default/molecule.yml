@@ -4,9 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: git-bionic
-    image: ubuntu:18.04
-    dockerfile: DockerfileExtended.j2
   - name: git-focal
     image: ubuntu:20.04
     dockerfile: DockerfileExtended.j2

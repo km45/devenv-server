@@ -59,12 +59,6 @@ test-all:
 clean:
 	rm -rf $(OUT)
 
-.PHONY: package-bionic
-package-bionic:
-	mkdir -p $(OUT)/ubuntu-bionic-vagrant
-	cp -p src/vagrantfiles/ubuntu-bionic/Vagrantfile $(OUT)/ubuntu-bionic-vagrant
-	cp -pr src/playbooks $(OUT)/ubuntu-bionic-vagrant
-
 .PHONY: package-focal
 package-focal:
 	mkdir -p $(OUT)/ubuntu-focal-vagrant
@@ -72,7 +66,7 @@ package-focal:
 	cp -pr src/playbooks $(OUT)/ubuntu-focal-vagrant
 
 .PHONY: package
-package: clean package-bionic package-focal
+package: clean package-focal
 
 .PHONY: distribute-templates
 distribute-templates:
