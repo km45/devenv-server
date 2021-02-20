@@ -4,9 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: python-bionic
-    image: ubuntu:18.04
-    dockerfile: DockerfileExtended.j2
   - name: python-focal
     image: ubuntu:20.04
     dockerfile: DockerfileExtended.j2
