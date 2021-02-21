@@ -25,7 +25,6 @@
         - name: reboot machine to apply changes
           # avoid rebooting in role because it causes failure in local provision
           become: yes
-          reboot:
-            reboot_timeout: 300
+          reboot: null
         - name: assert docker command usability
           command: docker run --rm hello-world

@@ -28,8 +28,7 @@
       block:
         - name: reboot machine
           become: yes
-          reboot:
-            reboot_timeout: 300
+          reboot: null
         - name: determine swap size
           command: bash -c "grep SwapTotal /proc/meminfo | awk '{print $2}'"
           register: result
