@@ -14,8 +14,8 @@ function main() {
         --results ${PARALLEL_RESULT_DIRECTORY} \
         make test ROLE={} ::: \
             cplusplus \
+            firefox \
             git \
-            gui_applications \
             nkf \
             python \
             rust \
