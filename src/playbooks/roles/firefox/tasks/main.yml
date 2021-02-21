@@ -1,6 +1,5 @@
 ---
-
-- name: install firefox
+- name: install packages
   become: yes
   apt:
     name:

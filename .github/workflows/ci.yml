@@ -25,6 +25,16 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=docker
+  test_firefox:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
+      - run: make test ROLE=firefox
   test_git:
     runs-on: ubuntu-18.04
     steps:
@@ -35,16 +45,6 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=git
-  test_gui_applications:
-    runs-on: ubuntu-18.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
-      - run: make sync
-      - run: make test ROLE=gui_applications
   test_nkf:
     runs-on: ubuntu-18.04
     steps:
@@ -149,8 +149,8 @@ jobs:
     needs:
       - test_cplusplus
       - test_docker
+      - test_firefox
       - test_git
-      - test_gui_applications
       - test_nkf
       - test_prompt
       - test_python

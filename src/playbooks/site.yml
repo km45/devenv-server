@@ -10,8 +10,8 @@
   roles:
     - cplusplus
     - docker
+    - firefox
     - git
-    - gui_applications
     - nkf
     - prompt
     - python
