@@ -6,6 +6,8 @@
     scope: global
     value: "{{ item.value }}"
   with_items:
+    - name: core.editor
+      value: nano
     - name: log.decorate
       value: short
     - name: push.default
