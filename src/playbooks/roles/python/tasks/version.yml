@@ -1,9 +1,9 @@
 ---
 
-- name: check whether already installed python 3.8.7 # noqa 306
+- name: check whether already installed python {{ python_version }} # noqa 306
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
-    pyenv versions | grep '^* 3.8.7 (set by /.*)$'
+    pyenv versions | grep '^* {{ python_version }} (set by /.*)$'
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -23,16 +23,16 @@
           - libssl-dev
           - make
           - zlib1g-dev
-    - name: install python 3.8.7
+    - name: install python {{ python_version }}
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
-        pyenv install -s -k 3.8.7
+        pyenv install -s -k {{ python_version }}
       register: install_result
-    - name: show stderr of python 3.8.7 installation and check whether WARNING exists
+    - name: show stderr of python {{ python_version }} installation and check whether WARNING exists
       debug:
         msg: "{{ install_result.stderr_lines }}"
       failed_when: "{{ install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0 }}"
-    - name: set global python version to 3.8.7
+    - name: set global python version to {{ python_version }}
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
-        pyenv global 3.8.7
+        pyenv global {{ python_version }}
