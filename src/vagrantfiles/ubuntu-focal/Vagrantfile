@@ -4,7 +4,7 @@
 Vagrant.configure("2") do |config|
   # config.vbguest.auto_update = false
 
-  config.vm.box = "ubuntu/focal64"
+  config.vm.box = "bento/ubuntu-20.04"
 
   config.vm.network "private_network", type: "dhcp"
 
