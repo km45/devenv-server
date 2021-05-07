@@ -12,6 +12,7 @@
       - libgbm1
       - libx11-xcb1
       - libxcb-dri3-0
+      - libxshmfence1
       - moreutils # for sponge used to overwrite config
       - xsel # for vscode plugin gitlens
 
