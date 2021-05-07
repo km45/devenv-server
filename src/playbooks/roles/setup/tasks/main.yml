@@ -5,20 +5,6 @@
   apt:
     name: aptitude
 
-- name: enable automatically select apt repository mirror
-  become: yes
-  replace:
-    path: /etc/apt/sources.list
-    regexp: 'http://archive\.ubuntu\.com/ubuntu/'
-    replace: 'mirror://mirrors.ubuntu.com/mirrors.txt'
-  register: change_repository
-
-- name: update cache if repository changed
-  become: yes
-  apt:
-    update_cache: yes
-  when: change_repository.changed  # noqa 503
-
 - name: update cache and upgrade packages if current one is older than a day
   become: yes
   apt:
