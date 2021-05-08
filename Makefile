@@ -51,10 +51,6 @@ sync:
 test:
 	poetry run bash -c "cd src/playbooks/roles/${ROLE} && molecule test"
 
-.PHONY: test-all
-test-all:
-	bash test-all.sh
-
 .PHONY: clean
 clean:
 	rm -rf $(OUT)
