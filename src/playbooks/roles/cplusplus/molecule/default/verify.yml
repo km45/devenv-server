@@ -34,6 +34,7 @@
           copy:
             src: "hello_world.cpp"
             dest: "{{ tmpdir.path }}/source.cpp"
+            mode: '0664'
         - name: build c++ project by g++ directly
           command: g++ source.cpp
           args:
@@ -59,6 +60,7 @@
           copy:
             src: "max.cpp"
             dest: "{{ tmpdir.path }}/source.cpp"
+            mode: '0664'
         - name: build c++11 project with debug option by g++ directly
           command: g++ -std=c++11 -g source.cpp
           args:
@@ -67,6 +69,7 @@
           copy:
             src: "max.gdbcommand"
             dest: "{{ tmpdir.path }}/gdbcommand"
+            mode: '0664'
         - name: debug executable by gdb with command file
           command: gdb ./a.out --command=gdbcommand
           args:
@@ -93,10 +96,12 @@
           copy:
             src: "hello_world.cpp"
             dest: "{{ tmpdir.path }}/source.cpp"
+            mode: '0664'
         - name: put CMakeLists.txt
           copy:
             src: "CMakeLists.txt"
             dest: "{{ tmpdir.path }}/CMakeLists.txt"
+            mode: '0664'
         - name: build c++ project via cmake
           command: "{{ item }}"
           args:
@@ -125,10 +130,12 @@
           copy:
             src: "hello_world.cpp"
             dest: "{{ tmpdir.path }}/source.cpp"
+            mode: '0664'
         - name: put CMakeLists.txt
           copy:
             src: "CMakeLists.txt"
             dest: "{{ tmpdir.path }}/CMakeLists.txt"
+            mode: '0664'
         - name: build c++ project using ninja via cmake
           command: "{{ item }}"
           args:

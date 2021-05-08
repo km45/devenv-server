@@ -4,6 +4,7 @@
   file:
     path: /home/vagrant/.config/git
     state: directory
+    mode: '0755'
 
 - name: add default gitignore file
   copy:
