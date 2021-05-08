@@ -71,6 +71,16 @@ jobs:
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=prompt
+  test_pv:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - name: setup poetry
+        uses: abatilo/actions-poetry@v2.1.0
+      - run: make sync
+      - run: make test ROLE=pv
   test_python:
     runs-on: ubuntu-18.04
     steps:

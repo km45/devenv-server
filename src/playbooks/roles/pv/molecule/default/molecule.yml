@@ -1,0 +1,19 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: pv-focal
+    image: ubuntu:20.04
+    dockerfile: DockerfileExtended.j2
+provisioner:
+  name: ansible
+  options:
+    user: vagrant
+verifier:
+  name: ansible
+lint: |
+  set -e
+  yamllint .
+  ansible-lint
