@@ -5,3 +5,4 @@
     content: ""
     dest: /home/vagrant/.bashrc
     force: no
+    mode: '0755'

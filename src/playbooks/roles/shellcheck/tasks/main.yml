@@ -27,6 +27,7 @@
       file:
         path: "/usr/local/stow/shellcheck-{{ shellcheck_version }}/bin"
         state: directory
+        mode: '0755'
     - name: put executable
       become: yes
       command: "cp -p /usr/local/src/shellcheck-v{{ shellcheck_version }}/shellcheck /usr/local/stow/shellcheck-{{ shellcheck_version }}/bin/shellcheck"
