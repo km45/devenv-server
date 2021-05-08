@@ -9,8 +9,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=cplusplus
   test_docker:
@@ -21,8 +19,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - name: test
         uses: nick-invision/retry@v2
@@ -37,8 +33,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=firefox
   test_git:
@@ -47,8 +41,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=git
   test_nkf:
@@ -57,8 +49,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=nkf
   test_prompt:
@@ -67,8 +57,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=prompt
   test_pv:
@@ -77,8 +65,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=pv
   test_python:
@@ -87,8 +73,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=python
   test_rust:
@@ -97,8 +81,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=rust
   test_shellcheck:
@@ -107,8 +89,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=shellcheck
   test_swap:
@@ -119,8 +99,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - name: test
         uses: nick-invision/retry@v2
@@ -135,8 +113,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=vscode
   test_xmllint:
@@ -145,8 +121,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=xmllint
   test_zip:
@@ -155,8 +129,6 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup python
         uses: actions/setup-python@v2
-      - name: setup poetry
-        uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
       - run: make test ROLE=zip
   lint:
