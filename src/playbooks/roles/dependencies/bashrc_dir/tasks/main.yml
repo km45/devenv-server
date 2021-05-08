@@ -4,6 +4,7 @@
   file:
     path: /home/vagrant/.bashrc.d
     state: directory
+    mode: '0755'
 
 - name: edit .bashrc to use files in .bashrc.d
   blockinfile:

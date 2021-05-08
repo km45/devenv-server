@@ -24,7 +24,13 @@ jobs:
       - name: setup poetry
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
-      - run: make test ROLE=docker
+      - name: test
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          retry_on: error
+          command: make test ROLE=docker
   test_firefox:
     runs-on: ubuntu-18.04
     steps:
@@ -106,7 +112,13 @@ jobs:
       - name: setup poetry
         uses: abatilo/actions-poetry@v2.1.0
       - run: make sync
-      - run: make test ROLE=swap
+      - name: test
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          retry_on: error
+          command: make test ROLE=swap
   test_vscode:
     runs-on: ubuntu-18.04
     steps:
