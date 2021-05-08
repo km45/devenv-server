@@ -43,13 +43,25 @@ awesome-ci:
 	docker run --rm -v $(CURDIR)/src:/ac cytopia/awesome-ci syntax-json                  --path=/ac --ignore=".git,*/__pycache__" --extension=json
 	docker run --rm -v $(CURDIR)/src:/ac cytopia/awesome-ci syntax-markdown              --path=/ac --ignore=".git,*/__pycache__" --extension=md
 
+.PHONY: env-export
+env-export:
+	poetry export --output requirements.txt
+
 .PHONY: sync
 sync:
+	pip install -r requirements.txt
+
+.PHONY: dev-sync
+dev-sync:
 	poetry install
+
+.PHONY: dev-shell
+dev-shell:
+	poetry shell
 
 .PHONY: test
 test:
-	poetry run bash -c "cd src/playbooks/roles/${ROLE} && molecule test"
+	bash -c "cd src/playbooks/roles/${ROLE} && molecule test"
 
 .PHONY: clean
 clean:
