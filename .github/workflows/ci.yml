@@ -175,6 +175,7 @@ jobs:
       - test_git
       - test_nkf
       - test_prompt
+      - test_pv
       - test_python
       - test_rust
       - test_shellcheck
