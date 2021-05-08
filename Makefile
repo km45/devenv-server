@@ -45,7 +45,7 @@ awesome-ci:
 
 .PHONY: env-export
 env-export:
-	poetry export --output requirements.txt
+	poetry export --without-hashes --output requirements.txt
 
 .PHONY: sync
 sync:
