@@ -5,6 +5,7 @@ vscode_plugins:
   # Common
   # ----------------------------------------------------------------------------
   - alefragnani.Bookmarks
+  - astallinger.sourcetrail
   - MS-CEINTL.vscode-language-pack-ja
   - ms-vscode-remote.vscode-remote-extensionpack
   - shardulm94.trailing-spaces

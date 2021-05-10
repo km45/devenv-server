@@ -18,6 +18,7 @@
     - python
     - rust
     - shellcheck
+    - sourcetrail
     - swap
     - vscode
     - xmllint
