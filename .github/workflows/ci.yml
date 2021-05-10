@@ -91,6 +91,14 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=shellcheck
+  test_sourcetrail:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - run: make sync
+      - run: make test ROLE=sourcetrail
   test_swap:
     # Use macOS instance for VirtualBox
     # because nested virtualization is not supported for Ubuntu instances
@@ -151,6 +159,7 @@ jobs:
       - test_python
       - test_rust
       - test_shellcheck
+      - test_sourcetrail
       - test_swap
       - test_vscode
       - test_xmllint
