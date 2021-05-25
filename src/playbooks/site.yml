@@ -5,24 +5,7 @@
     - distribution
     - setup
 
-# common roles (tested by molecule)
-- hosts: all
-  roles:
-    - cplusplus
-    - docker
-    - firefox
-    - git
-    - nkf
-    - prompt
-    - pv
-    - python
-    - rust
-    - shellcheck
-    - sourcetrail
-    - swap
-    - vscode
-    - xmllint
-    - zip
+- import_playbook: well_tested.yml
 
 # common roles (not-tested by molecule)
 - hosts: all
