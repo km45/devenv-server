@@ -19,6 +19,7 @@
       file:
         path: "/usr/local/src/sourcetrail-{{ sourcetrail_tag }}"
         state: directory
+        mode: '0755'
     - name: download and unarchive tarball
       become: yes
       unarchive:

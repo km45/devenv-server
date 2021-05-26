@@ -1,0 +1,19 @@
+---
+# common roles (tested by molecule)
+- hosts: all
+  roles:
+    - cplusplus
+    - docker
+    - firefox
+    - git
+    - nkf
+    - prompt
+    - pv
+    - python
+    - rust
+    - shellcheck
+    - sourcetrail
+    - swap
+    - vscode
+    - xmllint
+    - zip
