@@ -6,6 +6,7 @@
     - docker
     - firefox
     - git
+    - inotify
     - nkf
     - prompt
     - pv

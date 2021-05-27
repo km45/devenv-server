@@ -1,0 +1,14 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: vagrant
+  provider:
+    name: VBox
+platforms:
+  - name: inotify-focal
+    box: bento/ubuntu-20.04
+provisioner:
+  name: ansible
+verifier:
+  name: ansible

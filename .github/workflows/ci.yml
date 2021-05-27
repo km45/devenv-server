@@ -43,6 +43,22 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=git
+  test_inotify:
+    # Use macOS instance for VirtualBox
+    # because nested virtualization is not supported for Ubuntu instances
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - run: make sync
+      - name: test
+        uses: nick-invision/retry@v2
+        with:
+          timeout_minutes: 15
+          max_attempts: 3
+          retry_on: error
+          command: make test ROLE=inotify
   test_nkf:
     runs-on: ubuntu-18.04
     steps:
@@ -161,6 +177,7 @@ jobs:
       - test_docker
       - test_firefox
       - test_git
+      - test_inotify
       - test_nkf
       - test_prompt
       - test_pv
