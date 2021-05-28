@@ -13,7 +13,6 @@
     - bash-completion
     - font
     - i3
-    - inotify
     - inputrc
     - localization
     - samba

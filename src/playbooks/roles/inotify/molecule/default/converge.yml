@@ -1,0 +1,7 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include inotify"
+      include_role:
+        name: "inotify"
