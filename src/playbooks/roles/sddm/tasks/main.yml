@@ -1,11 +1,9 @@
 ---
-
 - name: install packages
   become: yes
   apt:
     name:
-      - xdm
-      - xserver-xorg
+      - sddm
 
 - name: create well known English-named user directories
   shell: LC_ALL=C xdg-user-dirs-update
