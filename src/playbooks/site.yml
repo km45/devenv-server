@@ -12,7 +12,6 @@
   roles:
     - bash-completion
     - font
-    - i3
     - inputrc
     - localization
     - samba

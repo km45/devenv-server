@@ -18,3 +18,5 @@
     src: autologin.conf
     dest: /etc/sddm.conf.d/autologin.conf
     mode: 0664
+
+- include_tasks: i3.yml
