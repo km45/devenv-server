@@ -5,15 +5,12 @@
     name:
       - sddm
 
-- name: create well known English-named user directories
-  shell: LC_ALL=C xdg-user-dirs-update
-
 - name: create directory to put sddm config
   become: yes
   file:
     path: /etc/sddm.conf.d
     state: directory
-    mode: '0755'
+    mode: "0755"
 
 - name: put sddm config for auto login
   become: yes
@@ -21,3 +18,5 @@
     src: autologin.conf
     dest: /etc/sddm.conf.d/autologin.conf
     mode: 0664
+
+- include_tasks: i3.yml

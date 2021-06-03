@@ -139,6 +139,14 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=vscode
+  test_window-system:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - run: make sync
+      - run: make test ROLE=window-system
   test_xmllint:
     runs-on: ubuntu-18.04
     steps:
@@ -187,6 +195,7 @@ jobs:
       - test_sourcetrail
       - test_swap
       - test_vscode
+      - test_window-system
       - test_xmllint
       - test_zip
       - lint

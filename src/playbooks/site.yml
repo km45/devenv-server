@@ -12,9 +12,8 @@
   roles:
     - bash-completion
     - font
-    - i3
     - inputrc
     - localization
     - samba
-    - sddm
+    - well-known-user-directories
     - xfce4-terminal
