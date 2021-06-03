@@ -41,12 +41,18 @@
     dest: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}
     version: "{{ i3blocks_contrib_commit }}"
 
-- name: create directory to put i3blocks-contrib blocklets
+- name: create directory to put i3blocks blocklets
   file:
     path: "{{ item }}"
     state: directory
   with_items:
     - /home/vagrant/.local/share/i3blocks/
+
+- name: put custom blocklet docker
+  copy:
+    src: docker.sh
+    dest: /home/vagrant/.local/share/i3blocks/docker
+    mode: 0755
 
 - name: put i3blocks-contrib blocklet bandwidth
   file:
