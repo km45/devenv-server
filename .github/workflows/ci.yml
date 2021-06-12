@@ -35,6 +35,14 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=firefox
+  test_font:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - run: make sync
+      - run: make test ROLE=font
   test_git:
     runs-on: ubuntu-18.04
     steps:
@@ -184,6 +192,7 @@ jobs:
       - test_cplusplus
       - test_docker
       - test_firefox
+      - test_font
       - test_git
       - test_inotify
       - test_nkf
