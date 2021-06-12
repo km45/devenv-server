@@ -5,6 +5,7 @@
     - cplusplus
     - docker
     - firefox
+    - font
     - git
     - inotify
     - nkf
