@@ -1,6 +1,23 @@
 ---
-
 - name: install packages
   become: yes
   apt:
-    name: fonts-takao
+    name:
+      - fontconfig
+      - fonts-inconsolata
+      - fonts-noto-cjk
+      - fonts-noto-color-emoji
+
+- name: create directory to put sddm config
+  file:
+    path: /home/vagrant/.config/fontconfig
+    state: directory
+    mode: "0755"
+
+- name: put fontconfig config file
+  copy:
+    src: fonts.conf.xml
+    dest: /home/vagrant/.config/fontconfig/fonts.conf
+    mode: 0644
+  notify:
+    - update font information caches
