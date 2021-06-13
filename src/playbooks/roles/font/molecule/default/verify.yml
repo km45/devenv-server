@@ -14,3 +14,16 @@
             that:
               - result.stdout == "vagrant"
             fail_msg: "actual result is {{ result.stdout }}"
+    - name: test font family monospace
+      block:
+        - name: determine fonts
+          command: fc-match monospace -s -f %{fullname}\\n
+          register: result
+          changed_when: False
+        - name: assert fonts
+          assert:
+            that:
+              - result.stdout_lines[0] == "Inconsolata"
+              - result.stdout_lines[1] == "Noto Sans Mono CJK JP"
+              - result.stdout_lines[2] == "Noto Color Emoji"
+            fail_msg: "actual result is {{ result.stdout_lines }}"
