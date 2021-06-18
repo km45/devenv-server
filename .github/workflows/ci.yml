@@ -51,6 +51,14 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=git
+  test_hadolint:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup python
+        uses: actions/setup-python@v2
+      - run: make sync
+      - run: make test ROLE=hadolint
   test_inotify:
     # Use macOS instance for VirtualBox
     # because nested virtualization is not supported for Ubuntu instances
@@ -194,6 +202,7 @@ jobs:
       - test_firefox
       - test_font
       - test_git
+      - test_hadolint
       - test_inotify
       - test_nkf
       - test_prompt

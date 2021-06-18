@@ -1,0 +1,8 @@
+{% with item = item %}
+{% include "Dockerfile.j2" %}
+{% endwith %}
+
+{# Add user vagrant and enable passwordless sudo #}
+RUN adduser vagrant \
+    && adduser vagrant sudo \
+    && echo 'Defaults exempt_group=sudo' >> /etc/sudoers
