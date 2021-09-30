@@ -12,9 +12,22 @@
     groups: docker
     append: yes
 
-- name: download docker-compose
+- name: download docker-compose v1
   become: yes
   get_url:
-    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64"
+    url: "https://github.com/docker/compose/releases/download/{{ docker_compose_v1_version }}/docker-compose-Linux-x86_64"
     dest: /usr/local/bin/docker-compose
+    mode: 0755
+
+- name: create directory to put docker cli-plugin
+  file:
+    path: /home/vagrant/.docker/cli-plugins
+    state: directory
+    mode: "0755"
+
+- name: download docker-compose v2
+  become: yes
+  get_url:
+    url: "https://github.com/docker/compose/releases/download/v{{ docker_compose_v2_version }}/docker-compose-linux-amd64"
+    dest: /home/vagrant/.docker/cli-plugins/docker-compose
     mode: 0755
