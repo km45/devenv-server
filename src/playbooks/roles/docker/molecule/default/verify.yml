@@ -28,3 +28,19 @@
           reboot: null
         - name: assert docker command usability
           command: docker run --rm hello-world
+    - name: test docker compose usability
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put docker-compose.yml
+          copy:
+            src: "docker-compose.yml"
+            dest: "{{ tmpdir.path }}/docker-compose.yml"
+            mode: '0664'
+        - name: assert docker compose command usability
+          command: docker compose ps
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False
