@@ -4,7 +4,7 @@ on: [push, pull_request]
 
 jobs:
   test_cplusplus:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -28,7 +28,7 @@ jobs:
           retry_on: error
           command: make test ROLE=docker
   test_firefox:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -36,7 +36,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=firefox
   test_font:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -44,7 +44,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=font
   test_git:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -52,7 +52,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=git
   test_hadolint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -76,7 +76,7 @@ jobs:
           retry_on: error
           command: make test ROLE=inotify
   test_nkf:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -84,7 +84,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=nkf
   test_prompt:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -92,7 +92,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=prompt
   test_pv:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -100,7 +100,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=pv
   test_python:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -108,7 +108,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=python
   test_rust:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -116,7 +116,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=rust
   test_shellcheck:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -124,7 +124,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=shellcheck
   test_sourcetrail:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -148,7 +148,7 @@ jobs:
           retry_on: error
           command: make test ROLE=swap
   test_vscode:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -156,7 +156,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=vscode
   test_window-system:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -164,7 +164,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=window-system
   test_xmllint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -172,7 +172,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=xmllint
   test_zip:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -180,14 +180,14 @@ jobs:
       - run: make sync
       - run: make test ROLE=zip
   lint:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - run: make up
       - run: make lint TTY=false
       - run: make down
   lint2:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v2
       - name: setup python
@@ -195,7 +195,7 @@ jobs:
       - run: make sync
       - run: make lint2
   status_check:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     needs:
       - test_cplusplus
       - test_docker
