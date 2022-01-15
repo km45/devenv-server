@@ -1,7 +1,7 @@
 ---
 
 - name: check swap partition existence
-  command: bash -c "cat /etc/fstab | grep '[^ ]* [^ ]* swap' | awk '{print $1}'"
+  command: bash -c "cat /etc/fstab | grep '[^ ]* *[^ ]* *swap' | awk '{print $1}'"
   register: checked_result
   changed_when: false
 
