@@ -8,5 +8,6 @@
       changed_when: False
       with_items:
         - cargo
+        - diffr
         - rustc
         - rustup
