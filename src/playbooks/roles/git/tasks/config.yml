@@ -14,3 +14,7 @@
       value: simple
     - name: pull.ff
       value: only
+    - name: core.pager
+      value: "diffr | less -R"
+    - name: interactive.difffilter
+      value: diffr
