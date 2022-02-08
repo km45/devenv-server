@@ -33,3 +33,5 @@
       file:
         path: "{{ tmpdir.path }}"
         state: absent
+
+- include_tasks: diffr.yml
