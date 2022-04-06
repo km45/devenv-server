@@ -5,6 +5,7 @@
   apt:
     name:
       - apt-transport-https
+      - gnome-keyring
       - gnupg
       - jq
       - libasound2
