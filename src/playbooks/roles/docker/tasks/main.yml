@@ -25,3 +25,17 @@
     url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
     dest: /home/vagrant/.docker/cli-plugins/docker-compose
     mode: 0755
+
+- name: download compose-switch
+  become: yes
+  get_url:
+    url: "https://github.com/docker/compose-switch/releases/download/v{{ compose_switch_version }}/docker-compose-linux-amd64"
+    dest: /usr/local/bin/compose-switch
+    mode: 0755
+
+- name: create alternatives for docker-compose command
+  become: yes
+  alternatives:
+    name: docker-compose
+    link: /usr/local/bin/docker-compose
+    path: /usr/local/bin/compose-switch
