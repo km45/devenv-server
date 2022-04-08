@@ -22,6 +22,6 @@
   become: yes
   get_url:
     # TODO' Use `uname -m` for cross platform suffixes (since v2.0.1)
-    url: "https://github.com/docker/compose/releases/download/v{{ docker_compose_v2_version }}/docker-compose-linux-x86_64"
+    url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
     dest: /home/vagrant/.docker/cli-plugins/docker-compose
     mode: 0755
