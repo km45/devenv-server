@@ -15,7 +15,6 @@
     - python
     - rust
     - shellcheck
-    - sourcetrail
     - swap
     - vscode
     - window-system
