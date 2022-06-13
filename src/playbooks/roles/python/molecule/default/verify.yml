@@ -30,7 +30,7 @@
         - name: assert global python version
           assert:
             that:
-              - result.stdout == "3.10.4"
+              - result.stdout == "3.10.5"
             fail_msg: "actual version is {{ result.stdout }}"
     - name: test poetry version
       block:
