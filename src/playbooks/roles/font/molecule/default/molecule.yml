@@ -6,7 +6,6 @@ driver:
 platforms:
   - name: font-focal
     image: ubuntu:20.04
-    dockerfile: DockerfileExtended.j2
 provisioner:
   name: ansible
   options:
