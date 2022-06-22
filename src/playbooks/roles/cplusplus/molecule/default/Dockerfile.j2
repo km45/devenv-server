@@ -3,7 +3,7 @@ FROM {{ item.image }}
 RUN apt-get update \
     && apt-get install -y \
         ca-certificates \
-        python \
+        python3 \
         software-properties-common \
         sudo \
     && adduser vagrant \
