@@ -6,6 +6,8 @@ driver:
 platforms:
   - name: firefox-focal
     image: ubuntu:20.04
+  - name: firefox-jammy
+    image: ubuntu:22.04
 provisioner:
   name: ansible
   options:

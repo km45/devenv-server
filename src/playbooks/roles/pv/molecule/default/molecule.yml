@@ -6,6 +6,8 @@ driver:
 platforms:
   - name: pv-focal
     image: ubuntu:20.04
+  - name: pv-jammy
+    image: ubuntu:22.04
 provisioner:
   name: ansible
   options:

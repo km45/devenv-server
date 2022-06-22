@@ -6,6 +6,8 @@ driver:
 platforms:
   - name: nkf-focal
     image: ubuntu:20.04
+  - name: nkf-jammy
+    image: ubuntu:22.04
 provisioner:
   name: ansible
   options:
