@@ -3,6 +3,26 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  multipass_test:
+    # Use macOS instance for VirtualBox
+    # because nested virtualization is not supported for Ubuntu instances
+    runs-on: macos-10.15
+    steps:
+      - uses: actions/checkout@v3
+      - run: brew install --cask multipass
+      - name: Wait 30 seconds for multipassd ready
+        run: sleep 30s
+      - run: sudo multipass set local.driver=virtualbox
+      - name: Wait 30 seconds for multipassd ready
+        run: sleep 30s
+      - run: multipass launch 20.04 --cloud-init src/multipass/cloud-init.yml --name test-focal
+      - run: multipass mount ./src/playbooks test-focal:/multipass/playbooks
+      - run: multipass exec test-focal -- ansible-playbook /multipass/playbooks/multipass.yml
+      - run: multipass exec test-focal -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test'
+        name: test for current session
+      - run: multipass restart test-focal
+      - run: multipass exec test-focal -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test,test2'
+        name: test after rebooting
   test_cplusplus:
     runs-on: ubuntu-20.04
     steps:
@@ -11,22 +31,6 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=cplusplus
-  test_docker:
-    # Use macOS instance for VirtualBox
-    # because nested virtualization is not supported for Ubuntu instances
-    runs-on: macos-10.15
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - name: test
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 15
-          max_attempts: 3
-          retry_on: error
-          command: make test ROLE=docker
   test_firefox:
     runs-on: ubuntu-20.04
     steps:
@@ -59,22 +63,6 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=hadolint
-  test_inotify:
-    # Use macOS instance for VirtualBox
-    # because nested virtualization is not supported for Ubuntu instances
-    runs-on: macos-10.15
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - name: test
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 15
-          max_attempts: 3
-          retry_on: error
-          command: make test ROLE=inotify
   test_nkf:
     runs-on: ubuntu-20.04
     steps:
@@ -123,22 +111,6 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=shellcheck
-  test_swap:
-    # Use macOS instance for VirtualBox
-    # because nested virtualization is not supported for Ubuntu instances
-    runs-on: macos-10.15
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - name: test
-        uses: nick-invision/retry@v2
-        with:
-          timeout_minutes: 15
-          max_attempts: 3
-          retry_on: error
-          command: make test ROLE=swap
   test_vscode:
     runs-on: ubuntu-20.04
     steps:
@@ -189,20 +161,18 @@ jobs:
   status_check:
     runs-on: ubuntu-20.04
     needs:
+      - multipass_test
       - test_cplusplus
-      - test_docker
       - test_firefox
       - test_font
       - test_git
       - test_hadolint
-      - test_inotify
       - test_nkf
       - test_prompt
       - test_pv
       - test_python
       - test_rust
       - test_shellcheck
-      - test_swap
       - test_vscode
       - test_window-system
       - test_xmllint

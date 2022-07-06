@@ -14,3 +14,18 @@
     state: "absent"
   notify:
     - disable swap devices and files for current session
+
+- name: test swap size for current session
+  tags:
+    - test
+    - never
+  block:
+    - name: determine swap size
+      command: bash -c "grep SwapTotal /proc/meminfo | awk '{print $2}'"
+      register: result
+      changed_when: False
+    - name: assert swap size
+      assert:
+        that:
+          - result.stdout == "0"
+        fail_msg: "actual size is {{ result.stdout }}"
