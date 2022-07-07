@@ -83,7 +83,6 @@ package: clean package-focal
 .PHONY: distribute-templates
 distribute-templates:
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/cplusplus/molecule/default/
-	cp -p templates/Dockerfile.j2 src/playbooks/roles/firefox/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/font/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/git/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/hadolint/molecule/default/

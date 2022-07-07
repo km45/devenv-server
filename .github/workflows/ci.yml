@@ -27,14 +27,6 @@ jobs:
           max_attempts: 3
           retry_on: error
           command: make test ROLE=docker
-  test_firefox:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - run: make test ROLE=firefox
   test_font:
     runs-on: ubuntu-20.04
     steps:
@@ -191,7 +183,6 @@ jobs:
     needs:
       - test_cplusplus
       - test_docker
-      - test_firefox
       - test_font
       - test_git
       - test_hadolint
