@@ -12,7 +12,7 @@ jobs:
       - run: brew install --cask multipass
       - name: Wait 30 seconds for multipassd ready
         run: sleep 30s
-      - run: sudo multipass set local.driver=virtualbox
+      - run: multipass set local.driver=virtualbox
       - name: Wait 30 seconds for multipassd ready
         run: sleep 30s
       - run: multipass launch 20.04 --cloud-init src/multipass/cloud-init.yml --name test-focal
