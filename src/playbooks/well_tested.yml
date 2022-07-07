@@ -10,7 +10,6 @@
     - inotify
     - nkf
     - prompt
-    - pv
     - python
     - rust
     - shellcheck

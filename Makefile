@@ -88,7 +88,6 @@ distribute-templates:
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/hadolint/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/nkf/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/prompt/molecule/default/
-	cp -p templates/Dockerfile.j2 src/playbooks/roles/pv/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/python/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/rust/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/shellcheck/molecule/default/
