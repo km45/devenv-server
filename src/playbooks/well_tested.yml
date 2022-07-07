@@ -2,17 +2,14 @@
 - hosts: all
   roles:
     - cplusplus
-    - firefox
     - font
     - git
     - hadolint
     - nkf
     - prompt
-    - pv
     - python
     - rust
     - shellcheck
     - vscode
     - window-system
-    - xmllint
     - zip

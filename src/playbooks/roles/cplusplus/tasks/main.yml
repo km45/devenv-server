@@ -1,13 +1,13 @@
 ---
 
-- name: check whether already installed clang 12
+- name: check whether already installed clang 14
   command: |-
-    which clang-12
+    which clang-14
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install clang 12
+- name: install clang 14
   when: checked_result.rc == 1
   block:
     - name: install requirements
@@ -28,7 +28,7 @@
         dest: "{{ tmpdir.path }}/llvm.sh"
     - name: execute clang automatic installation script
       become: yes
-      command: "bash {{ tmpdir.path }}/llvm.sh 12"
+      command: "bash {{ tmpdir.path }}/llvm.sh 14"
     - name: remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
@@ -38,15 +38,15 @@
   become: yes
   apt:
     name:
-      - clang-format-12
+      - clang-format-14
       - cmake
       - g++
       - gdb
       - ninja-build
 
-- name: correct clang-format version to 12
+- name: correct clang-format version to 14
   become: yes
   alternatives:
     link: /usr/bin/clang-format
     name: clang-format
-    path: /usr/bin/clang-format-12
+    path: /usr/bin/clang-format-14
