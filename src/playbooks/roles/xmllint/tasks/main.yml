@@ -1,7 +1,0 @@
----
-
-- name: install packages
-  become: yes
-  apt:
-    name:
-      - libxml2-utils

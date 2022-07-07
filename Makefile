@@ -94,5 +94,4 @@ distribute-templates:
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/shellcheck/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/vscode/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/window-system/molecule/default/
-	cp -p templates/Dockerfile.j2 src/playbooks/roles/xmllint/molecule/default/
 	cp -p templates/Dockerfile.j2 src/playbooks/roles/zip/molecule/default/
