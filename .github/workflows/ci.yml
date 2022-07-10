@@ -27,14 +27,6 @@ jobs:
           max_attempts: 3
           retry_on: error
           command: make test ROLE=docker
-  test_firefox:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - run: make test ROLE=firefox
   test_font:
     runs-on: ubuntu-20.04
     steps:
@@ -91,14 +83,6 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=prompt
-  test_pv:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - run: make test ROLE=pv
   test_python:
     runs-on: ubuntu-20.04
     steps:
@@ -155,14 +139,6 @@ jobs:
         uses: actions/setup-python@v2
       - run: make sync
       - run: make test ROLE=window-system
-  test_xmllint:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v2
-      - name: setup python
-        uses: actions/setup-python@v2
-      - run: make sync
-      - run: make test ROLE=xmllint
   test_zip:
     runs-on: ubuntu-20.04
     steps:
@@ -191,21 +167,18 @@ jobs:
     needs:
       - test_cplusplus
       - test_docker
-      - test_firefox
       - test_font
       - test_git
       - test_hadolint
       - test_inotify
       - test_nkf
       - test_prompt
-      - test_pv
       - test_python
       - test_rust
       - test_shellcheck
       - test_swap
       - test_vscode
       - test_window-system
-      - test_xmllint
       - test_zip
       - lint
       - lint2

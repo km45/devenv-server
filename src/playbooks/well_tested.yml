@@ -4,19 +4,16 @@
   roles:
     - cplusplus
     - docker
-    - firefox
     - font
     - git
     - hadolint
     - inotify
     - nkf
     - prompt
-    - pv
     - python
     - rust
     - shellcheck
     - swap
     - vscode
     - window-system
-    - xmllint
     - zip
