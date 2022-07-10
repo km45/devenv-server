@@ -5,3 +5,18 @@
   sysctl:
     name: fs.inotify.max_user_watches
     value: '524288'
+
+- name: test swap size
+  tags:
+    - test
+    - never
+  block:
+    - name: determine max_user_watches
+      command: bash -c "cat /proc/sys/fs/inotify/max_user_watches"
+      register: result
+      changed_when: False
+    - name: assert swap size
+      assert:
+        that:
+          - result.stdout == "524288"
+        fail_msg: "actual size is {{ result.stdout }}"

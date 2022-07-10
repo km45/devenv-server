@@ -5,16 +5,16 @@
   apt:
     name: docker.io
 
-- name: add vagrant user to docker group
+- name: add user to docker group
   become: yes
   user:
-    name: vagrant
+    name: "{{ ansible_env.USER }}"
     groups: docker
     append: yes
 
 - name: create directory to put docker cli-plugin
   file:
-    path: /home/vagrant/.docker/cli-plugins
+    path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
     state: directory
     mode: "0755"
 
@@ -23,7 +23,7 @@
   get_url:
     # TODO' Use `uname -m` for cross platform suffixes (since v2.0.1)
     url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
-    dest: /home/vagrant/.docker/cli-plugins/docker-compose
+    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
     mode: 0755
 
 - name: download compose-switch
@@ -39,3 +39,40 @@
     name: docker-compose
     link: /usr/local/bin/docker-compose
     path: /usr/local/bin/compose-switch
+
+- name: test for every session
+  tags:
+    - test
+    - never
+  block:
+    - name: test command existence
+      command: bash -c "type {{ item }}"
+      register: result
+      changed_when: False
+      with_items:
+        - docker
+        - docker-compose
+
+- name: test after rebooting
+  tags:
+    - test2
+    - never
+  block:
+    - name: test docker command usability
+      command: docker run --rm hello-world
+    - name: test docker compose usability
+      block:
+        - name: create temporary working directory
+          tempfile:
+            state: directory
+          register: tmpdir
+        - name: put docker-compose.yml
+          copy:
+            src: "docker-compose.yml"
+            dest: "{{ tmpdir.path }}/docker-compose.yml"
+            mode: '0664'
+        - name: assert docker compose command usability
+          command: docker compose ps
+          args:
+            chdir: "{{ tmpdir.path }}"
+          changed_when: False

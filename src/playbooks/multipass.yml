@@ -1,0 +1,8 @@
+---
+- hosts:
+    - all
+    - localhost
+  roles:
+    - docker
+    - inotify
+    - swap
