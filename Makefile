@@ -77,8 +77,14 @@ package-focal:
 	cp -p src/vagrantfiles/ubuntu-focal/Vagrantfile $(OUT)/ubuntu-focal-vagrant
 	cp -pr src/playbooks $(OUT)/ubuntu-focal-vagrant
 
+.PHONY: package-jammy
+package-jammy:
+	mkdir -p $(OUT)/ubuntu-jammy-vagrant
+	cp -p src/vagrantfiles/ubuntu-jammy/Vagrantfile $(OUT)/ubuntu-jammy-vagrant
+	cp -pr src/playbooks $(OUT)/ubuntu-jammy-vagrant
+
 .PHONY: package
-package: clean package-focal
+package: clean package-focal package-jammy
 
 .PHONY: distribute-templates
 distribute-templates:
