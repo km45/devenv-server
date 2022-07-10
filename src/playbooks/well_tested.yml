@@ -1,19 +1,15 @@
 ---
-# common roles (tested by molecule)
 - hosts: all
   roles:
     - cplusplus
-    - docker
     - font
     - git
     - hadolint
-    - inotify
     - nkf
     - prompt
     - python
     - rust
     - shellcheck
-    - swap
     - vscode
     - window-system
     - zip

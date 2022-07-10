@@ -6,6 +6,7 @@
     - setup
 
 - import_playbook: well_tested.yml
+- import_playbook: multipass.yml
 
 # common roles (not-tested by molecule)
 - hosts: all
