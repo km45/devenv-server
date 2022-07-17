@@ -7,6 +7,7 @@ vscode_plugins:
   - alefragnani.Bookmarks
   - MS-CEINTL.vscode-language-pack-ja
   - ms-vscode-remote.vscode-remote-extensionpack
+  - nmsmith89.incrementor
   - oderwat.indent-rainbow
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
