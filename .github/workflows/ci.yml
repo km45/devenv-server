@@ -6,15 +6,15 @@ jobs:
   multipass_test_focal:
     # Use macOS instance for VirtualBox
     # because nested virtualization is not supported for Ubuntu instances
-    runs-on: macos-10.15
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
       - run: brew install --cask multipass
       - name: Wait 30 seconds for multipassd ready
-        run: sleep 30s
+        run: sleep 30
       - run: multipass set local.driver=virtualbox
       - name: Wait 30 seconds for multipassd ready
-        run: sleep 30s
+        run: sleep 30
       - run: multipass launch 20.04 --cloud-init src/multipass/cloud-init.yml --name test-focal
       - run: multipass mount ./src/playbooks test-focal:/multipass/playbooks
       - run: multipass exec test-focal -- ansible-playbook /multipass/playbooks/multipass.yml
@@ -26,15 +26,15 @@ jobs:
   multipass_test_jammy:
     # Use macOS instance for VirtualBox
     # because nested virtualization is not supported for Ubuntu instances
-    runs-on: macos-10.15
+    runs-on: macos-12
     steps:
       - uses: actions/checkout@v3
       - run: brew install --cask multipass
       - name: Wait 30 seconds for multipassd ready
-        run: sleep 30s
+        run: sleep 30
       - run: multipass set local.driver=virtualbox
       - name: Wait 30 seconds for multipassd ready
-        run: sleep 30s
+        run: sleep 30
       - run: multipass launch 22.04 --cloud-init src/multipass/cloud-init.yml --name test-jammy
       - run: multipass mount ./src/playbooks test-jammy:/multipass/playbooks
       - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml
