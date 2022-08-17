@@ -51,6 +51,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=cplusplus
   test_font:
@@ -61,6 +62,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=font
   test_git:
@@ -71,6 +73,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=git
   test_hadolint:
@@ -81,6 +84,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=hadolint
   test_nkf:
@@ -91,6 +95,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=nkf
   test_prompt:
@@ -101,6 +106,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=prompt
   test_python:
@@ -111,6 +117,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=python
   test_rust:
@@ -121,6 +128,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=rust
   test_shellcheck:
@@ -131,6 +139,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=shellcheck
   test_vscode:
@@ -141,6 +150,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=vscode
   test_window-system:
@@ -151,6 +161,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=window-system
   test_zip:
@@ -161,6 +172,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make test ROLE=zip
   lint:
@@ -178,6 +190,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: "3.10"
+          cache: pip
       - run: make sync
       - run: make lint2
   status_check:
