@@ -48,7 +48,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=cplusplus
   test_font:
@@ -56,7 +58,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=font
   test_git:
@@ -64,7 +68,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=git
   test_hadolint:
@@ -72,7 +78,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=hadolint
   test_nkf:
@@ -80,7 +88,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=nkf
   test_prompt:
@@ -88,7 +98,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=prompt
   test_python:
@@ -96,7 +108,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=python
   test_rust:
@@ -104,7 +118,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=rust
   test_shellcheck:
@@ -112,7 +128,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=shellcheck
   test_vscode:
@@ -120,7 +138,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=vscode
   test_window-system:
@@ -128,7 +148,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=window-system
   test_zip:
@@ -136,7 +158,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make test ROLE=zip
   lint:
@@ -151,7 +175,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: setup python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - run: make sync
       - run: make lint2
   status_check:
