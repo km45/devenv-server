@@ -24,6 +24,7 @@
     # TODO' Use `uname -m` for cross platform suffixes (since v2.0.1)
     url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
+    checksum: "sha256:https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64.sha256"
     mode: 0755
 
 - name: download compose-switch
