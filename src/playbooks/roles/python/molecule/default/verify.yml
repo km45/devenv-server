@@ -35,7 +35,7 @@
     - name: test poetry version
       block:
         - name: determine poetry version
-          command: bash -c ". /home/vagrant/.bashrc.d/pyenv.bashrc && poetry --version | sed 's|Poetry version ||g'"
+          command: bash -c ". /home/vagrant/.bashrc.d/pyenv.bashrc && poetry --version | sed 's|Poetry (version \([0-9\.]*\))|\1|g'"
           register: result
           changed_when: False
         - name: assert poetry version
