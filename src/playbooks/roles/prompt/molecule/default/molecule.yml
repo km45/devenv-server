@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: prompt-focal
-    image: ubuntu:20.04
   - name: prompt-jammy
     image: ubuntu:22.04
 provisioner:

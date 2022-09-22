@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: hadolint-focal
-    image: ubuntu:20.04
   - name: hadolint-jammy
     image: ubuntu:22.04
 provisioner:

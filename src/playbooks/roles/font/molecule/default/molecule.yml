@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: font-focal
-    image: ubuntu:20.04
   - name: font-jammy
     image: ubuntu:22.04
 provisioner:

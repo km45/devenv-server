@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: shellcheck-focal
-    image: ubuntu:20.04
   - name: shellcheck-jammy
     image: ubuntu:22.04
 provisioner:

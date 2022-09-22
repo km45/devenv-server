@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: git-focal
-    image: ubuntu:20.04
   - name: git-jammy
     image: ubuntu:22.04
 provisioner:
