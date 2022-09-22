@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: vscode-focal
-    image: ubuntu:20.04
   - name: vscode-jammy
     image: ubuntu:22.04
 provisioner:

@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: window-system-focal
-    image: ubuntu:20.04
   - name: window-system-jammy
     image: ubuntu:22.04
 provisioner:

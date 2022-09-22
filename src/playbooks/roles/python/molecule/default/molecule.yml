@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: python-focal
-    image: ubuntu:20.04
   - name: python-jammy
     image: ubuntu:22.04
 provisioner:

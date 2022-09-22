@@ -4,12 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: cplusplus-focal
-    image: ubuntu:20.04
-    capabilities:
-      - SYS_PTRACE
-    security_opts:
-      - seccomp=unconfined
   - name: cplusplus-jammy
     image: ubuntu:22.04
     capabilities:

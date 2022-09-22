@@ -4,8 +4,6 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: rust-focal
-    image: ubuntu:20.04
   - name: rust-jammy
     image: ubuntu:22.04
 provisioner:
