@@ -1,6 +1,6 @@
 ansible==4.2.0
 ansible-core==2.11.12
-ansible-lint==5.0.12
+ansible-lint==5.4.0
 arrow==1.2.3
 bcrypt==4.0.0
 binaryornot==0.4.4
