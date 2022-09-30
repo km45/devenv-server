@@ -1,4 +1,6 @@
 ---
+- ansible.builtin.include_role:
+    name: dependencies/bashrc_dir
 
 - include_tasks: pyenv.yml
 - include_tasks: version.yml

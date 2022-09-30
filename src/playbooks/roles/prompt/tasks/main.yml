@@ -1,4 +1,8 @@
 ---
+- ansible.builtin.include_role:
+    name: dependencies/bashrc_dir
+- ansible.builtin.include_role:
+    name: git
 
 - name: put bashrc file in ~/.bashrc.d
   copy:

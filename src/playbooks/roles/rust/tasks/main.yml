@@ -1,4 +1,7 @@
 ---
+- ansible.builtin.include_role:
+    name: dependencies/bashrc_dir
+
 - name: put rust.bashrc in ~/.bashrc.d
   copy:
     src: bashrc
