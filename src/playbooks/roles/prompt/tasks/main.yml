@@ -1,8 +1,10 @@
 ---
-- ansible.builtin.include_role:
-    name: dependencies/bashrc_dir
-- ansible.builtin.include_role:
-    name: git
+- name: apply dependent roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  with_items:
+    - dependencies/bashrc_dir
+    - git
 
 - name: put bashrc file in ~/.bashrc.d
   copy:
