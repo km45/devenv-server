@@ -31,6 +31,7 @@
       become: yes
       args:
         chdir: /usr/local/stow
+      # noqa no-changed-when
       shell: |-
         ls | grep 'hadolint-*' | xargs -n1 stow -D
         stow -R hadolint-{{ hadolint_version }}

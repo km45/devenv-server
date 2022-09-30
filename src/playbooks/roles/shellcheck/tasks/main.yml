@@ -30,11 +30,13 @@
         mode: '0755'
     - name: put executable
       become: yes
+      # noqa no-changed-when
       command: "cp -p /usr/local/src/shellcheck-v{{ shellcheck_version }}/shellcheck /usr/local/stow/shellcheck-{{ shellcheck_version }}/bin/shellcheck"
     - name: stow package
       become: yes
       args:
         chdir: /usr/local/stow
+      # noqa no-changed-when
       shell: |-
         ls | grep 'shellcheck-*' | xargs -n1 stow -D
         stow -R shellcheck-{{ shellcheck_version }}

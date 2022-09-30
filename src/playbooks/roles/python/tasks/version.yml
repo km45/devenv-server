@@ -25,6 +25,7 @@
           - make
           - zlib1g-dev
     - name: install python {{ python_version }}
+      # noqa no-changed-when
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
         pyenv install -s -k {{ python_version }}
@@ -34,6 +35,7 @@
         msg: "{{ install_result.stderr_lines }}"
       failed_when: "{{ install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0 }}"
     - name: set global python version to {{ python_version }}
+      # noqa no-changed-when
       shell: |-
         . ~/.bashrc.d/pyenv.bashrc
         pyenv global {{ python_version }}

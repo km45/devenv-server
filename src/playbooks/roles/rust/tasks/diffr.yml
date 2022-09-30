@@ -15,4 +15,5 @@
         name:
           - gcc
     - name: install diffr
+      # noqa no-changed-when
       command: bash -c ". ~/.bashrc.d/rust.bashrc && cargo install diffr"

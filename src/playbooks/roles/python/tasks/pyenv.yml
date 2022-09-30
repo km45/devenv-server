@@ -32,6 +32,7 @@
         url: https://pyenv.run
         dest: "{{ tmpdir.path }}/pyenv-installer"
     - name: execute pyenv-installer
+      # noqa no-changed-when
       command: "bash {{ tmpdir.path }}/pyenv-installer"
     - name: remove temporary working directory
       file:
