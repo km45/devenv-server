@@ -28,6 +28,7 @@
         url: https://sh.rustup.rs
         dest: "{{ tmpdir.path }}/rustup-installer"
     - name: execute rustup-installer
+      # noqa no-changed-when
       command: "bash {{ tmpdir.path }}/rustup-installer -y"
     - name: remove temporary working directory
       file:

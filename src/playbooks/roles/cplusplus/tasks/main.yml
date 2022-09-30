@@ -28,6 +28,7 @@
         dest: "{{ tmpdir.path }}/llvm.sh"
     - name: execute clang automatic installation script
       become: yes
+      # noqa no-changed-when
       command: "bash {{ tmpdir.path }}/llvm.sh 14"
     - name: remove temporary working directory
       file:
