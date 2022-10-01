@@ -1,4 +1,10 @@
 ---
+- name: apply dependent roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  with_items:
+    - dependencies/bashrc_dir
+
 - name: put rust.bashrc in ~/.bashrc.d
   copy:
     src: bashrc

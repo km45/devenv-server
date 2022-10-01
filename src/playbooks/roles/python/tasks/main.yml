@@ -1,4 +1,9 @@
 ---
+- name: apply dependent roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  with_items:
+    - dependencies/bashrc_dir
 
 - include_tasks: pyenv.yml
 - include_tasks: version.yml
