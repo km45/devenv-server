@@ -30,7 +30,7 @@
         . ~/.bashrc.d/pyenv.bashrc
         pyenv install -s -k {{ python_version }}
       register: install_result
-    - name: Show stderr of python {{ python_version }} installation and check whether WARNING exists
+    - name: Show stderr of python installation and check whether WARNING exists
       ansible.builtin.debug:
         msg: "{{ install_result.stderr_lines }}"
       failed_when: "{{ install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0 }}"
