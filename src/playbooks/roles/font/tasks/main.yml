@@ -20,4 +20,4 @@
     dest: /home/vagrant/.config/fontconfig/fonts.conf
     mode: 0644
   notify:
-    - update font information caches
+    - Update font information caches
