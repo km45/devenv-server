@@ -33,7 +33,7 @@
     - name: Show stderr of python installation and check whether WARNING exists
       ansible.builtin.debug:
         msg: "{{ install_result.stderr_lines }}"
-      failed_when: "{{ install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0 }}"
+      failed_when: "install_result.stderr_lines | select('match', '^WARNING: .*$') | list | length > 0"
     - name: Set global python version to {{ python_version }}
       # noqa no-changed-when
       ansible.builtin.shell: |-
