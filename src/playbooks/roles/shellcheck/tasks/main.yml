@@ -1,7 +1,7 @@
 ---
 
 - name: Check whether already installed shellcheck
-  command: |-
+  ansible.builtin.command: |-
     which shellcheck
   register: checked_result
   changed_when: False
@@ -12,31 +12,31 @@
   block:
     - name: Install requirements
       become: yes
-      apt:
+      ansible.builtin.apt:
         name:
           - stow
           - xz-utils
     - name: Download and unarchive pre-compiled binary
       become: yes
-      unarchive:
+      ansible.builtin.unarchive:
         src: "https://github.com/koalaman/shellcheck/releases/download/v{{ shellcheck_version }}/shellcheck-v{{ shellcheck_version }}.linux.x86_64.tar.xz"
         dest: /usr/local/src
         remote_src: yes
     - name: Create directory to put executable
       become: yes
-      file:
+      ansible.builtin.file:
         path: "/usr/local/stow/shellcheck-{{ shellcheck_version }}/bin"
         state: directory
         mode: '0755'
     - name: Put executable
       become: yes
       # noqa no-changed-when
-      command: "cp -p /usr/local/src/shellcheck-v{{ shellcheck_version }}/shellcheck /usr/local/stow/shellcheck-{{ shellcheck_version }}/bin/shellcheck"
+      ansible.builtin.command: "cp -p /usr/local/src/shellcheck-v{{ shellcheck_version }}/shellcheck /usr/local/stow/shellcheck-{{ shellcheck_version }}/bin/shellcheck"
     - name: Stow package
       become: yes
       args:
         chdir: /usr/local/stow
       # noqa no-changed-when
-      shell: |-
+      ansible.builtin.shell: |-
         ls | grep 'shellcheck-*' | xargs -n1 stow -D
         stow -R shellcheck-{{ shellcheck_version }}

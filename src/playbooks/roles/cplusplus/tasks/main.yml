@@ -1,7 +1,7 @@
 ---
 
 - name: Check whether already installed clang 14
-  command: |-
+  ansible.builtin.command: |-
     which clang-14
   register: checked_result
   changed_when: False
@@ -12,32 +12,32 @@
   block:
     - name: Install requirements
       become: yes
-      apt:
+      ansible.builtin.apt:
         name:
           - apt-transport-https
           - lsb-release
           - software-properties-common
           - wget
     - name: Create temporary working directory
-      tempfile:
+      ansible.builtin.tempfile:
         state: directory
       register: tmpdir
     - name: Download clang automatic installation script
-      get_url:
+      ansible.builtin.get_url:
         url: https://apt.llvm.org/llvm.sh
         dest: "{{ tmpdir.path }}/llvm.sh"
     - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
-      command: "bash {{ tmpdir.path }}/llvm.sh 14"
+      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh 14"
     - name: Remove temporary working directory
-      file:
+      ansible.builtin.file:
         path: "{{ tmpdir.path }}"
         state: absent
 
 - name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - clang-format-14
       - cmake

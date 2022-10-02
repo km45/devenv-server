@@ -1,18 +1,18 @@
 ---
 - name: Install requiremsnts
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - gnupg
 
 - name: Add apt repository
   become: yes
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: ppa:git-core/ppa
 
 - name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: git
     state: latest  # noqa 403
 

@@ -1,7 +1,7 @@
 ---
 
 - name: create empty .bashrc
-  copy:
+  ansible.builtin.copy:
     content: ""
     dest: /home/vagrant/.bashrc
     force: no

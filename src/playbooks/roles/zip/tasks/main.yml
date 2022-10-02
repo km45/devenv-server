@@ -2,7 +2,7 @@
 
 - name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - unzip
       - zip

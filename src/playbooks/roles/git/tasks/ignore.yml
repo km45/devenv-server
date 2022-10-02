@@ -1,13 +1,13 @@
 ---
 
 - name: Create directories to put config file
-  file:
+  ansible.builtin.file:
     path: /home/vagrant/.config/git
     state: directory
     mode: '0755'
 
 - name: Add default gitignore file
-  copy:
+  ansible.builtin.copy:
     src: ignore
     dest: /home/vagrant/.config/git/ignore
     mode: 0644

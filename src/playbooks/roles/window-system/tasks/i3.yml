@@ -2,20 +2,20 @@
 
 - name: Install requirements
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - git
 
 - name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - i3
       - i3blocks
       - sysstat  # required by i3blocks-contrib blocklet cpu_usage
 
 - name: Create directories to put config file
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
   with_items:
@@ -23,57 +23,57 @@
     - /home/vagrant/.config/i3blocks
 
 - name: Add config file
-  copy:
+  ansible.builtin.copy:
     src: i3wm-config
     dest: /home/vagrant/.config/i3/config
     mode: 0664
 
 - name: Add i3blocks config file
-  copy:
+  ansible.builtin.copy:
     src: i3blocks.conf
     dest: /home/vagrant/.config/i3blocks/config
     mode: 0664
 
 - name: Checkout i3blocks-contrib git repository
   become: yes
-  git:
+  ansible.builtin.git:
     repo: https://github.com/vivien/i3blocks-contrib.git
     dest: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}
     version: "{{ i3blocks_contrib_commit }}"
 
 - name: Create directory to put i3blocks blocklets
-  file:
+  ansible.builtin.file:
     path: "{{ item }}"
     state: directory
   with_items:
     - /home/vagrant/.local/share/i3blocks/
 
 - name: Put custom blocklet docker
-  copy:
+  ansible.builtin.copy:
     src: docker.sh
     dest: /home/vagrant/.local/share/i3blocks/docker
     mode: 0755
 
 - name: Put i3blocks-contrib blocklet bandwidth
-  file:
+  ansible.builtin.file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/bandwidth/bandwidth
     dest: /home/vagrant/.local/share/i3blocks/bandwidth
     state: link
 
 - name: Put i3blocks-contrib blocklet cpu_usage
-  file:
+  ansible.builtin.file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/cpu_usage/cpu_usage
     dest: /home/vagrant/.local/share/i3blocks/cpu_usage
     state: link
 
 - name: Put i3blocks-contrib blocklet memory
-  file:
+  ansible.builtin.file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/memory/memory
     dest: /home/vagrant/.local/share/i3blocks/memory
     state: link
 
 - name: Put i3blocks-contrib blocklet load_average
-  file:
+  ansible.builtin.file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/load_average/load_average
     dest: /home/vagrant/.local/share/i3blocks/load_average
     state: link

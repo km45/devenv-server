@@ -2,10 +2,10 @@
 
 - name: Install requirements
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: python3-setuptools
 
 - name: Install packages
-  pip:
+  ansible.builtin.pip:
     name: poetry
     executable: /home/vagrant/.pyenv/shims/pip

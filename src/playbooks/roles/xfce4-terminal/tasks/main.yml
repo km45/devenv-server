@@ -2,17 +2,17 @@
 
 - name: install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: xfce4-terminal
 
 - name: create directory to put config file
-  file:
+  ansible.builtin.file:
     path: /home/vagrant/.config/xfce4/terminal
     state: directory
 
 - name: add config file
   become: yes
-  copy:
+  ansible.builtin.copy:
     src: terminalrc
     dest: /home/vagrant/.config/xfce4/terminal
     mode: 0664

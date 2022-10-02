@@ -2,12 +2,12 @@
 
 - name: install aptitude for ansible module apt
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: aptitude
 
 - name: update cache and upgrade packages if current one is older than a day
   become: yes
-  apt:
+  ansible.builtin.apt:
     cache_valid_time: 86400
     install_recommends: no
     update_cache: yes
@@ -15,10 +15,10 @@
 
 - name: remove useless packages from the cache
   become: yes
-  apt:
+  ansible.builtin.apt:
     autoclean: yes
 
 - name: remove dependencies that are no longer required
   become: yes
-  apt:
+  ansible.builtin.apt:
     autoremove: yes

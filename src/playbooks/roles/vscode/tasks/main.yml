@@ -2,7 +2,7 @@
 
 - name: Install requirements
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - apt-transport-https
       - gnome-keyring
@@ -19,13 +19,13 @@
 
 - name: Add apt key
   become: yes
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
 
 - name: Add apt repository
   become: yes
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: >-
       deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
@@ -33,7 +33,7 @@
 
 - name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: code
 
 - name: Install plugins
@@ -43,7 +43,7 @@
     loop_var: vscode_plugin
 
 - name: Put user settings.json
-  copy:
+  ansible.builtin.copy:
     src: settings.json
     dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
