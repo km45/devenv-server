@@ -1,11 +1,11 @@
 ---
 
-- name: install requirements
+- name: Install requirements
   become: yes
   apt:
     name: python3-setuptools
 
-- name: install packages
+- name: Install packages
   pip:
     name: poetry
     executable: /home/vagrant/.pyenv/shims/pip

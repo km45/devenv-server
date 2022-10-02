@@ -1,5 +1,5 @@
 ---
-- name: apply dependent roles
+- name: Apply dependent roles
   ansible.builtin.include_role:
     name: "{{ item }}"
   with_items:

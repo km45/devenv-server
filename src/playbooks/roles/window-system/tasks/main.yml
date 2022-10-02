@@ -1,18 +1,18 @@
 ---
-- name: install packages
+- name: Install packages
   become: yes
   apt:
     name:
       - sddm
 
-- name: create directory to put sddm config
+- name: Create directory to put sddm config
   become: yes
   file:
     path: /etc/sddm.conf.d
     state: directory
     mode: "0755"
 
-- name: put sddm config for auto login
+- name: Put sddm config for auto login
   become: yes
   copy:
     src: autologin.conf

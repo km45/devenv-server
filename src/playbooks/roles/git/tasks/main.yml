@@ -1,16 +1,16 @@
 ---
-- name: install requiremsnts
+- name: Install requiremsnts
   become: yes
   apt:
     name:
       - gnupg
 
-- name: add apt repository
+- name: Add apt repository
   become: yes
   apt_repository:
     repo: ppa:git-core/ppa
 
-- name: install packages
+- name: Install packages
   become: yes
   apt:
     name: git

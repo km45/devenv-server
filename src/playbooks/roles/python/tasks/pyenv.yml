@@ -1,12 +1,12 @@
 ---
 
-- name: put pyenv.bashrc in ~/.bashrc.d
+- name: Put pyenv.bashrc in ~/.bashrc.d
   copy:
     src: bashrc
     dest: ~/.bashrc.d/pyenv.bashrc
     mode: 0755
 
-- name: check whether already installed pyenv
+- name: Check whether already installed pyenv
   shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     which pyenv
@@ -14,27 +14,27 @@
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install pyenv
+- name: Install pyenv
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: Install requirements
       become: yes
       apt:
         name:
           - curl
           - git
-    - name: create temporary working directory
+    - name: Create temporary working directory
       tempfile:
         state: directory
       register: tmpdir
-    - name: download pyenv-installer
+    - name: Download pyenv-installer
       get_url:
         url: https://pyenv.run
         dest: "{{ tmpdir.path }}/pyenv-installer"
-    - name: execute pyenv-installer
+    - name: Execute pyenv-installer
       # noqa no-changed-when
       command: "bash {{ tmpdir.path }}/pyenv-installer"
-    - name: remove temporary working directory
+    - name: Remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
         state: absent

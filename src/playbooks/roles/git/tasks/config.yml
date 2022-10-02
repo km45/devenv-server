@@ -1,6 +1,6 @@
 ---
 
-- name: change global git config
+- name: Change global git config
   git_config:
     name: "{{ item.name }}"
     scope: global

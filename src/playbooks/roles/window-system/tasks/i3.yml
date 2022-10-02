@@ -1,12 +1,12 @@
 ---
 
-- name: install requirements
+- name: Install requirements
   become: yes
   apt:
     name:
       - git
 
-- name: install packages
+- name: Install packages
   become: yes
   apt:
     name:
@@ -14,7 +14,7 @@
       - i3blocks
       - sysstat  # required by i3blocks-contrib blocklet cpu_usage
 
-- name: create directories to put config file
+- name: Create directories to put config file
   file:
     path: "{{ item }}"
     state: directory
@@ -22,57 +22,57 @@
     - /home/vagrant/.config/i3
     - /home/vagrant/.config/i3blocks
 
-- name: add config file
+- name: Add config file
   copy:
     src: i3wm-config
     dest: /home/vagrant/.config/i3/config
     mode: 0664
 
-- name: add i3blocks config file
+- name: Add i3blocks config file
   copy:
     src: i3blocks.conf
     dest: /home/vagrant/.config/i3blocks/config
     mode: 0664
 
-- name: checkout i3blocks-contrib git repository
+- name: Checkout i3blocks-contrib git repository
   become: yes
   git:
     repo: https://github.com/vivien/i3blocks-contrib.git
     dest: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}
     version: "{{ i3blocks_contrib_commit }}"
 
-- name: create directory to put i3blocks blocklets
+- name: Create directory to put i3blocks blocklets
   file:
     path: "{{ item }}"
     state: directory
   with_items:
     - /home/vagrant/.local/share/i3blocks/
 
-- name: put custom blocklet docker
+- name: Put custom blocklet docker
   copy:
     src: docker.sh
     dest: /home/vagrant/.local/share/i3blocks/docker
     mode: 0755
 
-- name: put i3blocks-contrib blocklet bandwidth
+- name: Put i3blocks-contrib blocklet bandwidth
   file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/bandwidth/bandwidth
     dest: /home/vagrant/.local/share/i3blocks/bandwidth
     state: link
 
-- name: put i3blocks-contrib blocklet cpu_usage
+- name: Put i3blocks-contrib blocklet cpu_usage
   file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/cpu_usage/cpu_usage
     dest: /home/vagrant/.local/share/i3blocks/cpu_usage
     state: link
 
-- name: put i3blocks-contrib blocklet memory
+- name: Put i3blocks-contrib blocklet memory
   file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/memory/memory
     dest: /home/vagrant/.local/share/i3blocks/memory
     state: link
 
-- name: put i3blocks-contrib blocklet load_average
+- name: Put i3blocks-contrib blocklet load_average
   file:
     src: /usr/local/src/i3blocks-contrib-{{ i3blocks_contrib_commit }}/load_average/load_average
     dest: /home/vagrant/.local/share/i3blocks/load_average

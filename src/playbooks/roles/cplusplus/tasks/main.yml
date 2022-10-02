@@ -1,16 +1,16 @@
 ---
 
-- name: check whether already installed clang 14
+- name: Check whether already installed clang 14
   command: |-
     which clang-14
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install clang 14
+- name: Install clang 14
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: Install requirements
       become: yes
       apt:
         name:
@@ -18,24 +18,24 @@
           - lsb-release
           - software-properties-common
           - wget
-    - name: create temporary working directory
+    - name: Create temporary working directory
       tempfile:
         state: directory
       register: tmpdir
-    - name: download clang automatic installation script
+    - name: Download clang automatic installation script
       get_url:
         url: https://apt.llvm.org/llvm.sh
         dest: "{{ tmpdir.path }}/llvm.sh"
-    - name: execute clang automatic installation script
+    - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
       command: "bash {{ tmpdir.path }}/llvm.sh 14"
-    - name: remove temporary working directory
+    - name: Remove temporary working directory
       file:
         path: "{{ tmpdir.path }}"
         state: absent
 
-- name: install packages
+- name: Install packages
   become: yes
   apt:
     name:
@@ -45,7 +45,7 @@
       - gdb
       - ninja-build
 
-- name: correct clang-format version to 14
+- name: Correct clang-format version to 14
   become: yes
   alternatives:
     link: /usr/bin/clang-format
