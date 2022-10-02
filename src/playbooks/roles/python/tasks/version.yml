@@ -1,6 +1,6 @@
 ---
 
-- name: Check whether already installed python {{ python_version }} # noqa 306
+- name: Check whether already installed python {{ python_version }} # noqa risky-shell-pipe
   ansible.builtin.shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     pyenv versions | grep '^* {{ python_version }} (set by /.*)$'

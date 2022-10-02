@@ -14,7 +14,7 @@
   become: yes
   ansible.builtin.apt:
     name: git
-    state: latest  # noqa 403
+    state: latest  # noqa package-latest
 
 - include_tasks: config.yml
 - include_tasks: gitk.yml
