@@ -1,40 +1,40 @@
 ---
 
-- name: put pyenv.bashrc in ~/.bashrc.d
-  copy:
+- name: Put pyenv.bashrc in ~/.bashrc.d
+  ansible.builtin.copy:
     src: bashrc
     dest: ~/.bashrc.d/pyenv.bashrc
     mode: 0755
 
-- name: check whether already installed pyenv
-  shell: |-
+- name: Check whether already installed pyenv
+  ansible.builtin.shell: |-
     . ~/.bashrc.d/pyenv.bashrc
     which pyenv
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install pyenv
+- name: Install pyenv
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: Install requirements
       become: yes
-      apt:
+      ansible.builtin.apt:
         name:
           - curl
           - git
-    - name: create temporary working directory
-      tempfile:
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
         state: directory
       register: tmpdir
-    - name: download pyenv-installer
-      get_url:
+    - name: Download pyenv-installer
+      ansible.builtin.get_url:
         url: https://pyenv.run
         dest: "{{ tmpdir.path }}/pyenv-installer"
-    - name: execute pyenv-installer
+    - name: Execute pyenv-installer
       # noqa no-changed-when
-      command: "bash {{ tmpdir.path }}/pyenv-installer"
-    - name: remove temporary working directory
-      file:
+      ansible.builtin.command: "bash {{ tmpdir.path }}/pyenv-installer"
+    - name: Remove temporary working directory
+      ansible.builtin.file:
         path: "{{ tmpdir.path }}"
         state: absent

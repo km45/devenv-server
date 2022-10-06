@@ -1,7 +1,7 @@
 ---
 
 - name: check swap partition existence
-  command: bash -c "cat /etc/fstab | grep '[^ ]* *[^ ]* *swap' | awk '{print $1}'"
+  ansible.builtin.command: bash -c "cat /etc/fstab | grep '[^ ]* *[^ ]* *swap' | awk '{print $1}'"
   register: checked_result
   changed_when: false
 
@@ -21,7 +21,7 @@
     - never
   block:
     - name: determine swap size
-      command: bash -c "grep SwapTotal /proc/meminfo | awk '{print $2}'"
+      ansible.builtin.command: bash -c "grep SwapTotal /proc/meminfo | awk '{print $2}'"
       register: result
       changed_when: False
     - name: assert swap size

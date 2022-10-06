@@ -1,5 +1,5 @@
 ---
-- name: install packages
-  pip:
+- name: Install packages
+  ansible.builtin.pip:
     name: awscli
     executable: /home/vagrant/.pyenv/shims/pip

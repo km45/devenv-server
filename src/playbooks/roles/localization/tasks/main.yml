@@ -2,14 +2,14 @@
 
 - name: install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - fcitx-mozc
       - language-pack-ja
 
 - name: set system locale
   become: yes
-  shell: localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:en_US
+  ansible.builtin.shell: localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:en_US
 
 - name: set timezone
   become: yes

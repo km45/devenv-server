@@ -1,37 +1,37 @@
 ---
 
-- name: detect whether expected version of hadolint is already installed
-  command: |-
+- name: Detect whether expected version of hadolint is already installed
+  ansible.builtin.command: |-
     bash -c "which hadolint && hadolint --version | grep {{ hadolint_version }}"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install hadolint
+- name: Install hadolint
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: Install requirements
       become: yes
-      apt:
+      ansible.builtin.apt:
         name:
           - stow
-    - name: create directory to put executable
+    - name: Create directory to put executable
       become: yes
-      file:
+      ansible.builtin.file:
         path: "/usr/local/stow/hadolint-{{ hadolint_version }}/bin"
         state: directory
         mode: '0755'
-    - name: download prebuilt binary
+    - name: Download prebuilt binary
       become: yes
-      get_url:
+      ansible.builtin.get_url:
         url: "https://github.com/hadolint/hadolint/releases/download/v{{ hadolint_version }}/hadolint-Linux-x86_64"
         dest: "/usr/local/stow/hadolint-{{ hadolint_version }}/bin/hadolint"
         mode: "0755"
-    - name: stow package
+    - name: Stow package
       become: yes
       args:
         chdir: /usr/local/stow
       # noqa no-changed-when
-      shell: |-
+      ansible.builtin.shell: |-
         ls | grep 'hadolint-*' | xargs -n1 stow -D
         stow -R hadolint-{{ hadolint_version }}

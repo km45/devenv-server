@@ -5,7 +5,7 @@
     - name: assert test environment
       block:
         - name: determine remote user
-          command: whoami
+          ansible.builtin.command: whoami
           register: result
           changed_when: False
         - name: assert remote user
@@ -14,7 +14,7 @@
               - result.stdout == "vagrant"
             fail_msg: "actual result is {{ result.stdout }}"
     - name: test command existence
-      command: bash -c "type {{ item }}"
+      ansible.builtin.command: bash -c "type {{ item }}"
       register: result
       changed_when: False
       with_items:

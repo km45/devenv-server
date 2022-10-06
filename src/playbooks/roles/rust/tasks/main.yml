@@ -1,43 +1,43 @@
 ---
-- name: apply dependent roles
+- name: Apply dependent roles
   ansible.builtin.include_role:
     name: "{{ item }}"
   with_items:
     - dependencies/bashrc_dir
 
-- name: put rust.bashrc in ~/.bashrc.d
-  copy:
+- name: Put rust.bashrc in ~/.bashrc.d
+  ansible.builtin.copy:
     src: bashrc
     dest: ~/.bashrc.d/rust.bashrc
     mode: 0755
 
-- name: check whether already installed rustup
-  command: bash -c ". ~/.bashrc.d/rust.bashrc && which rustup"
+- name: Check whether already installed rustup
+  ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && which rustup"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: install rustup
+- name: Install rustup
   when: checked_result.rc == 1
   block:
-    - name: install requirements
+    - name: Install requirements
       become: yes
-      apt:
+      ansible.builtin.apt:
         name:
           - curl
-    - name: create temporary working directory
-      tempfile:
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
         state: directory
       register: tmpdir
-    - name: download rustup-installer
-      get_url:
+    - name: Download rustup-installer
+      ansible.builtin.get_url:
         url: https://sh.rustup.rs
         dest: "{{ tmpdir.path }}/rustup-installer"
-    - name: execute rustup-installer
+    - name: Execute rustup-installer
       # noqa no-changed-when
-      command: "bash {{ tmpdir.path }}/rustup-installer -y"
-    - name: remove temporary working directory
-      file:
+      ansible.builtin.command: "bash {{ tmpdir.path }}/rustup-installer -y"
+    - name: Remove temporary working directory
+      ansible.builtin.file:
         path: "{{ tmpdir.path }}"
         state: absent
 

@@ -2,7 +2,7 @@
 
 - name: install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: docker.io
 
 - name: add user to docker group
@@ -13,14 +13,14 @@
     append: yes
 
 - name: create directory to put docker cli-plugin
-  file:
+  ansible.builtin.file:
     path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
     state: directory
     mode: "0755"
 
 - name: download docker-compose v2
   become: yes
-  get_url:
+  ansible.builtin.get_url:
     # TODO' Use `uname -m` for cross platform suffixes (since v2.0.1)
     url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
     dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
@@ -29,7 +29,7 @@
 
 - name: download compose-switch
   become: yes
-  get_url:
+  ansible.builtin.get_url:
     url: "https://github.com/docker/compose-switch/releases/download/v{{ compose_switch_version }}/docker-compose-linux-amd64"
     dest: /usr/local/bin/compose-switch
     mode: 0755
@@ -47,7 +47,7 @@
     - never
   block:
     - name: test command existence
-      command: bash -c "type {{ item }}"
+      ansible.builtin.command: bash -c "type {{ item }}"
       register: result
       changed_when: False
       with_items:
@@ -60,20 +60,20 @@
     - never
   block:
     - name: test docker command usability
-      command: docker run --rm hello-world
+      ansible.builtin.command: docker run --rm hello-world
     - name: test docker compose usability
       block:
         - name: create temporary working directory
-          tempfile:
+          ansible.builtin.tempfile:
             state: directory
           register: tmpdir
         - name: put docker-compose.yml
-          copy:
+          ansible.builtin.copy:
             src: "docker-compose.yml"
             dest: "{{ tmpdir.path }}/docker-compose.yml"
             mode: '0664'
         - name: assert docker compose command usability
-          command: docker compose ps
+          ansible.builtin.command: docker compose ps
           args:
             chdir: "{{ tmpdir.path }}"
           changed_when: False

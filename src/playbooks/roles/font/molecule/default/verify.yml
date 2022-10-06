@@ -6,7 +6,7 @@
     - name: assert test environment
       block:
         - name: determine remote user
-          command: whoami
+          ansible.builtin.command: whoami
           register: result
           changed_when: False
         - name: assert remote user
@@ -17,7 +17,7 @@
     - name: test font family monospace
       block:
         - name: determine fonts
-          command: fc-match monospace -s -f %{fullname}\\n
+          ansible.builtin.command: fc-match monospace -s -f %{fullname}\\n
           register: result
           changed_when: False
         - name: assert fonts

@@ -15,7 +15,7 @@ shell:
 
 .PHONY: lint2
 lint2:
-	ansible-lint src/playbooks/well_tested.yml -x yaml,meta-no-info,risky-file-permissions,701
+	ansible-lint src/playbooks/well_tested.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play]
 
 .PHONY: lint
 lint: jsonlint ansiblelint awesome-ci

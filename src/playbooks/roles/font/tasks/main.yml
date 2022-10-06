@@ -1,23 +1,23 @@
 ---
-- name: install packages
+- name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - fontconfig
       - fonts-inconsolata
       - fonts-noto-cjk
       - fonts-noto-color-emoji
 
-- name: create directory to put sddm config
-  file:
+- name: Create directory to put sddm config
+  ansible.builtin.file:
     path: /home/vagrant/.config/fontconfig
     state: directory
     mode: "0755"
 
-- name: put fontconfig config file
-  copy:
+- name: Put fontconfig config file
+  ansible.builtin.copy:
     src: fonts.conf.xml
     dest: /home/vagrant/.config/fontconfig/fonts.conf
     mode: 0644
   notify:
-    - update font information caches
+    - Update font information caches

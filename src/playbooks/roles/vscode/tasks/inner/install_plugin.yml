@@ -1,15 +1,15 @@
 ---
 
-- name: show plugin name to install
-  debug:
+- name: Show plugin name to install
+  ansible.builtin.debug:
     var: vscode_plugin
 
-- name: check whether already installed
-  command: bash -c "code --list-extensions | grep -x '{{ vscode_plugin }}'"
+- name: Check whether already installed
+  ansible.builtin.command: bash -c "code --list-extensions | grep -x '{{ vscode_plugin }}'"
   register: checked_result
   failed_when: checked_result.rc not in [0, 1]
   changed_when: False # No effect on environment
 
-- name: install plugin
-  command: bash -c "code --install-extension '{{ vscode_plugin }}'"
+- name: Install plugin
+  ansible.builtin.command: bash -c "code --install-extension '{{ vscode_plugin }}'"
   when: checked_result.rc == 1 # not installed yet

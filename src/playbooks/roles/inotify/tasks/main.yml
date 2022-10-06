@@ -12,7 +12,7 @@
     - never
   block:
     - name: determine max_user_watches
-      command: bash -c "cat /proc/sys/fs/inotify/max_user_watches"
+      ansible.builtin.command: bash -c "cat /proc/sys/fs/inotify/max_user_watches"
       register: result
       changed_when: False
     - name: assert swap size

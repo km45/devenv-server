@@ -1,8 +1,8 @@
 ---
 
-- name: install requirements
+- name: Install requirements
   become: yes
-  apt:
+  ansible.builtin.apt:
     name:
       - apt-transport-https
       - gnome-keyring
@@ -17,33 +17,33 @@
       - moreutils # for sponge used to overwrite config
       - xsel # for vscode plugin gitlens
 
-- name: add apt key
+- name: Add apt key
   become: yes
-  apt_key:
+  ansible.builtin.apt_key:
     url: https://packages.microsoft.com/keys/microsoft.asc
     keyring: /etc/apt/trusted.gpg.d/microsoft.gpg
 
-- name: add apt repository
+- name: Add apt repository
   become: yes
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: >-
       deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
     state: present
 
-- name: install packages
+- name: Install packages
   become: yes
-  apt:
+  ansible.builtin.apt:
     name: code
 
-- name: install plugins
+- name: Install plugins
   include_tasks: inner/install_plugin.yml
   with_items: "{{ vscode_plugins }}"
   loop_control:
     loop_var: vscode_plugin
 
-- name: put user settings.json
-  copy:
+- name: Put user settings.json
+  ansible.builtin.copy:
     src: settings.json
     dest: /home/vagrant/.config/Code/User/settings.json
     mode: 0664
