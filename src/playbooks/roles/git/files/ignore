@@ -1,5 +1,8 @@
 # Compilation Database
 /compile_commands.json
 
+# Python venv
+/venv
+
 # Visual Studio Code
 /.vscode
