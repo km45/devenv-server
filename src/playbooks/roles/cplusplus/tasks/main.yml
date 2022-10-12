@@ -1,13 +1,13 @@
 ---
 
-- name: Check whether already installed clang 14
+- name: Check whether already installed clang
   ansible.builtin.command: |-
-    which clang-14
+    which clang-{{ llvm_major_version }}
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
 
-- name: Install clang 14
+- name: Install clang
   when: checked_result.rc == 1
   block:
     - name: Install requirements
@@ -29,7 +29,7 @@
     - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
-      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh 14"
+      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ llvm_major_version }}"
     - name: Remove temporary working directory
       ansible.builtin.file:
         path: "{{ tmpdir.path }}"
@@ -39,15 +39,15 @@
   become: yes
   ansible.builtin.apt:
     name:
-      - clang-format-14
+      - clang-format-{{ llvm_major_version }}
       - cmake
       - g++
       - gdb
       - ninja-build
 
-- name: Correct clang-format version to 14
+- name: Correct clang-format version
   become: yes
   alternatives:
     link: /usr/bin/clang-format
     name: clang-format
-    path: /usr/bin/clang-format-14
+    path: /usr/bin/clang-format-{{ llvm_major_version }}
