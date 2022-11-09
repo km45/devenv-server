@@ -96,6 +96,7 @@ vscode_plugins:
   # Python
   # ----------------------------------------------------------------------------
   - matangover.mypy
+  - ms-python.black-formatter
   - ms-python.python
   - ms-python.vscode-pylance
   #
