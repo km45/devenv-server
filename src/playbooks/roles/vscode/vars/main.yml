@@ -11,6 +11,7 @@ vscode_plugins:
   - oderwat.indent-rainbow
   - shardulm94.trailing-spaces
   - streetsidesoftware.code-spell-checker
+  - tomoki1207.vscode-input-sequence
   - Tyriar.sort-lines
   - wmaurer.change-case
   - wraith13.bracket-lens
