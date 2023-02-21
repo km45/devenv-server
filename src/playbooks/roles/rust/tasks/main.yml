@@ -42,3 +42,4 @@
         state: absent
 
 - include_tasks: diffr.yml
+- include_tasks: gitgraph.yml
