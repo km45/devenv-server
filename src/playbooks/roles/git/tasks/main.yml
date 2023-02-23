@@ -17,7 +17,7 @@
     state: latest  # noqa package-latest
 
 - name: Include task config
-  include_tasks: config.yml
+  ansible.builtin.import_tasks: config.yml
 
 - name: Include task ignore
-  include_tasks: ignore.yml
+  ansible.builtin.import_tasks: ignore.yml
