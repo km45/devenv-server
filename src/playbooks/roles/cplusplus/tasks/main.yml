@@ -47,7 +47,7 @@
 
 - name: Correct clang-format version
   become: yes
-  alternatives:
+  community.general.alternatives:
     link: /usr/bin/clang-format
     name: clang-format
     path: /usr/bin/clang-format-{{ llvm_major_version }}

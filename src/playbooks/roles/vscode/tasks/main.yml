@@ -37,7 +37,7 @@
     name: code
 
 - name: Install plugins
-  include_tasks: inner/install_plugin.yml
+  ansible.builtin.include_tasks: inner/install_plugin.yml
   with_items: "{{ vscode_plugins }}"
   loop_control:
     loop_var: vscode_plugin
