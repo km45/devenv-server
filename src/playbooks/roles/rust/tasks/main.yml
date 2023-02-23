@@ -41,5 +41,8 @@
         path: "{{ tmpdir.path }}"
         state: absent
 
-- include_tasks: diffr.yml
-- include_tasks: gitgraph.yml
+- name: Include task diffr
+  include_tasks: diffr.yml
+
+- name: Include task gitgraph
+  include_tasks: gitgraph.yml

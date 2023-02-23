@@ -16,5 +16,8 @@
     name: git
     state: latest  # noqa package-latest
 
-- include_tasks: config.yml
-- include_tasks: ignore.yml
+- name: Include task config
+  include_tasks: config.yml
+
+- name: Include task ignore
+  include_tasks: ignore.yml

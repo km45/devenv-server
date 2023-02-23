@@ -19,4 +19,5 @@
     dest: /etc/sddm.conf.d/autologin.conf
     mode: 0664
 
-- include_tasks: i3.yml
+- name: Include task i3
+  include_tasks: i3.yml
