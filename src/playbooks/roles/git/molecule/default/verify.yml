@@ -19,7 +19,6 @@
       changed_when: False
       with_items:
         - git
-        - gitk
     - name: test git version
       block:
         - name: determine git version
