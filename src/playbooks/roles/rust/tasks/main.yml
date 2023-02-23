@@ -42,7 +42,7 @@
         state: absent
 
 - name: Include task diffr
-  include_tasks: diffr.yml
+  ansible.builtin.import_tasks: diffr.yml
 
 - name: Include task gitgraph
-  include_tasks: gitgraph.yml
+  ansible.builtin.import_tasks: gitgraph.yml
