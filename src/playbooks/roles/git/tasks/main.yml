@@ -17,5 +17,4 @@
     state: latest  # noqa package-latest
 
 - include_tasks: config.yml
-- include_tasks: gitk.yml
 - include_tasks: ignore.yml
