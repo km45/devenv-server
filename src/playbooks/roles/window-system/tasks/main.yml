@@ -20,4 +20,4 @@
     mode: 0664
 
 - name: Include task i3
-  include_tasks: i3.yml
+  ansible.builtin.import_tasks: i3.yml
