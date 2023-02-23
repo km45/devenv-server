@@ -6,16 +6,16 @@
     - dependencies/bashrc_dir
 
 - name: Include task pyenv
-  include_tasks: pyenv.yml
+  ansible.builtin.import_tasks: pyenv.yml
 
 - name: Include task version
-  include_tasks: version.yml
+  ansible.builtin.import_tasks: version.yml
 
 - name: Include task poetry
-  include_tasks: poetry.yml
+  ansible.builtin.import_tasks: poetry.yml
 
 - name: Include task awscli
-  include_tasks: awscli.yml
+  ansible.builtin.import_tasks: awscli.yml
 
 - name: Include task cpplint
-  include_tasks: cpplint.yml
+  ansible.builtin.import_tasks: cpplint.yml
