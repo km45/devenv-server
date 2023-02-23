@@ -1,7 +1,7 @@
 ---
 
 - name: Change global git config
-  git_config:
+  community.general.git_config:
     name: "{{ item.name }}"
     scope: global
     value: "{{ item.value }}"
