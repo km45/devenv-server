@@ -11,5 +11,6 @@
   changed_when: False # No effect on environment
 
 - name: Install plugin
+  # noqa no-changed-when
   ansible.builtin.command: bash -c "code --install-extension '{{ vscode_plugin }}'"
   when: checked_result.rc == 1 # not installed yet
