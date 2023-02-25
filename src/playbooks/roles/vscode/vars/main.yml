@@ -57,7 +57,6 @@ vscode_plugins:
   # Git
   # ----------------------------------------------------------------------------
   - eamodio.gitlens
-  - mhutchie.git-graph
   #
   #
   # ----------------------------------------------------------------------------
@@ -78,7 +77,6 @@ vscode_plugins:
   - DavidAnson.vscode-markdownlint
   - goessner.mdmath
   - shuworks.vscode-table-formatter
-  - TomasHubelbauer.vscode-markdown-todo
   #
   #
   # ----------------------------------------------------------------------------
@@ -118,7 +116,6 @@ vscode_plugins:
   # Shell script
   # ----------------------------------------------------------------------------
   - foxundermoon.shell-format
-  - rogalmic.bash-debug
   - timonwong.shellcheck
   #
   #
