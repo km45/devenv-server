@@ -26,7 +26,7 @@ jobs:
   test_cplusplus:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -37,7 +37,7 @@ jobs:
   test_font:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -48,7 +48,7 @@ jobs:
   test_git:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -59,7 +59,7 @@ jobs:
   test_hadolint:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -70,7 +70,7 @@ jobs:
   test_nkf:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -81,7 +81,7 @@ jobs:
   test_prompt:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -92,7 +92,7 @@ jobs:
   test_python:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -103,7 +103,7 @@ jobs:
   test_rust:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -114,7 +114,7 @@ jobs:
   test_shellcheck:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -125,7 +125,7 @@ jobs:
   test_vscode:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -136,7 +136,7 @@ jobs:
   test_window-system:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -147,7 +147,7 @@ jobs:
   test_zip:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
@@ -158,14 +158,14 @@ jobs:
   lint:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - run: make up
       - run: make lint TTY=false
       - run: make down
   lint2:
     runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: setup python
         uses: actions/setup-python@v4
         with:
