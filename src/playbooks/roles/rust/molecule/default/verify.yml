@@ -19,6 +19,5 @@
       with_items:
         - cargo
         - diffr
-        - git-graph
         - rustc
         - rustup
