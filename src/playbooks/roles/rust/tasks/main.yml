@@ -43,6 +43,3 @@
 
 - name: Include task diffr
   ansible.builtin.import_tasks: diffr.yml
-
-- name: Include task gitgraph
-  ansible.builtin.import_tasks: gitgraph.yml

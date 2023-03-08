@@ -21,3 +21,20 @@
 
 - name: Include task ignore
   ansible.builtin.import_tasks: ignore.yml
+
+- name: Detect whether expected version of git-graph is already installed
+  ansible.builtin.command: |-
+    bash -c "which git-graph && git-graph --version | grep {{ git_graph_version }}"
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Install git-graph
+  when: checked_result.rc == 1
+  block:
+    - name: Download prebuilt binary
+      become: yes
+      ansible.builtin.unarchive:
+        src: "https://github.com/mlange-42/git-graph/releases/download/{{ git_graph_version }}/git-graph-{{ git_graph_version }}-linux-amd64.tar.gz"
+        remote_src: yes
+        dest: /usr/local/bin
