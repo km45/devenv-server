@@ -1,9 +1,27 @@
 ---
+- name: Add apt key
+  become: yes
+  ansible.builtin.apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+    keyring: /etc/apt/keyrings/docker.gpg
+
+- name: Add apt repository
+  become: yes
+  ansible.builtin.apt_repository:
+    repo: >-
+      deb [arch=amd64 signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu jammy stable
+    filename: docker
+    state: present
 
 - name: install packages
   become: yes
   ansible.builtin.apt:
-    name: docker.io
+    name:
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-ce
+      - docker-ce-cli
+      - docker-compose-plugin
 
 - name: add user to docker group
   become: yes
@@ -11,21 +29,6 @@
     name: "{{ ansible_env.USER }}"
     groups: docker
     append: yes
-
-- name: create directory to put docker cli-plugin
-  ansible.builtin.file:
-    path: "{{ ansible_env.HOME }}/.docker/cli-plugins"
-    state: directory
-    mode: "0755"
-
-- name: download docker-compose v2
-  become: yes
-  ansible.builtin.get_url:
-    # TODO' Use `uname -m` for cross platform suffixes (since v2.0.1)
-    url: "https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64"
-    dest: "{{ ansible_env.HOME }}/.docker/cli-plugins/docker-compose"
-    checksum: "sha256:https://github.com/docker/compose/releases/download/v{{ compose_version }}/docker-compose-linux-x86_64.sha256"
-    mode: 0755
 
 - name: download compose-switch
   become: yes
