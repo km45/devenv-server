@@ -21,8 +21,6 @@ jobs:
       - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test'
         name: test for current session
       - run: multipass restart test-jammy
-      - name: Wait 30 seconds for multipass mount ready
-        run: sleep 30
       - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test,test2'
         name: test after rebooting
   test_cplusplus:
