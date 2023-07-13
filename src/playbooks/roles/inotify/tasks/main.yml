@@ -16,7 +16,7 @@
       register: result
       changed_when: False
     - name: Assert swap size
-      assert:
+      ansible.builtin.assert:
         that:
           - result.stdout == "524288"
         fail_msg: "actual size is {{ result.stdout }}"
