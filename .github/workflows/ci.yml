@@ -30,7 +30,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=cplusplus
@@ -41,7 +41,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=git
@@ -52,7 +52,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=hadolint
@@ -63,7 +63,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=nkf
@@ -74,7 +74,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=prompt
@@ -85,7 +85,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=python
@@ -96,7 +96,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=rust
@@ -107,7 +107,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=shellcheck
@@ -118,7 +118,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make test ROLE=zip
@@ -136,7 +136,7 @@ jobs:
       - name: setup python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.10"
+          python-version: "3.11"
           cache: pip
       - run: make sync
       - run: make lint2
