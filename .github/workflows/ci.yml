@@ -155,13 +155,13 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=zip
-  lint:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - run: make up
-      - run: make lint TTY=false
-      - run: make down
+  # lint:
+  #   runs-on: ubuntu-20.04
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - run: make up
+  #     - run: make lint TTY=false
+  #     - run: make down
   lint2:
     runs-on: ubuntu-20.04
     steps:
@@ -189,7 +189,7 @@ jobs:
       - test_vscode
       - test_window-system
       - test_zip
-      - lint
+      # - lint
       - lint2
     steps:
       - run: echo 'pass'
