@@ -13,7 +13,7 @@
     src: "{{ item }}"
     state: "absent"
   notify:
-    - disable swap devices and files for current session
+    - Disable swap devices and files for current session
 
 - name: Test swap size for current session
   tags:
