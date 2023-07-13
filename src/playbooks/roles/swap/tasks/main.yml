@@ -8,7 +8,7 @@
 - name: Remove swap partition entries if exist
   become: yes
   with_items: "{{ checked_result.stdout_lines }}"
-  mount:
+  ansible.posix.mount:
     path: "none"
     src: "{{ item }}"
     state: "absent"

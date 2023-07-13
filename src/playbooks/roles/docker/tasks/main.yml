@@ -39,7 +39,7 @@
 
 - name: Create alternatives for docker-compose command
   become: yes
-  alternatives:
+  community.general.alternatives:
     name: docker-compose
     link: /usr/local/bin/docker-compose
     path: /usr/local/bin/compose-switch
