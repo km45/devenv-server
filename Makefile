@@ -14,11 +14,11 @@ shell:
 	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
 
 .PHONY: lint2
-lint2:
+lint2: awesome-ci
 	ansible-lint src/playbooks/well_tested.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play]
 
 .PHONY: lint
-lint: jsonlint ansiblelint awesome-ci
+lint: jsonlint ansiblelint
 
 .PHONY: jsonlint
 jsonlint:
