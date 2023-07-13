@@ -13,7 +13,7 @@
     filename: docker
     state: present
 
-- name: install packages
+- name: Install packages
   become: yes
   ansible.builtin.apt:
     name:
@@ -23,33 +23,33 @@
       - docker-ce-cli
       - docker-compose-plugin
 
-- name: add user to docker group
+- name: Add user to docker group
   become: yes
-  user:
+  ansible.builtin.user:
     name: "{{ ansible_env.USER }}"
     groups: docker
     append: yes
 
-- name: download compose-switch
+- name: Download compose-switch
   become: yes
   ansible.builtin.get_url:
     url: "https://github.com/docker/compose-switch/releases/download/v{{ compose_switch_version }}/docker-compose-linux-amd64"
     dest: /usr/local/bin/compose-switch
     mode: 0755
 
-- name: create alternatives for docker-compose command
+- name: Create alternatives for docker-compose command
   become: yes
-  alternatives:
+  community.general.alternatives:
     name: docker-compose
     link: /usr/local/bin/docker-compose
     path: /usr/local/bin/compose-switch
 
-- name: test for every session
+- name: Test for every session
   tags:
     - test
     - never
   block:
-    - name: test command existence
+    - name: Test command existence
       ansible.builtin.command: bash -c "type {{ item }}"
       register: result
       changed_when: False
@@ -57,25 +57,26 @@
         - docker
         - docker-compose
 
-- name: test after rebooting
+- name: Test after rebooting
   tags:
     - test2
     - never
   block:
-    - name: test docker command usability
+    - name: Test docker command usability
       ansible.builtin.command: docker run --rm hello-world
-    - name: test docker compose usability
+      changed_when: False
+    - name: Test docker compose usability
       block:
-        - name: create temporary working directory
+        - name: Create temporary working directory
           ansible.builtin.tempfile:
             state: directory
           register: tmpdir
-        - name: put docker-compose.yml
+        - name: Put docker-compose.yml
           ansible.builtin.copy:
             src: "docker-compose.yml"
             dest: "{{ tmpdir.path }}/docker-compose.yml"
             mode: '0664'
-        - name: assert docker compose command usability
+        - name: Assert docker compose command usability
           ansible.builtin.command: docker compose ps
           args:
             chdir: "{{ tmpdir.path }}"

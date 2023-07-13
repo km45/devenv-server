@@ -1,22 +1,22 @@
 ---
 
-- name: increase inotify limit
+- name: Increase inotify limit
   become: yes
-  sysctl:
+  ansible.posix.sysctl:
     name: fs.inotify.max_user_watches
     value: '524288'
 
-- name: test swap size
+- name: Test swap size
   tags:
     - test
     - never
   block:
-    - name: determine max_user_watches
+    - name: Determine max_user_watches
       ansible.builtin.command: bash -c "cat /proc/sys/fs/inotify/max_user_watches"
       register: result
       changed_when: False
-    - name: assert swap size
-      assert:
+    - name: Assert swap size
+      ansible.builtin.assert:
         that:
           - result.stdout == "524288"
         fail_msg: "actual size is {{ result.stdout }}"

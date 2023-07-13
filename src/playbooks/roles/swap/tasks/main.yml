@@ -1,31 +1,31 @@
 ---
 
-- name: check swap partition existence
+- name: Check swap partition existence
   ansible.builtin.command: bash -c "cat /etc/fstab | grep '[^ ]* *[^ ]* *swap' | awk '{print $1}'"
   register: checked_result
   changed_when: false
 
-- name: remove swap partition entries if exist
+- name: Remove swap partition entries if exist
   become: yes
   with_items: "{{ checked_result.stdout_lines }}"
-  mount:
+  ansible.posix.mount:
     path: "none"
     src: "{{ item }}"
     state: "absent"
   notify:
-    - disable swap devices and files for current session
+    - Disable swap devices and files for current session
 
-- name: test swap size for current session
+- name: Test swap size for current session
   tags:
     - test
     - never
   block:
-    - name: determine swap size
+    - name: Determine swap size
       ansible.builtin.command: bash -c "grep SwapTotal /proc/meminfo | awk '{print $2}'"
       register: result
       changed_when: False
-    - name: assert swap size
-      assert:
+    - name: Assert swap size
+      ansible.builtin.assert:
         that:
           - result.stdout == "0"
         fail_msg: "actual size is {{ result.stdout }}"
