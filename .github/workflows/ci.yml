@@ -122,17 +122,6 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=shellcheck
-  test_window-system:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          cache: pip
-      - run: make sync
-      - run: make test ROLE=window-system
   test_zip:
     runs-on: ubuntu-20.04
     steps:
@@ -175,7 +164,6 @@ jobs:
       - test_python
       - test_rust
       - test_shellcheck
-      - test_window-system
       - test_zip
       # - lint
       - lint2
