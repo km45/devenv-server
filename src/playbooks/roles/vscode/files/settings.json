@@ -1,8 +1,0 @@
-{
-  "C_Cpp.formatting": "Disabled",
-  "clang-format.fallbackStyle": "Google",
-  "cpplint.cpplintPath": "/home/vagrant/.pyenv/shims/cpplint",
-  "mdmath.delimiters": "gitlab",
-  "window.titleBarStyle": "native",
-  "workbench.colorTheme": "Default Dark+"
-}
