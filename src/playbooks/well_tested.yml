@@ -2,7 +2,6 @@
 - hosts: all
   roles:
     - cplusplus
-    - font
     - git
     - hadolint
     - nkf
@@ -10,5 +9,4 @@
     - python
     - rust
     - shellcheck
-    - window-system
     - zip
