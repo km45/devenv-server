@@ -1,10 +1,8 @@
 ---
-
 - name: install packages
   become: yes
   ansible.builtin.apt:
     name:
-      - fcitx-mozc
       - language-pack-ja
 
 - name: set system locale
