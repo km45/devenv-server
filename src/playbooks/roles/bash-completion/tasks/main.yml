@@ -1,6 +1,5 @@
 ---
-
-- name: install packages
+- name: Install packages
   become: yes
   ansible.builtin.apt:
     name: bash-completion

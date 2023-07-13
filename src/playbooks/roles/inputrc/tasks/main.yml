@@ -1,6 +1,5 @@
 ---
-
-- name: edit system inputrc
+- name: Edit system inputrc
   become: yes
   blockinfile:
     path: /etc/inputrc

@@ -1,9 +1,8 @@
 ---
-
-- name: show distribution name
+- name: Show distribution name
   debug:
     var: ansible_distribution
 
-- name: show distribution version
+- name: Show distribution version
   debug:
     var: ansible_distribution_version

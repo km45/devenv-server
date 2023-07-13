@@ -1,3 +1,3 @@
 ---
-- name: create well known English-named user directories
+- name: Create well known English-named user directories
   ansible.builtin.shell: LC_ALL=C xdg-user-dirs-update

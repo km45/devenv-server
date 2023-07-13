@@ -1,18 +1,17 @@
 ---
-
-- name: install packages
+- name: Install packages
   become: yes
   ansible.builtin.apt:
     name: samba
 
-- name: add config file
+- name: Add config file
   become: yes
   ansible.builtin.copy:
     src: smb.conf
     dest: /etc/samba/
     mode: 0644
 
-- name: add samba user
+- name: Add samba user
   become: yes
   ansible.builtin.shell: |-
     echo '{{ password }}\n{{ password }}' \

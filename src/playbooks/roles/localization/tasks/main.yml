@@ -1,15 +1,15 @@
 ---
-- name: install packages
+- name: Install packages
   become: yes
   ansible.builtin.apt:
     name:
       - language-pack-ja
 
-- name: set system locale
+- name: Set system locale
   become: yes
   ansible.builtin.shell: localectl set-locale LANG=ja_JP.UTF-8 LANGUAGE=ja_JP:en_US
 
-- name: set timezone
+- name: Set timezone
   become: yes
   timezone:
     name: Asia/Tokyo
