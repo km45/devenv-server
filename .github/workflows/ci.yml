@@ -34,17 +34,6 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=cplusplus
-  test_font:
-    runs-on: ubuntu-20.04
-    steps:
-      - uses: actions/checkout@v3
-      - name: setup python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.10"
-          cache: pip
-      - run: make sync
-      - run: make test ROLE=font
   test_git:
     runs-on: ubuntu-20.04
     steps:
@@ -156,7 +145,6 @@ jobs:
     needs:
       - multipass_test_jammy
       - test_cplusplus
-      - test_font
       - test_git
       - test_hadolint
       - test_nkf
