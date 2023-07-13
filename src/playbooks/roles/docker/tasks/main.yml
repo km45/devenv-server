@@ -64,6 +64,7 @@
   block:
     - name: Test docker command usability
       ansible.builtin.command: docker run --rm hello-world
+      changed_when: False
     - name: Test docker compose usability
       block:
         - name: Create temporary working directory
