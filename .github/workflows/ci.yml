@@ -24,7 +24,7 @@ jobs:
       - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test,test2'
         name: test after rebooting
   test_cplusplus:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -35,7 +35,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=cplusplus
   test_git:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -46,7 +46,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=git
   test_hadolint:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -57,7 +57,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=hadolint
   test_nkf:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -68,7 +68,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=nkf
   test_prompt:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -79,7 +79,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=prompt
   test_python:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -90,7 +90,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=python
   test_rust:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -101,7 +101,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=rust
   test_shellcheck:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -112,7 +112,7 @@ jobs:
       - run: make sync
       - run: make test ROLE=shellcheck
   test_zip:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -123,14 +123,14 @@ jobs:
       - run: make sync
       - run: make test ROLE=zip
   # lint:
-  #   runs-on: ubuntu-20.04
+  #   runs-on: ubuntu-22.04
   #   steps:
   #     - uses: actions/checkout@v3
   #     - run: make up
   #     - run: make lint TTY=false
   #     - run: make down
   lint2:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
       - name: setup python
@@ -141,7 +141,7 @@ jobs:
       - run: make sync
       - run: make lint2
   status_check:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs:
       - multipass_test_jammy
       - test_cplusplus
