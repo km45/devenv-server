@@ -1,7 +1,7 @@
 ---
 - name: Edit system inputrc
   become: yes
-  blockinfile:
+  ansible.builtin.blockinfile:
     path: /etc/inputrc
     block: |
       set completion-ignore-case on
