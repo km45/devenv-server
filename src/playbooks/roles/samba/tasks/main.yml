@@ -1,21 +1,30 @@
 ---
-
-- name: install packages
+- name: Install packages
   become: yes
   ansible.builtin.apt:
     name: samba
 
-- name: add config file
+- name: Add config file
   become: yes
   ansible.builtin.copy:
     src: smb.conf
     dest: /etc/samba/
     mode: 0644
 
-- name: add samba user
+- name: Detect whether expected samba user is already added
   become: yes
-  ansible.builtin.shell: |-
-    echo '{{ password }}\n{{ password }}' \
-    | pdbedit -a -t -u "{{ username }}"
+  ansible.builtin.command:
+    bash -c "pdbedit --list | grep '{{ username }}:[0-9]*:.*'"  # not check full name
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Add samba user
+  when: checked_result.rc == 1
+  become: yes
+  ansible.builtin.command:
+    cmd: pdbedit -a -t -u "{{ username }}"
+    stdin: "{{ password }}\n{{ password }}"
+  changed_when: True
 
 # REVIEW: Is required service restart operation?
