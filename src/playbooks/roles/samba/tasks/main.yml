@@ -13,7 +13,6 @@
 
 - name: Add samba user
   become: yes
-  # noqa risky-shell-pipe
   ansible.builtin.shell: |-
     echo '{{ password }}\n{{ password }}' \
     | pdbedit -a -t -u "{{ username }}"
