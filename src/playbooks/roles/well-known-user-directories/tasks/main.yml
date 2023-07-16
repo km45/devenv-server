@@ -1,3 +1,4 @@
 ---
 - name: Create well known English-named user directories
+  # noqa command-instead-of-shell
   ansible.builtin.shell: LC_ALL=C xdg-user-dirs-update
