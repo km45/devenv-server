@@ -13,8 +13,8 @@
 
 - name: Add samba user
   become: yes
-  ansible.builtin.shell: |-
-    echo '{{ password }}\n{{ password }}' \
-    | pdbedit -a -t -u "{{ username }}"
+  ansible.builtin.command:
+    cmd: pdbedit -a -t -u "{{ username }}"
+    stdin: "{{ password }}\n{{ password }}"
 
 # REVIEW: Is required service restart operation?
