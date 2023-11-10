@@ -19,6 +19,6 @@
       with_items:
         - cargo
         - csview
-        - diffr
+        - riff
         - rustc
         - rustup
