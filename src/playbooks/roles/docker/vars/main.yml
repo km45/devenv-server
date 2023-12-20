@@ -1,3 +1,2 @@
 ---
-docker_compose_version: "2.17.3"
 docker_compose_switch_version: "1.0.5"
