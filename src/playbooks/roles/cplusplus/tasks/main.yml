@@ -2,7 +2,7 @@
 
 - name: Check whether already installed clang
   ansible.builtin.command: |-
-    which clang-{{ llvm_major_version }}
+    which clang-{{ cplusplus_llvm_major_version }}
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -29,7 +29,7 @@
     - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
-      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ llvm_major_version }}"
+      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
     - name: Remove temporary working directory
       ansible.builtin.file:
         path: "{{ tmpdir.path }}"
@@ -39,7 +39,7 @@
   become: yes
   ansible.builtin.apt:
     name:
-      - clang-format-{{ llvm_major_version }}
+      - clang-format-{{ cplusplus_llvm_major_version }}
       - cmake
       - g++
       - gdb
@@ -50,4 +50,4 @@
   community.general.alternatives:
     link: /usr/bin/clang-format
     name: clang-format
-    path: /usr/bin/clang-format-{{ llvm_major_version }}
+    path: /usr/bin/clang-format-{{ cplusplus_llvm_major_version }}

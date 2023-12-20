@@ -14,7 +14,7 @@
 - name: Detect whether expected samba user is already added
   become: yes
   ansible.builtin.command:
-    bash -c "pdbedit --list | grep '{{ username }}:[0-9]*:.*'"  # not check full name
+    bash -c "pdbedit --list | grep '{{ samba_username }}:[0-9]*:.*'"  # not check full name
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -23,8 +23,8 @@
   when: checked_result.rc == 1
   become: yes
   ansible.builtin.command:
-    cmd: pdbedit -a -t -u "{{ username }}"
-    stdin: "{{ password }}\n{{ password }}"
+    cmd: pdbedit -a -t -u "{{ samba_username }}"
+    stdin: "{{ samba_password }}\n{{ samba_password }}"
   changed_when: True
 
 # REVIEW: Is required service restart operation?

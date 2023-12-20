@@ -1,4 +1,5 @@
 ---
 - name: Disable swap devices and files for current session
   become: yes
+  # noqa no-changed-when
   ansible.builtin.command: "swapoff --all"

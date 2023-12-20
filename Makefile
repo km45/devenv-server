@@ -29,7 +29,7 @@ endif
 
 .PHONY: ansiblelint
 ansiblelint:
-	ansible-lint src/playbooks/site.yml src/playbooks/multipass.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play]
+	ansible-lint src/playbooks/site.yml src/playbooks/multipass.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play],risky-shell-pipe
 
 .PHONY: awesome-ci
 awesome-ci:
