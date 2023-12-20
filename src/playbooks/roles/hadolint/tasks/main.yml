@@ -33,6 +33,5 @@
         chdir: /usr/local/stow
       # noqa no-changed-when
       ansible.builtin.shell: |-
-        set -o pipefail
         ls | grep 'hadolint-*' | xargs -n1 stow -D
         stow -R hadolint-{{ hadolint_version }}
