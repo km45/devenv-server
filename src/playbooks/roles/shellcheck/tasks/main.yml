@@ -38,5 +38,6 @@
         chdir: /usr/local/stow
       # noqa no-changed-when
       ansible.builtin.shell: |-
+        set -o pipefail 
         ls | grep 'shellcheck-*' | xargs -n1 stow -D
         stow -R shellcheck-{{ shellcheck_version }}
