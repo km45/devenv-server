@@ -1,4 +1,4 @@
 ---
 
-username: vagrant
-password: vagrant
+samba_username: vagrant
+samba_password: vagrant

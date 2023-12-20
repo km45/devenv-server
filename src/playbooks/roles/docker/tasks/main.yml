@@ -33,7 +33,7 @@
 - name: Download compose-switch
   become: yes
   ansible.builtin.get_url:
-    url: "https://github.com/docker/compose-switch/releases/download/v{{ compose_switch_version }}/docker-compose-linux-amd64"
+    url: "https://github.com/docker/compose-switch/releases/download/v{{ docker_compose_switch_version }}/docker-compose-linux-amd64"
     dest: /usr/local/bin/compose-switch
     mode: 0755
 
