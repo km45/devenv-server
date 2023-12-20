@@ -29,7 +29,7 @@
     - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
-      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ llvm_majorcplusplus_llvm_major_version_version }}"
+      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
     - name: Remove temporary working directory
       ansible.builtin.file:
         path: "{{ tmpdir.path }}"
