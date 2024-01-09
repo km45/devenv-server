@@ -8,6 +8,8 @@
   with_items:
     - name: core.editor
       value: nano
+    - name: core.quotePath
+      value: false
     - name: log.decorate
       value: short
     - name: push.default
