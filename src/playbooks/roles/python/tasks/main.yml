@@ -19,3 +19,6 @@
 
 - name: Include task cpplint
   ansible.builtin.import_tasks: cpplint.yml
+
+- name: Include task glances
+  ansible.builtin.import_tasks: glances.yml
