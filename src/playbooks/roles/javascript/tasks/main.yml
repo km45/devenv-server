@@ -1,0 +1,63 @@
+---
+- name: Apply dependent roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  with_items:
+    - dependencies/bashrc_dir
+
+- name: Put bashrc file in ~/.bashrc.d
+  ansible.builtin.copy:
+    src: bashrc
+    dest: /home/vagrant/.bashrc.d/javascript.bashrc
+    mode: 0755
+
+- name: Check whether already installed volta
+  ansible.builtin.shell: |-
+    . ~/.bashrc.d/javascript.bashrc
+    which volta
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Install volta
+  when: checked_result.rc == 1
+  block:
+    - name: Install requirements
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - curl
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
+        state: directory
+      register: tmpdir
+    - name: Download volta automatic installation script
+      ansible.builtin.get_url:
+        url: https://get.volta.sh
+        dest: "{{ tmpdir.path }}/volta.sh"
+    - name: Execute volta automatic installation script
+      # noqa no-changed-when
+      ansible.builtin.command: "bash {{ tmpdir.path }}/volta.sh"
+      register: install_result
+    - name: Show stderr of installation script
+      ansible.builtin.debug:
+        msg: "{{ install_result.stderr_lines }}"
+    - name: Remove temporary working directory
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent
+
+- name: Check whether already installed node
+  ansible.builtin.shell: |-
+    . ~/.bashrc.d/javascript.bashrc
+    node --version 2>&1 | head -n1 | grep -v 'Volta error:'
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Install node
+  when: checked_result.rc == 1
+  # noqa no-changed-when
+  ansible.builtin.shell: |-
+    . ~/.bashrc.d/javascript.bashrc
+    volta install node
