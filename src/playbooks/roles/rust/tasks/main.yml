@@ -45,3 +45,5 @@
   ansible.builtin.import_tasks: csview.yml
 - name: Include task riff
   ansible.builtin.import_tasks: riff.yml
+- name: Include task xsv
+  ansible.builtin.import_tasks: xsv.yml
