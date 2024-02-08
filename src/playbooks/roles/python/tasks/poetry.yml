@@ -8,4 +8,4 @@
 - name: Install packages
   ansible.builtin.pip:
     name: poetry
-    executable: /home/vagrant/.pyenv/shims/pip
+    executable: ~/.pyenv/shims/pip

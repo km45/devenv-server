@@ -2,4 +2,4 @@
 - name: Install packages
   ansible.builtin.pip:
     name: glances
-    executable: /home/vagrant/.pyenv/shims/pip
+    executable: ~/.pyenv/shims/pip

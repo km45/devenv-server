@@ -3,4 +3,4 @@
 - name: Install packages
   ansible.builtin.pip:
     name: cpplint
-    executable: /home/vagrant/.pyenv/shims/pip
+    executable: ~/.pyenv/shims/pip

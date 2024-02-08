@@ -8,7 +8,7 @@
 - name: Put bashrc file in ~/.bashrc.d
   ansible.builtin.copy:
     src: bashrc
-    dest: /home/vagrant/.bashrc.d/javascript.bashrc
+    dest: ~/.bashrc.d/javascript.bashrc
     mode: 0755
 
 - name: Check whether already installed volta

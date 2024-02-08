@@ -9,5 +9,5 @@
 - name: Put bashrc file in ~/.bashrc.d
   ansible.builtin.copy:
     src: bashrc
-    dest: /home/vagrant/.bashrc.d/git-prompt.bashrc
+    dest: ~/.bashrc.d/git-prompt.bashrc
     mode: 0755

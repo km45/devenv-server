@@ -3,6 +3,6 @@
 - name: create empty .bashrc
   ansible.builtin.copy:
     content: ""
-    dest: /home/vagrant/.bashrc
+    dest: ~/.bashrc
     force: no
     mode: '0755'

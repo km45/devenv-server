@@ -23,6 +23,7 @@
         name:
           - curl
           - git
+          - tk-dev
     - name: Create temporary working directory
       ansible.builtin.tempfile:
         state: directory
