@@ -8,7 +8,7 @@ jobs:
   #   # because nested virtualization is not supported for Ubuntu instances
   #   runs-on: macos-12
   #   steps:
-  #     - uses: actions/checkout@v3
+  #     - uses: actions/checkout@v4
   #     - run: brew install --cask multipass
   #     - name: Wait 30 seconds for multipassd ready
   #       run: sleep 30
@@ -26,7 +26,7 @@ jobs:
   test_cplusplus:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -37,7 +37,7 @@ jobs:
   test_git:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -48,7 +48,7 @@ jobs:
   test_hadolint:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -59,7 +59,7 @@ jobs:
   test_javascript:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -70,7 +70,7 @@ jobs:
   test_nkf:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -81,7 +81,7 @@ jobs:
   test_prompt:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -92,7 +92,7 @@ jobs:
   test_python:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -103,7 +103,7 @@ jobs:
   test_rust:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -114,7 +114,7 @@ jobs:
   test_shellcheck:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -125,7 +125,7 @@ jobs:
   test_zip:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
@@ -136,14 +136,14 @@ jobs:
   # lint:
   #   runs-on: ubuntu-22.04
   #   steps:
-  #     - uses: actions/checkout@v3
+  #     - uses: actions/checkout@v4
   #     - run: make up
   #     - run: make lint TTY=false
   #     - run: make down
   lint2:
     runs-on: ubuntu-22.04
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: setup python
         uses: actions/setup-python@v5
         with:
