@@ -16,6 +16,7 @@
         name:
           - apt-transport-https
           - lsb-release
+          - python3-pexpect
           - software-properties-common
           - wget
     - name: Create temporary working directory
@@ -29,7 +30,11 @@
     - name: Execute clang automatic installation script
       become: yes
       # noqa no-changed-when
-      ansible.builtin.command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
+      ansible.builtin.expect:
+        command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
+        responses:
+          "\\+ add-apt-repository 'deb http://apt.llvm.org/jammy/  llvm-toolchain-jammy-[0-9]+ main'\r?\n[^+]*\r?\nPress \\[ENTER\\] to continue or Ctrl-c to cancel.": "\n"
+        timeout: 1800
     - name: Remove temporary working directory
       ansible.builtin.file:
         path: "{{ tmpdir.path }}"
