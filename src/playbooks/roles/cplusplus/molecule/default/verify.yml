@@ -163,6 +163,6 @@
         - name: assert clang-format version
           assert:
             that:
-              - result.stdout is version('15.0.0', '>=')
-              - result.stdout is version('16.0.0', '<')
+              - result.stdout is version('17.0.0', '>=')
+              - result.stdout is version('18.0.0', '<')
             fail_msg: "actual version is {{ result.stdout }}"
