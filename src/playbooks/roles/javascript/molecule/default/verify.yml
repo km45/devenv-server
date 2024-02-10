@@ -11,10 +11,10 @@
         - name: assert remote user
           assert:
             that:
-              - result.stdout == "vagrant"
+              - result.stdout == "molecule"
             fail_msg: "actual result is {{ result.stdout }}"
     - name: test command existence
-      ansible.builtin.command: bash -c ". /home/vagrant/.bashrc.d/javascript.bashrc && {{ item }}"
+      ansible.builtin.command: bash -c ". ~/.bashrc.d/javascript.bashrc && {{ item }}"
       changed_when: False
       with_items:
         - type volta

@@ -9,6 +9,6 @@ platforms:
 provisioner:
   name: ansible
   options:
-    user: vagrant
+    user: molecule
 verifier:
   name: ansible

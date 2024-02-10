@@ -12,7 +12,7 @@
         - name: assert remote user
           assert:
             that:
-              - result.stdout == "vagrant"
+              - result.stdout == "molecule"
             fail_msg: "actual result is {{ result.stdout }}"
     - name: test command existence
       ansible.builtin.command: bash -c "type {{ item }}"
