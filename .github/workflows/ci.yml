@@ -3,26 +3,6 @@ name: CI
 on: [push, pull_request]
 
 jobs:
-  # multipass_test_jammy:
-  #   # Use macOS instance for VirtualBox
-  #   # because nested virtualization is not supported for Ubuntu instances
-  #   runs-on: macos-12
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - run: brew install --cask multipass
-  #     - name: Wait 30 seconds for multipassd ready
-  #       run: sleep 30
-  #     - run: multipass set local.driver=virtualbox
-  #     - name: Wait 30 seconds for multipassd ready
-  #       run: sleep 30
-  #     - run: multipass launch 22.04 --cloud-init src/multipass/cloud-init.yml --name test-jammy
-  #     - run: multipass mount ./src/playbooks test-jammy:/multipass/playbooks
-  #     - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml
-  #     - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test'
-  #       name: test for current session
-  #     - run: multipass restart test-jammy
-  #     - run: multipass exec test-jammy -- ansible-playbook /multipass/playbooks/multipass.yml --tags 'test,test2'
-  #       name: test after rebooting
   test_cplusplus:
     runs-on: ubuntu-22.04
     steps:
@@ -154,7 +134,6 @@ jobs:
   status_check:
     runs-on: ubuntu-22.04
     needs:
-      # - multipass_test_jammy
       - test_cplusplus
       - test_git
       - test_hadolint

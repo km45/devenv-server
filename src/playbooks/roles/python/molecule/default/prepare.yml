@@ -1,7 +1,0 @@
----
-
-- name: prepare
-  hosts: all
-  roles:
-    - role: prepare
-    - role: setup

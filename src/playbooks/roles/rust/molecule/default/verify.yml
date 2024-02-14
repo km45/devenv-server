@@ -11,9 +11,9 @@
         - name: assert remote user
           assert:
             that:
-              - result.stdout == "vagrant"
+              - result.stdout == "molecule"
     - name: test command existence
-      ansible.builtin.command: bash -c ". /home/vagrant/.bashrc.d/rust.bashrc && type {{ item }}"
+      ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && type {{ item }}"
       register: result
       changed_when: False
       with_items:

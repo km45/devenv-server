@@ -29,7 +29,7 @@ endif
 
 .PHONY: ansiblelint
 ansiblelint:
-	ansible-lint src/playbooks/site.yml src/playbooks/multipass.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play],risky-shell-pipe
+	ansible-lint src/playbooks/site.yml -x yaml,meta-no-info,risky-file-permissions,701,name[play],risky-shell-pipe
 
 .PHONY: awesome-ci
 awesome-ci:
@@ -54,14 +54,10 @@ test:
 clean:
 	rm -rf $(OUT)
 
-.PHONY: package-jammy
-package-jammy:
-	mkdir -p $(OUT)/ubuntu-jammy-vagrant
-	cp -p src/vagrantfiles/ubuntu-jammy/Vagrantfile $(OUT)/ubuntu-jammy-vagrant
-	cp -pr src/playbooks $(OUT)/ubuntu-jammy-vagrant
-
 .PHONY: package
-package: clean package-jammy
+package: clean
+	mkdir -p $(OUT)/
+	cp -pr src/playbooks $(OUT)/
 
 .PHONY: distribute-templates
 distribute-templates:

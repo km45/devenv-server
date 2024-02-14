@@ -6,6 +6,6 @@ RUN apt-get update \
         python3 \
         software-properties-common \
         sudo \
-    && adduser vagrant \
-    && adduser vagrant sudo \
+    && adduser molecule \
+    && adduser molecule sudo \
     && echo 'Defaults exempt_group=sudo' >> /etc/sudoers

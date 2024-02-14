@@ -2,13 +2,13 @@
 
 - name: create directory .bashrc.d
   ansible.builtin.file:
-    path: /home/vagrant/.bashrc.d
+    path: ~/.bashrc.d
     state: directory
     mode: '0755'
 
 - name: edit .bashrc to use files in .bashrc.d
   blockinfile:
-    path: /home/vagrant/.bashrc
+    path: ~/.bashrc
     block: |
       for file in $(ls ~/.bashrc.d/); do
         . ~/.bashrc.d/${file}

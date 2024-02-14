@@ -1,8 +1,0 @@
----
-- name: Show distribution name
-  ansible.builtin.debug:
-    var: ansible_distribution
-
-- name: Show distribution version
-  ansible.builtin.debug:
-    var: ansible_distribution_version
