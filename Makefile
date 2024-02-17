@@ -1,8 +1,8 @@
 TTY := true
 OUT := dest
 
-.PHONY: lint2
-lint2: awesome-ci ansiblelint
+.PHONY: lint
+lint: awesome-ci ansiblelint
 
 .PHONY: ansiblelint
 ansiblelint:
