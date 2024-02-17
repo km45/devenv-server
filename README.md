@@ -20,7 +20,7 @@ wsl --export Ubuntu-22.04 ./distributions/Ubuntu-22.04.tar
 wsl --import wsl-jammy0x ./wsl-jammy0x/ ./distributions/Ubuntu-22.04.tar
 ```
 
-Edit `/etc/wsl.conf` to change the login user from `root`.
+Edit `/etc/wsl.conf` in the WSL environment to change the login user from `root`.
 
 ```conf
 [user]
@@ -28,3 +28,12 @@ default=username
 ```
 
 Use `wsl --terminate` to restart the distribution to reflect the configuration changes.
+
+## use dnsTunneling option if necessarry
+
+Edit `~/.wslconfig` in Windows environment.
+
+```conf
+[wsl2]
+dnsTunneling=true
+```
