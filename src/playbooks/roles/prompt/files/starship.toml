@@ -1,0 +1,45 @@
+"$schema" = 'https://starship.rs/config-schema.json'
+
+add_newlin = false
+
+format = """
+$username\
+$hostname\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$time\
+$cmd_duration\
+$status\
+$line_break\
+$jobs\
+$character"""
+
+[username]
+show_always = true
+
+[hostname]
+ssh_only = false
+
+[directory]
+read_only = ''
+truncation_length = 8
+
+[git_branch]
+symbol = 'branch '
+
+[git_commit]
+tag_disabled = false
+tag_symbol = ' tag '
+
+[time]
+disabled = false
+
+[status]
+disabled = false
+format = '[with exit code $status $common_meaning$signal_name]($style) '
+
+[character]
+error_symbol = '[\$](bold red)'
+success_symbol = '[\$](bold green)'
