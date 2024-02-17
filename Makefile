@@ -1,31 +1,8 @@
 TTY := true
 OUT := dest
 
-.PHONY: up
-up:
-	docker-compose up --build -d
-
-.PHONY: down
-down:
-	docker-compose down
-
-.PHONY: shell
-shell:
-	docker-compose exec --user `id -u`:`id -g` $(SERVICE) bash
-
 .PHONY: lint2
 lint2: awesome-ci ansiblelint
-
-.PHONY: lint
-lint: jsonlint
-
-.PHONY: jsonlint
-jsonlint:
-ifeq ($(TTY), false)
-	docker-compose exec -T node bash -c "find src/playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
-else
-	docker-compose exec    node bash -c "find src/playbooks/ -name '*.json' -type f | xargs npx jsonlint -q"
-endif
 
 .PHONY: ansiblelint
 ansiblelint:

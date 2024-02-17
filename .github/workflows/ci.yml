@@ -113,13 +113,6 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=zip
-  # lint:
-  #   runs-on: ubuntu-22.04
-  #   steps:
-  #     - uses: actions/checkout@v4
-  #     - run: make up
-  #     - run: make lint TTY=false
-  #     - run: make down
   lint2:
     runs-on: ubuntu-22.04
     steps:
@@ -144,7 +137,6 @@ jobs:
       - test_rust
       - test_shellcheck
       - test_zip
-      # - lint
       - lint2
     steps:
       - run: echo 'pass'

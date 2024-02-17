@@ -1,8 +1,0 @@
-version: "3"
-
-services:
-  node:
-    build: dockerfiles/node
-    volumes:
-      - .:/usr/src/app:ro
-    working_dir: /usr/src/app
