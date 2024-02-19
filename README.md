@@ -37,3 +37,12 @@ Edit `~/.wslconfig` in Windows environment.
 [wsl2]
 dnsTunneling=true
 ```
+
+## change hostname if necessarry
+
+Edit `/etc/wsl.conf` in the WSL environment.
+
+```conf
+[network]
+hostname=wsl-jammy0x
+```
