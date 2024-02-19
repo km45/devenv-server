@@ -1,6 +1,6 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-add_newlin = false
+add_newline = false
 
 format = """
 $username\
