@@ -33,7 +33,7 @@ format = '[running ${number} job\(s\)]($style) '
 number_threshold = 1
 
 [directory]
-read_only = ''
+read_only = ' (readonly)'
 truncation_length = 8
 
 [git_branch]
