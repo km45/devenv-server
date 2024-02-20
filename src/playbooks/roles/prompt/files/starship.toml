@@ -9,6 +9,7 @@ $directory\
 $git_branch\
 $git_commit\
 $git_state\
+$python\
 $time\
 $cmd_duration\
 $status\
@@ -32,6 +33,9 @@ symbol = 'branch '
 [git_commit]
 tag_disabled = false
 tag_symbol = ' tag '
+
+[python]
+symbol = 'python '
 
 [time]
 disabled = false
