@@ -28,6 +28,10 @@ disabled = false
 [python]
 symbol = 'python '
 
+[jobs]
+format = '[running ${number} job\(s\)]($style) '
+number_threshold = 1
+
 [directory]
 read_only = ''
 truncation_length = 8
