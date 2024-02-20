@@ -15,12 +15,18 @@ $status
 $character"""
 
 [username]
-show_always = true
 format = '[$user]($style)'
+show_always = true
 
 [hostname]
-ssh_only = false
 format = '[$hostname]($style)'
+ssh_only = false
+
+[time]
+disabled = false
+
+[python]
+symbol = 'python '
 
 [directory]
 read_only = ''
@@ -32,12 +38,6 @@ symbol = 'branch '
 [git_commit]
 tag_disabled = false
 tag_symbol = ' tag '
-
-[python]
-symbol = 'python '
-
-[time]
-disabled = false
 
 [status]
 disabled = false
