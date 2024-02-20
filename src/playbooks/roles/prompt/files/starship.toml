@@ -3,25 +3,24 @@
 add_newline = false
 
 format = """
-$username\
-$hostname\
-$directory\
+${username}@${hostname} ${time}\
+$cmd_duration\
+$python\
+$jobs
+in ${directory}\
 $git_branch\
 $git_commit\
 $git_state\
-$python\
-$time\
-$cmd_duration\
-$status\
-$line_break\
-$jobs\
+$status
 $character"""
 
 [username]
 show_always = true
+format = '[$user]($style)'
 
 [hostname]
 ssh_only = false
+format = '[$hostname]($style)'
 
 [directory]
 read_only = ''
