@@ -9,12 +9,13 @@ $hostname\
 $time\
 $cmd_duration\
 $python\
-$jobs
+$jobs\
 $directory\
 $git_branch\
 $git_commit\
 $git_state\
-$status
+$status\
+$line_break\
 $character"""
 
 [username]
