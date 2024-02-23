@@ -23,7 +23,7 @@ markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 mdurl==0.1.2
 molecule==6.0.3
-molecule-plugins==23.5.0
+molecule-plugins==23.5.3
 mypy-extensions==1.0.0
 packaging==23.2
 pathspec==0.12.1
