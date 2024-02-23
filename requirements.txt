@@ -22,7 +22,7 @@ jsonschema-specifications==2023.12.1
 markdown-it-py==3.0.0
 MarkupSafe==2.1.5
 mdurl==0.1.2
-molecule==6.0.3
+molecule==24.2.0
 molecule-plugins==23.5.3
 mypy-extensions==1.0.0
 packaging==23.2
