@@ -13,53 +13,9 @@
             that:
               - result.stdout == "molecule"
             fail_msg: "actual result is {{ result.stdout }}"
-    # TODO: fix tests
-    # NOTE: we can get colorless bash prompt by `starship prompt | ansi2txt` (ansi2txt is provided by `apt install colorized-logs`)
-    # - name: test colorless bash prompt at ordinary directory
-    #   block:
-    #     - name: evaluate colorless bash prompt at ordinary directory
-    #       # 1. expand $PS1 by "@P"
-    #       #    refer: https://stackoverflow.com/questions/22322879/how-to-print-current-bash-prompt
-    #       # 2. remove control characters SOH and STX
-    #       # 3. remove colors
-    #       #    refer: https://stackoverflow.com/questions/17998978/removing-colors-from-output
-    #       ansible.builtin.command: |-
-    #         bash -c ". ~/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
-    #           | sed 's|\[0;|\[|g' \
-    #           | tr -d '\001-\002' \
-    #           | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
-    #       register: result
-    #       changed_when: False
-    #     - name: assert colorless bash prompt at ordinary directory
-    #       assert:
-    #         that:
-    #           - result.stdout == "molecule@" + ansible_host + ":/ $ "
-    #         fail_msg: "actual result is {{ result.stdout_lines }}"
-    # - name: test colorless bash prompt at git directory
-    #   block:
-    #     - name: create temporary working directory
-    #       ansible.builtin.tempfile:
-    #         state: directory
-    #       register: tmpdir
-    #     - name: initialize local git repository
-    #       ansible.builtin.command: git init # noqa 303
-    #       args:
-    #         chdir: "{{ tmpdir.path }}"
-    #     - name: evaluate colorless bash prompt at ordinary directory
-    #       ansible.builtin.command: |-
-    #         bash -c ". ~/.bashrc.d/git-prompt.bashrc && echo -e \"${PS1@P}\" \
-    #           | sed 's|\[0;|\[|g' \
-    #           | tr -d '\001-\002' \
-    #           | sed -r 's|\x1B\[([0-9]{1,3}(;[0-9]{1,2})?)?[mGK]||g'"
-    #       args:
-    #         chdir: "{{ tmpdir.path }}"
-    #       register: result
-    #       changed_when: False
-    #     - name: debug printting
-    #       debug:
-    #         msg: "{{ result }}"
-    #     - name: assert colorless bash prompt at ordinary directory
-    #       assert:
-    #         that:
-    #           - result.stdout == "molecule@" + ansible_host + ":" + tmpdir.path|basename + " (master) $ "
-    #         fail_msg: "actual result is {{ result.stdout_lines }}"
+    - name: test command existence
+      ansible.builtin.command: bash -c "type {{ item }}"
+      register: result
+      changed_when: False
+      with_items:
+        - starship
