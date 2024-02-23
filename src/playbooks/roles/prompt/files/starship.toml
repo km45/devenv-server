@@ -4,11 +4,13 @@ add_newline = false
 continuation_prompt = '[>](bright-black) '
 
 format = """
-${username}@${hostname} ${time}\
+$username\
+$hostname\
+$time\
 $cmd_duration\
 $python\
 $jobs
-in ${directory}\
+$directory\
 $git_branch\
 $git_commit\
 $git_state\
@@ -20,33 +22,44 @@ format = '[$user]($style)'
 show_always = true
 
 [hostname]
-format = '[$hostname]($style)'
+format = '@[$hostname]($style)'
 ssh_only = false
 
 [time]
 disabled = false
+format = ' at [$time]($style)'
+
+[cmd_duration]
+format = ' took [$duration]($style)'
 
 [python]
+format = ' via [$symbol$version( \($virtualenv\))]($style)'
 symbol = 'python '
 
 [jobs]
-format = '[running ${number} job\(s\)]($style) '
+format = ' [running $number job\(s\)]($style)'
 number_threshold = 1
 
 [directory]
+format = ' in [$path]($style)[$read_only]($read_only_style)'
 read_only = ' (readonly)'
 truncation_length = 8
 
 [git_branch]
 symbol = 'branch '
+format = ' on $symbol[$branch(:$remote_branch)]($style)'
 
 [git_commit]
+format = ' on commit [$hash( \($tag\))]($style)'
 tag_disabled = false
-tag_symbol = ' tag '
+tag_symbol = 'tag '
+
+[git_state]
+format = ' \([$state( $progress_current/$progress_total)]($style)\)'
 
 [status]
 disabled = false
-format = '[with exit code $status $common_meaning$signal_name]($style) '
+format = ' [exited with code $status( $common_meaning)( $signal_name)]($style)'
 
 [character]
 error_symbol = '[\$](bold red)'
