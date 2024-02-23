@@ -21,47 +21,58 @@ $character"""
 [username]
 format = '[$user]($style)'
 show_always = true
+style_user = 'bright-blue'
 
 [hostname]
-format = '@[$hostname]($style)'
+format = '[@$hostname]($style)'
 ssh_only = false
+style = 'bright-blue'
 
 [time]
 disabled = false
-format = ' at [$time]($style)'
+format = ' [$time]($style)'
+style = 'bright-black'
 
 [cmd_duration]
-format = ' took [$duration]($style)'
+format = ' [took $duration]($style)'
+style = 'bright-yellow'
 
 [python]
 format = ' via [$symbol$version( \($virtualenv\))]($style)'
+style = 'bright-green'
 symbol = 'python '
 
 [jobs]
 format = ' [running $number job\(s\)]($style)'
 number_threshold = 1
+style = 'bright-yellow'
 
 [directory]
 format = ' in [$path]($style)[$read_only]($read_only_style)'
 read_only = ' (readonly)'
+style = 'bright-cyan'
 truncation_length = 8
 
 [git_branch]
-symbol = 'branch '
 format = ' on $symbol[$branch(:$remote_branch)]($style)'
+style = 'bright-purple'
+symbol = 'branch '
 
 [git_commit]
 format = ' on commit [$hash( \($tag\))]($style)'
+style = 'bright-yellow'
 tag_disabled = false
 tag_symbol = 'tag '
 
 [git_state]
 format = ' \([$state( $progress_current/$progress_total)]($style)\)'
+style = 'bright-yellow'
 
 [status]
 disabled = false
 format = ' [exited with code $status( $common_meaning)( $signal_name)]($style)'
+style = 'bright-red'
 
 [character]
-error_symbol = '[\$](bold red)'
-success_symbol = '[\$](bold green)'
+error_symbol = '[\$](red)'
+success_symbol = '[\$](green)'
