@@ -29,7 +29,7 @@ default=username
 
 Use `wsl --terminate` to restart the distribution to reflect the configuration changes.
 
-## use dnsTunneling option if necessarry
+## use dnsTunneling option if necessary
 
 Edit `~/.wslconfig` in Windows environment.
 

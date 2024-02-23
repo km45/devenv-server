@@ -9,5 +9,49 @@
 - name: Put bashrc file in ~/.bashrc.d
   ansible.builtin.copy:
     src: bashrc
-    dest: ~/.bashrc.d/git-prompt.bashrc
+    dest: ~/.bashrc.d/starship.bashrc
+    mode: 0755
+
+- name: Check whether already installed starship
+  ansible.builtin.command: |-
+    which starship
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Install starship
+  when: checked_result.rc == 1
+  block:
+    - name: Install requirements
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - curl
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
+        state: directory
+      register: tmpdir
+    - name: Download starship automatic installation script
+      ansible.builtin.get_url:
+        url: https://starship.rs/install.sh
+        dest: "{{ tmpdir.path }}/install.sh"
+    - name: Execute starship automatic installation script
+      become: yes
+      # noqa no-changed-when
+      ansible.builtin.command: "sh {{ tmpdir.path }}/install.sh -y"
+    - name: Remove temporary working directory
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent
+
+- name: Create directory to put starship.toml
+  ansible.builtin.file:
+    path: ~/.config
+    state: directory
+    mode: "0755"
+
+- name: Put starship.toml
+  ansible.builtin.copy:
+    src: starship.toml
+    dest: ~/.config/starship.toml
     mode: 0755
