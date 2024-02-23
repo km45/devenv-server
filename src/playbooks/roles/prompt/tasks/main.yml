@@ -44,7 +44,7 @@
         path: "{{ tmpdir.path }}"
         state: absent
 
-- name: create directory to put starship.toml
+- name: Create directory to put starship.toml
   ansible.builtin.file:
     path: ~/.config
     state: directory
