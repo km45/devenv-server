@@ -1,0 +1,14 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: jq-jammy
+    image: ubuntu:22.04
+provisioner:
+  name: ansible
+  options:
+    user: molecule
+verifier:
+  name: ansible
