@@ -1,0 +1,11 @@
+FROM {{ item.image }}
+
+RUN apt-get update \
+    && apt-get install -y \
+        ca-certificates \
+        python3 \
+        software-properties-common \
+        sudo \
+    && adduser molecule \
+    && adduser molecule sudo \
+    && echo 'Defaults exempt_group=sudo' >> /etc/sudoers

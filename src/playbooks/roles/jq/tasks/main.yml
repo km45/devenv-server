@@ -1,0 +1,5 @@
+---
+- name: Install packages
+  become: yes
+  ansible.builtin.apt:
+    name: jq

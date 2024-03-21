@@ -47,6 +47,17 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=javascript
+  test_jq:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: make sync
+      - run: make test ROLE=jq
   test_nkf:
     runs-on: ubuntu-22.04
     steps:
@@ -131,6 +142,7 @@ jobs:
       - test_git
       - test_hadolint
       - test_javascript
+      - test_jq
       - test_nkf
       - test_prompt
       - test_python

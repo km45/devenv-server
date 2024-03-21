@@ -5,6 +5,7 @@
     - git
     - hadolint
     - javascript
+    - jq
     - nkf
     - prompt
     - python
