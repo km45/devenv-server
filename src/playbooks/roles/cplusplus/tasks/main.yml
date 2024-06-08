@@ -1,44 +1,43 @@
 ---
+# - name: Check whether already installed clang
+#   ansible.builtin.command: |-
+#     which clang-{{ cplusplus_llvm_major_version }}
+#   register: checked_result
+#   changed_when: False
+#   failed_when: checked_result.rc not in [0, 1]
 
-- name: Check whether already installed clang
-  ansible.builtin.command: |-
-    which clang-{{ cplusplus_llvm_major_version }}
-  register: checked_result
-  changed_when: False
-  failed_when: checked_result.rc not in [0, 1]
-
-- name: Install clang
-  when: checked_result.rc == 1
-  block:
-    - name: Install requirements
-      become: yes
-      ansible.builtin.apt:
-        name:
-          - apt-transport-https
-          - lsb-release
-          - python3-pexpect
-          - software-properties-common
-          - wget
-    - name: Create temporary working directory
-      ansible.builtin.tempfile:
-        state: directory
-      register: tmpdir
-    - name: Download clang automatic installation script
-      ansible.builtin.get_url:
-        url: https://apt.llvm.org/llvm.sh
-        dest: "{{ tmpdir.path }}/llvm.sh"
-    - name: Execute clang automatic installation script
-      become: yes
-      # noqa no-changed-when
-      ansible.builtin.expect:
-        command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
-        responses:
-          "\\+ add-apt-repository 'deb http://apt.llvm.org/jammy/  llvm-toolchain-jammy-[0-9]+ main'\r?\n[^+]*\r?\nPress \\[ENTER\\] to continue or Ctrl-c to cancel.": "\n"
-        timeout: 1800
-    - name: Remove temporary working directory
-      ansible.builtin.file:
-        path: "{{ tmpdir.path }}"
-        state: absent
+# - name: Install clang
+#   when: checked_result.rc == 1
+#   block:
+#     - name: Install requirements
+#       become: yes
+#       ansible.builtin.apt:
+#         name:
+#           - apt-transport-https
+#           - lsb-release
+#           - python3-pexpect
+#           - software-properties-common
+#           - wget
+#     - name: Create temporary working directory
+#       ansible.builtin.tempfile:
+#         state: directory
+#       register: tmpdir
+#     - name: Download clang automatic installation script
+#       ansible.builtin.get_url:
+#         url: https://apt.llvm.org/llvm.sh
+#         dest: "{{ tmpdir.path }}/llvm.sh"
+#     - name: Execute clang automatic installation script
+#       become: yes
+#       # noqa no-changed-when
+#       ansible.builtin.expect:
+#         command: "bash {{ tmpdir.path }}/llvm.sh {{ cplusplus_llvm_major_version }}"
+#         responses:
+#           "\\+ add-apt-repository 'deb http://apt.llvm.org/jammy/  llvm-toolchain-jammy-[0-9]+ main'\r?\n[^+]*\r?\nPress \\[ENTER\\] to continue or Ctrl-c to cancel.": "\n"
+#         timeout: 1800
+#     - name: Remove temporary working directory
+#       ansible.builtin.file:
+#         path: "{{ tmpdir.path }}"
+#         state: absent
 
 - name: Install packages
   become: yes

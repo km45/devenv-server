@@ -29,7 +29,7 @@
         - name: assert git version
           assert:
             that:
-              - result.stdout is version('2.23.0', '>=')
+              - result.stdout is version('2.44.0', '>=')
               - result.stdout is version('3.0.0', '<')
             fail_msg: "actual version is {{ result.stdout }}"
     - name: test git ignore

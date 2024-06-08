@@ -4,8 +4,8 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: rust-jammy
-    image: ubuntu:22.04
+  - name: rust-noble
+    image: ubuntu:24.04
 provisioner:
   name: ansible
   options:

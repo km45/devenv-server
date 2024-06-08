@@ -4,8 +4,8 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: cplusplus-jammy
-    image: ubuntu:22.04
+  - name: cplusplus-noble
+    image: ubuntu:24.04
     capabilities:
       - SYS_PTRACE
     security_opts:

@@ -1,10 +1,4 @@
 ---
-- name: Install requiremsnts
-  become: yes
-  ansible.builtin.apt:
-    name:
-      - gnupg
-
 - name: Add apt repository
   become: yes
   ansible.builtin.apt_repository:
@@ -14,7 +8,7 @@
   become: yes
   ansible.builtin.apt:
     name: git
-    state: latest  # noqa package-latest
+    state: latest # noqa package-latest
 
 - name: Include task config
   ansible.builtin.import_tasks: config.yml
