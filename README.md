@@ -2,7 +2,7 @@
 
 [![CI](https://github.com/km45/devenv-server/actions/workflows/ci.yml/badge.svg)](https://github.com/km45/devenv-server/actions/workflows/ci.yml)
 
-1. Create WSL `Ubutun 22.04` environment.
+1. Create WSL `Ubutun 24.04` environment.
 1. Install ansible and provision as follows.
 
 ```sh
@@ -16,8 +16,8 @@ ansible-playbook --ask-become-pass site.yml
 If you want to create multiple environment, use `wsl --export` and `wsl --import` as follows.
 
 ```sh
-wsl --export Ubuntu-22.04 ./distributions/Ubuntu-22.04.tar
-wsl --import wsl-jammy0x ./wsl-jammy0x/ ./distributions/Ubuntu-22.04.tar
+wsl --export Ubuntu-24.04 ./distributions/Ubuntu-24.04.tar
+wsl --import wsl-noble0x ./wsl-noble0x/ ./distributions/Ubuntu-24.04.tar
 ```
 
 Edit `/etc/wsl.conf` in the WSL environment to change the login user from `root`.
@@ -44,5 +44,5 @@ Edit `/etc/wsl.conf` in the WSL environment.
 
 ```conf
 [network]
-hostname=wsl-jammy0x
+hostname=wsl-noble0x
 ```

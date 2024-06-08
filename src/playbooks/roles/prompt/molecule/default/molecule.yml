@@ -4,8 +4,8 @@ dependency:
 driver:
   name: docker
 platforms:
-  - name: prompt-jammy
-    image: ubuntu:22.04
+  - name: prompt-noble
+    image: ubuntu:24.04
 provisioner:
   name: ansible
   options:
