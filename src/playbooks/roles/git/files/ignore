@@ -1,8 +1,10 @@
 # Compilation Database
 /compile_commands.json
 
-# Python venv
+# Python
+/.python-version
 /venv
+__pycache__
 
 # Visual Studio Code
 /.vscode
