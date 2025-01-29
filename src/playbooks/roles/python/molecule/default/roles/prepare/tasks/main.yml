@@ -1,8 +1,0 @@
----
-
-- name: create empty .bashrc
-  ansible.builtin.copy:
-    content: ""
-    dest: ~/.bashrc
-    force: no
-    mode: '0755'

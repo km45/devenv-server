@@ -1,6 +1,0 @@
----
-
-- name: Install packages
-  ansible.builtin.pip:
-    name: cpplint
-    executable: ~/.pyenv/shims/pip

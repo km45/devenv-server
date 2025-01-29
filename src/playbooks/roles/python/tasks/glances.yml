@@ -1,5 +1,0 @@
----
-- name: Install packages
-  ansible.builtin.pip:
-    name: glances
-    executable: ~/.pyenv/shims/pip
