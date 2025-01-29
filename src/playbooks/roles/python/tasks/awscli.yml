@@ -1,5 +1,0 @@
----
-- name: Install packages
-  ansible.builtin.pip:
-    name: awscli
-    executable: ~/.pyenv/shims/pip

@@ -13,47 +13,8 @@
             that:
               - result.stdout == "molecule"
     - name: test command existence
-      ansible.builtin.command: bash -c ". ~/.bashrc.d/pyenv.bashrc && type {{ item }}"
+      ansible.builtin.command: bash -cl "type {{ item }}"
       register: result
       changed_when: False
       with_items:
-        - aws
-        - cpplint
-        - glances
-        - poetry
-        - pyenv
-    - name: test global python version
-      block:
-        - name: determine global python version
-          ansible.builtin.command: bash -c ". ~/.bashrc.d/pyenv.bashrc && python --version | sed 's|^Python ||g'"
-          register: result
-          changed_when: False
-        - name: assert global python version
-          assert:
-            that:
-              - result.stdout == "3.13.1"
-            fail_msg: "actual version is {{ result.stdout }}"
-    - name: test poetry version
-      block:
-        - name: determine poetry version
-          ansible.builtin.command: bash -c ". ~/.bashrc.d/pyenv.bashrc && poetry --version | sed 's|Poetry (version \([0-9\.]*\))|\1|g'"
-          register: result
-          changed_when: False
-        - name: assert poetry version
-          assert:
-            that:
-              - result.stdout is version('1.1.0', '>=')
-              - result.stdout is version('2.0.0', '<')
-            fail_msg: "actual version is {{ result.stdout }}"
-    - name: test AWS CLI version
-      block:
-        - name: determine AWS CLI version
-          ansible.builtin.command: bash -c ". ~/.bashrc.d/pyenv.bashrc && aws --version | sed 's| |\n|g' | grep 'aws-cli' | sed 's|.*/||g'"
-          register: result
-          changed_when: False
-        - name: assert AWS CLI version
-          assert:
-            that:
-              - result.stdout is version('1.0.0', '>=')
-              - result.stdout is version('2.0.0', '<')
-            fail_msg: "actual version is {{ result.stdout }}"
+        - uv

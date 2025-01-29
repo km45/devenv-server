@@ -1,24 +1,30 @@
 ---
-- name: Apply dependent roles
-  ansible.builtin.include_role:
-    name: "{{ item }}"
-  with_items:
-    - dependencies/bashrc_dir
+- name: Check whether already installed uv
+  ansible.builtin.command: bash -cl "type uv"
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
 
-- name: Include task pyenv
-  ansible.builtin.import_tasks: pyenv.yml
-
-- name: Include task version
-  ansible.builtin.import_tasks: version.yml
-
-- name: Include task poetry
-  ansible.builtin.import_tasks: poetry.yml
-
-- name: Include task awscli
-  ansible.builtin.import_tasks: awscli.yml
-
-- name: Include task cpplint
-  ansible.builtin.import_tasks: cpplint.yml
-
-- name: Include task glances
-  ansible.builtin.import_tasks: glances.yml
+- name: Install uv
+  when: checked_result.rc == 1
+  block:
+    - name: Install requirements
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - curl
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
+        state: directory
+      register: tmpdir
+    - name: Download uv-installer
+      ansible.builtin.get_url:
+        url: https://astral.sh/uv/install.sh
+        dest: "{{ tmpdir.path }}/uv-installer"
+    - name: Execute uv-installer
+      # noqa no-changed-when
+      ansible.builtin.command: "bash {{ tmpdir.path }}/uv-installer"
+    - name: Remove temporary working directory
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent
