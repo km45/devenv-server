@@ -1,7 +1,7 @@
 ---
 
 - name: Check whether already installed riff
-  ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && which riff"
+  ansible.builtin.command: bash -cl "which riff"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -16,4 +16,4 @@
           - gcc
     - name: Install riff
       # noqa no-changed-when
-      ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && cargo install riffdiff"
+      ansible.builtin.command: bash -cl "cargo install riffdiff"

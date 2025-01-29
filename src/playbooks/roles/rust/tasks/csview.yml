@@ -1,6 +1,6 @@
 ---
 - name: Check whether already installed csview
-  ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && which csview"
+  ansible.builtin.command: bash -cl "which csview"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -15,4 +15,4 @@
           - gcc
     - name: Install csview
       # noqa no-changed-when
-      ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && cargo install csview"
+      ansible.builtin.command: bash -cl "cargo install csview"
