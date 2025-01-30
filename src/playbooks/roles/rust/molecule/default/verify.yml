@@ -13,7 +13,7 @@
             that:
               - result.stdout == "molecule"
     - name: test command existence
-      ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && type {{ item }}"
+      ansible.builtin.command: bash -cl "type {{ item }}"
       register: result
       changed_when: False
       with_items:

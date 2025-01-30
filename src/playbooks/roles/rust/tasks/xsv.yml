@@ -1,6 +1,6 @@
 ---
 - name: Check whether already installed xsv
-  ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && which xsv"
+  ansible.builtin.command: bash -cl "which xsv"
   register: checked_result
   changed_when: False
   failed_when: checked_result.rc not in [0, 1]
@@ -15,4 +15,4 @@
           - gcc
     - name: Install xsv
       # noqa no-changed-when
-      ansible.builtin.command: bash -c ". ~/.bashrc.d/rust.bashrc && cargo install xsv"
+      ansible.builtin.command: bash -cl "cargo install xsv"
