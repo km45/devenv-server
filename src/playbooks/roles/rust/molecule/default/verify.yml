@@ -17,6 +17,7 @@
       register: result
       changed_when: False
       with_items:
+        - bat
         - cargo
         - csview
         - riff
