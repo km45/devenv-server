@@ -41,6 +41,8 @@
         path: "{{ tmpdir.path }}"
         state: absent
 
+- name: Include task bat
+  ansible.builtin.import_tasks: bat.yml
 - name: Include task csview
   ansible.builtin.import_tasks: csview.yml
 - name: Include task riff
