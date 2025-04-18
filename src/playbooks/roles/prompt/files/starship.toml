@@ -8,7 +8,6 @@ $username\
 $hostname\
 $time\
 $cmd_duration\
-$python\
 $jobs\
 $directory\
 $git_branch\
@@ -36,11 +35,6 @@ style = 'bright-black'
 [cmd_duration]
 format = ' [took $duration]($style)'
 style = 'bright-yellow'
-
-[python]
-format = ' via [$symbol$version( \($virtualenv\))]($style)'
-style = 'bright-green'
-symbol = 'python '
 
 [jobs]
 format = ' [running $number job\(s\)]($style)'
