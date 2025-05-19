@@ -1,0 +1,14 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+platforms:
+  - name: qsv-noble
+    image: ubuntu:24.04
+provisioner:
+  name: ansible
+  options:
+    user: molecule
+verifier:
+  name: ansible

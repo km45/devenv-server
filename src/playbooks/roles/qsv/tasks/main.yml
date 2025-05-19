@@ -1,0 +1,53 @@
+---
+- name: Apply dependent roles
+  ansible.builtin.include_role:
+    name: "{{ item }}"
+  with_items:
+    - zip
+
+- name: Check whether already installed qsv
+  ansible.builtin.command: |-
+    which qsv
+  register: checked_result
+  changed_when: False
+  failed_when: checked_result.rc not in [0, 1]
+
+- name: Install qsv
+  when: checked_result.rc == 1
+  block:
+    - name: Install requirements
+      become: yes
+      ansible.builtin.apt:
+        name:
+          - stow
+    - name: Create temporary working directory
+      ansible.builtin.tempfile:
+        state: directory
+      register: tmpdir
+    - name: Download and unarchive prebuilt binaries
+      ansible.builtin.unarchive:
+        src: "https://github.com/dathere/qsv/releases/download/{{ qsv_version }}/qsv-{{ qsv_version }}-x86_64-unknown-linux-gnu.zip"
+        dest: "{{ tmpdir.path }}"
+        remote_src: yes
+    - name: Create directory to put executable
+      become: yes
+      ansible.builtin.file:
+        path: "/usr/local/stow/qsv-{{ qsv_version }}/bin"
+        state: directory
+        mode: "0755"
+    - name: Put executable
+      become: yes
+      # noqa no-changed-when
+      ansible.builtin.command: "cp -p {{ tmpdir.path }}/qsv /usr/local/stow/qsv-{{ qsv_version }}/bin/qsv"
+    - name: Stow package
+      become: yes
+      args:
+        chdir: /usr/local/stow
+      # noqa no-changed-when
+      ansible.builtin.shell: |-
+        ls | grep 'qsv-*' | xargs -n1 stow -D
+        stow -R qsv-{{ qsv_version }}
+    - name: Remove temporary working directory
+      ansible.builtin.file:
+        path: "{{ tmpdir.path }}"
+        state: absent

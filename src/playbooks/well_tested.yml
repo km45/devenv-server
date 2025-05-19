@@ -9,6 +9,7 @@
     - nkf
     - prompt
     - python
+    - qsv
     - rust
     - shellcheck
     - zip
