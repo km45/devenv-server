@@ -91,6 +91,17 @@ jobs:
           cache: pip
       - run: make sync
       - run: make test ROLE=python
+  test_qsv:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+      - run: make sync
+      - run: make test ROLE=qsv
   test_rust:
     runs-on: ubuntu-22.04
     steps:
@@ -146,6 +157,7 @@ jobs:
       - test_nkf
       - test_prompt
       - test_python
+      - test_qsv
       - test_rust
       - test_shellcheck
       - test_zip
